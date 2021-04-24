@@ -15,15 +15,9 @@
         }
     };
     
-    btnRegistrarAutor.addEventListener("click",function(){
-        registrarAutor();
-        setTimeout(actualizarSelect,2000);
-    });
-
     btnEliminarMasAutores.addEventListener("click",function(e){
         e.preventDefault();
         eliminarAutoresMas();
-        //alert("autor menos");
     })
     
     btnAgregarMasAutores.addEventListener("click",function(e){
@@ -33,6 +27,57 @@
     })
 
 
+    btnRegistrarAutor.addEventListener("click",function(){
+        registrarAutor();
+        setTimeout(actualizarSelectPrueba,2000);
+    });
+
+
+
+    function agregarAutoresMas(){
+        var padre = document.getElementById("padre");
+        var select = document.createElement("select");
+        select.className ="form-select mt-4";
+        select.id = i
+
+
+        
+        var peticion2 = new XMLHttpRequest();
+        peticion2.open("GET","http://localhost/base/proyecto/public/autores.php");
+        
+
+        peticion2.onload = function(){
+          var datos = JSON.parse(peticion2.responseText);
+  
+         
+          for(var i=0;i<datos.length;i++){
+            var elemento = document.createElement("option");
+            elemento.innerHTML += datos[i].nombre+" ";                
+            elemento.innerHTML += datos[i].primerApellido+" "; 
+            elemento.innerHTML += datos[i].segundoApellido; 
+            select.appendChild(elemento);
+          }
+         
+         
+
+        }
+
+        peticion2.send();
+
+        padre.appendChild(select);
+        i++;
+    }
+
+    function eliminarAutoresMas(){
+        var padre = document.getElementById("padre");        
+        var parrafos = document.querySelectorAll("select");
+        var ultimoSelect = parrafos[parrafos.length-1];
+
+        padre.removeChild(ultimoSelect);
+    }
+
+
+
     function registrarAutor(){
         var primerNombre = document.getElementById("primerNombre").value.toString();
         var segundoNombre = document.getElementById("segundoNombre").value.toString();
@@ -40,8 +85,6 @@
         var segundoApellido = document.getElementById("segundoApellido").value.toString();
         var select = document.getElementById("selectAutor");
         
-        
-        //peticion.open("POST","{{ asset('libros.php') }}");
         var peticion = new XMLHttpRequest();
         peticion.open("POST","http://localhost/base/proyecto/public/libros.php");
         
@@ -52,6 +95,41 @@
         
     }
 
+
+
+    function actualizarSelectPrueba(){
+        var peticion2 = new XMLHttpRequest();        
+        peticion2.open("GET","http://localhost/base/proyecto/public/autores.php");    
+        var padre = document.getElementById("padre");
+        //select.innerHTML = "<option></option>";
+
+        peticion2.onload = function(){
+          var datos = JSON.parse(peticion2.responseText);
+          var selects = document.querySelectorAll("select");
+          var nSelects = selects.length;
+
+        
+          //Primero borro todos los selects
+          var x = 0;
+          while(x<nSelects){
+            var padre = document.getElementById("padre");        
+            var parrafos = document.querySelectorAll("select");
+            var ultimoSelect = parrafos[parrafos.length-1];
+    
+            padre.removeChild(ultimoSelect);
+
+            x++;
+          } 
+
+        }
+          
+
+        peticion2.send();
+    }
+
+
+
+
     function actualizarSelect(){
         var peticion2 = new XMLHttpRequest();        
         peticion2.open("GET","http://localhost/base/proyecto/public/autores.php");
@@ -61,11 +139,12 @@
           var datos = JSON.parse(peticion2.responseText);
 
 
-
           var padre = document.getElementById("padre");        
           var selects = document.querySelectorAll("select");
           var nSelects = selects.length;
 
+   
+      
           
           for(var i=0;i<datos.length;i++){
             var elemento = document.createElement("option");
@@ -76,12 +155,58 @@
           }
           
 
-
-
         }
 
         peticion2.send();
     }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/////////////////////////////////////////////////////////////////////////////////////////////    
+
+
 
     function actualizarSelect2(){
         var peticion2 = new XMLHttpRequest();        
@@ -127,43 +252,5 @@
         peticion2.send();
     }
 
-    
 
-    function agregarAutoresMas(){
-        var padre = document.getElementById("padre");
-        var select = document.createElement("select");
-        select.className ="form-select mt-4";
-        select.id = i
-        var option = document.createElement("option");
-
-
-        var peticion2 = new XMLHttpRequest();
-        peticion2.open("GET","http://localhost/base/proyecto/public/autores.php");
-        
-
-        peticion2.onload = function(){
-          var datos = JSON.parse(peticion2.responseText);
-  
-          for(var i=0;i<datos.length;i++){
-            var elemento = document.createElement("option");
-            elemento.innerHTML += datos[i].nombre+" ";                
-            elemento.innerHTML += datos[i].primerApellido+" "; 
-            elemento.innerHTML += datos[i].segundoApellido; 
-            select.appendChild(elemento);
-          }
-
-        }
-
-        peticion2.send();
-
-        padre.appendChild(select);
-        i++;
-    }
-
-    function eliminarAutoresMas(){
-        var padre = document.getElementById("padre");        
-        var parrafos = document.querySelectorAll("select");
-        var ultimoSelect = parrafos[parrafos.length-1];
-
-        padre.removeChild(ultimoSelect);
-    }
+/////////////////////////////////////////////////////////////////////////////////////////////
