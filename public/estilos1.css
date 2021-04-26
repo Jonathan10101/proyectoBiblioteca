@@ -1,5 +1,6 @@
 body{
     background:#F0F2F5;
+    
 }
 
 
@@ -12,4 +13,10 @@ h1{
 .btn-danger{
    font-size: 18px;
    font-weight: bold;
+}
+
+
+textarea{
+    resize: none;
+    background: orange;
 }
