@@ -152,6 +152,99 @@
             </div>
 
           </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                                                 <!--COORDINADORES-->
+          <label for="coordinadores" class="mb-3 mt-5">Coordinador(es)</label>
+          <div class="col-12 d-flex justify-content-between">
+            <button  type="button" value="1" name="formselector" onClick="displayForm4(this)" class="btn btn-primary col-5">BUSCAR</button>
+            <button value="2" type="button" name="formselector" onClick="displayForm4(this)"  class="btn btn-primary col-5">REGISTRAR</button>
+          </div>
+        
+          <div style="display:block" id="requestForm4">
+            
+            
+            <div id="padre5" >
+            <select name="" id="selectCoordinadores" class="form-select mt-4 clasePadre5">
+                @foreach ($coordinadores as $coordinador)
+                  <option value="{{$autor->id}}">{{$coordinador->nombre1}} {{$coordinador->nombre2}} {{$coordinador->apellido1}} {{$coordinador->apellido2}}</option>
+                @endforeach
+            </select>
+            </div>
+
+            
+            <div class="col-12 d-flex justify-content-end mt-3">
+              <button class="btn btn-danger" id="btnEliminarCoordinadores" >-</button>
+              <button class="btn btn-success" id="btnAgregarCoordinadores" >+</button>
+            </div>
+            
+          </div>
+
+          <div style="display:none" id="memberForm4" class="mt-4">
+                    
+                <input type="text" placeholder="Nombre" class="form-control mt-3" id="nombre1Coordinador">
+                <input type="text" placeholder="Segundo nombre (opcional)" class="form-control mt-3" id="nombre2Coordinador">
+                <input type="text" placeholder="Primer apellido" class="form-control mt-3" id="apellido1Coordinador">
+                <input type="text" placeholder="Segundo apellido" class="form-control mt-3" id="apellido2Coordinador">
+                <div class="col-12 d-flex justify-content-center">
+                    <button  type="button" value="true" name="formselector" onClick="" class="btn btn-warning col-6 mt-3" id="btnRegistrarCoordinador">Registrar Coordinador</button>
+                </div>
+
+          </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
                                                                 
 
 
