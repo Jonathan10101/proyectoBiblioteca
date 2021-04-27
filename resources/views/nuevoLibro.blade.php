@@ -76,8 +76,7 @@
           </div>
         
           <div style="display:block" id="requestForm2">
-            
-            
+                    
             <div id="padre2">
             <select name="" id="selectLugar" class="form-select mt-4 clasePadre2">
                 @foreach ($lugares as $lugar)
@@ -100,6 +99,41 @@
                 </div>
 
           </div>                                                                          
+
+
+
+                                                                            <!--EDITORIAL-->
+          <label for="editorial" class="mb-3 mt-5">Editorial</label>
+          <div class="col-12 d-flex justify-content-between">
+            <button  type="button" value="1" name="formselector" onClick="displayForm3(this)" class="btn btn-primary col-5">BUSCAR</button>
+            <button value="2" type="button" name="formselector" onClick="displayForm3(this)"  class="btn btn-primary col-5">REGISTRAR</button>
+          </div>
+        
+          <div style="display:block" id="requestForm3">
+            
+            
+            <div id="padre3" >
+            <select name="" id="selectEditorial" class="form-select mt-4 clasePadre3">
+                @foreach ($editoriales as $editorial)
+                  <option value="{{$autor->id}}">{{$editorial->nombre}}</option>
+                @endforeach
+            </select>
+            </div>
+
+            
+            
+          </div>
+
+          <div style="display:none" id="memberForm3" class="mt-4">
+                    
+                <input type="text" placeholder="Nombre Editorial" class="form-control mt-3" id="nombreEditorial">
+                <div class="col-12 d-flex justify-content-center">
+                    <button  type="button" value="true" name="formselector" onClick="" class="btn btn-warning col-6 mt-3" id="btnRegistrarEditorial">Registrar Editorial</button>
+                </div>
+
+          </div>                                                                            
+
+
 
 
 

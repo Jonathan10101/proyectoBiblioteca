@@ -2,6 +2,7 @@
     var btnRegistrarAutor = document.getElementById("btnRegistrarAutor");
     var btnEliminarMasAutores = document.getElementById("btnEliminarAutores");
     var btnRegistrarLugar = document.getElementById("btnRegistrarLugar");
+    var btnRegistrarEditorial = document.getElementById("btnRegistrarEditorial");
     var select = document.getElementById("selectAutor");
     var i = 1;
         
@@ -57,6 +58,11 @@
     btnRegistrarLugar.addEventListener("click",function(){
         registrarLugar();
         setTimeout(actualizarSelectPrueba2,2000);
+    });
+
+    btnRegistrarEditorial.addEventListener("click",function(){
+        registrarEditorial();
+        setTimeout(actualizarSelectPrueba3,2000);
     });
 
     function agregarAutoresMas(){
@@ -126,11 +132,22 @@
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
         
         peticion.send(parametros);
-
-
-
     }
 
+
+    
+    function registrarEditorial(){
+        var nombreEditorial = document.getElementById("nombreEditorial").value.toString();
+
+        var peticion = new XMLHttpRequest();
+        peticion.open("POST","http://localhost/base/proyecto/public/registrarEditorial.php");
+        
+        var parametros = "nombreEditorial="+nombreEditorial;
+        peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        
+        peticion.send(parametros);
+
+    }
 
     function actualizarSelectPrueba(){
         var peticion2 = new XMLHttpRequest();        
@@ -184,6 +201,36 @@
             elemento.innerHTML += datos[i].pais+" ";                
             elemento.innerHTML += datos[i].estado+" ";
             elemento.innerHTML += datos[i].ciudad+" "; 
+            select.appendChild(elemento);
+          }
+          
+         console.log(select);
+          
+    
+        }
+
+        peticion2.send();
+    }
+
+
+    function actualizarSelectPrueba3(){
+        var peticion2 = new XMLHttpRequest();        
+        peticion2.open("GET","http://localhost/base/proyecto/public/selectEditoriales.php");
+        select.innerHTML = "<option></option>";
+
+        peticion2.onload = function(){
+          var datos = JSON.parse(peticion2.responseText);
+
+          
+          
+          var select = document.getElementById("selectEditorial");
+          select.innerHTML = "";
+          
+          
+          for(var i=0;i<datos.length;i++){
+            var elemento = document.createElement("option");
+            elemento.innerHTML += datos[i].nombreEditorial+" ";                
+            
             select.appendChild(elemento);
           }
           
