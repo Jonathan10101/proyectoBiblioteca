@@ -1,36 +1,5 @@
 
 
-
-
-                                                                            <!--EDITORIAL-->
-                                                                            <label for="editorial" class="mt-4 mb-2">Editorial</label>
-          <div id="padre3" class="clasePadre3">
-            <select name="" id="selectAutor" class="form-select mt-1">
-                @foreach ($editoriales as $editorial)
-                  <option value="{{$editorial->id}}">{{$editorial->nombre}} </option>
-                @endforeach
-            </select>
-          </div>
-
-
-                                                                            <!--AÑO AND STOCK-->
-          <div class="col-12 d-flex">
-
-            <div class="col-6">
-              <label for="editorial" class="mt-4 mb-2">Año de publicación</label>
-              <div id="padre4" class="clasePadre4">
-                <input type="number" class="form-control">
-              </div>             
-            </div>  
-
-            <div class="col-6">
-              <label for="editorial" class="mt-4 mb-2">Stock</label>
-              <input type="number" class="form-control">
-            </div>
-
-          </div>
-
-
                   
                                                                         <!--COORDINADORES-->
           <label for="coordinadores" class="mt-5 mb-3">Coordinador(es)</label>

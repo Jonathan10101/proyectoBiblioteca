@@ -131,7 +131,28 @@
                     <button  type="button" value="true" name="formselector" onClick="" class="btn btn-warning col-6 mt-3" id="btnRegistrarEditorial">Registrar Editorial</button>
                 </div>
 
-          </div>                                                                            
+          </div>            
+
+
+
+          
+                                                                            <!--AÑO AND STOCK-->
+          <div class="col-12 d-flex">
+
+            <div class="col-6">
+              <label for="editorial" class="mt-4 mb-2">Año de publicación</label>
+              <div id="padre4" class="clasePadre4">
+                <input type="number" class="form-control">
+              </div>             
+            </div>  
+
+            <div class="col-6">
+              <label for="editorial" class="mt-4 mb-2">Stock</label>
+              <input type="number" class="form-control">
+            </div>
+
+          </div>
+                                                                
 
 
 
