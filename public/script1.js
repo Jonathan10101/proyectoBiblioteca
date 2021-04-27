@@ -54,6 +54,29 @@
             jQuery('#memberForm4').hide();
         }
     };
+    
+    function displayForm5(c) {
+        if (c.value == "2") {    
+            jQuery('#memberForm5').toggle('show');
+            jQuery('#requestForm5').hide();
+        }
+        if (c.value == "1") {
+            jQuery('#requestForm5').toggle('show');
+            jQuery('#memberForm5').hide();
+        }
+    };
+
+        
+    function displayForm6(c) {
+        if (c.value == "2") {    
+            jQuery('#memberForm6').toggle('show');
+            jQuery('#requestForm6').hide();
+        }
+        if (c.value == "1") {
+            jQuery('#requestForm6').toggle('show');
+            jQuery('#memberForm6').hide();
+        }
+    };
 
     btnEliminarMasAutores.addEventListener("click",function(e){
         e.preventDefault();

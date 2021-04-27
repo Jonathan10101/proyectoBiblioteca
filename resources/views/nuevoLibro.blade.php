@@ -29,10 +29,10 @@
           </div>
         
                                                                         <!--AUTORES-->
-          <label for="autores" class="mb-3">Autor(es)</label>
+          <label for="autores" class="mb-3 mt-5">Autor(es)</label>
           <div class="col-12 d-flex justify-content-between">
-            <button  type="button" value="1" name="formselector" onClick="displayForm(this)" class="btn btn-primary col-5">BUSCAR</button>
-            <button value="2" type="button" name="formselector" onClick="displayForm(this)"  class="btn btn-primary col-5">REGISTRAR</button>
+            <button  type="button" value="1" name="formselector" onClick="displayForm(this)" class="btn btn-primary col-2">BUSCAR</button>
+            <button value="2" type="button" name="formselector" onClick="displayForm(this)"  class="btn btn-primary col-2">REGISTRAR</button>
           </div>
         
           <div style="display:block" id="requestForm">
@@ -71,8 +71,8 @@
                                                                           <!--LUGAR-->
           <label for="lugar" class="mt-5 mb-3">Lugar</label>
           <div class="col-12 d-flex justify-content-between">
-            <button  type="button" value="1" name="formselector" onClick="displayForm2(this)" class="btn btn-primary col-5">BUSCAR</button>
-            <button value="2" type="button" name="formselector" onClick="displayForm2(this)"  class="btn btn-primary col-5">REGISTRAR</button>
+            <button  type="button" value="1" name="formselector" onClick="displayForm2(this)" class="btn btn-primary col-2">BUSCAR</button>
+            <button value="2" type="button" name="formselector" onClick="displayForm2(this)"  class="btn btn-primary col-2">REGISTRAR</button>
           </div>
         
           <div style="display:block" id="requestForm2">
@@ -140,14 +140,14 @@
           <div class="col-12 d-flex">
 
             <div class="col-6">
-              <label for="editorial" class="mt-4 mb-2">Año de publicación</label>
+              <label for="editorial" class="mt-5 mb-2">Año de publicación</label>
               <div id="padre4" class="clasePadre4">
                 <input type="number" class="form-control">
               </div>             
             </div>  
 
             <div class="col-6">
-              <label for="editorial" class="mt-4 mb-2">Stock</label>
+              <label for="editorial" class="mt-5 mb-2">Stock</label>
               <input type="number" class="form-control">
             </div>
 
@@ -172,8 +172,8 @@
                                                                  <!--COORDINADORES-->
           <label for="coordinadores" class="mb-3 mt-5">Coordinador(es)</label>
           <div class="col-12 d-flex justify-content-between">
-            <button  type="button" value="1" name="formselector" onClick="displayForm4(this)" class="btn btn-primary col-5">BUSCAR</button>
-            <button value="2" type="button" name="formselector" onClick="displayForm4(this)"  class="btn btn-primary col-5">REGISTRAR</button>
+            <button  type="button" value="1" name="formselector" onClick="displayForm4(this)" class="btn btn-primary col-2">BUSCAR</button>
+            <button value="2" type="button" name="formselector" onClick="displayForm4(this)"  class="btn btn-primary col-2">REGISTRAR</button>
           </div>
         
           <div style="display:block" id="requestForm4">
@@ -213,8 +213,63 @@
 
 
 
+                                                                         <!--UBICACION(ES) ESTANTE-->
+          <label for="ubicaciones" class="mb-3 mt-5">Ubicacion(es)</label>
+          <div class="col-12 d-flex justify-content-between">
+            <button  type="button" value="1" name="formselector" onClick="displayForm5(this)" class="btn btn-primary col-2">BUSCAR</button>
+            <button value="2" type="button" name="formselector" onClick="displayForm5(this)"  class="btn btn-primary col-2">REGISTRAR</button>
+          </div>
+        
+          <div style="display:block" id="requestForm5">
+            
+            <div id="padre6" >
+            <select name="" id="selectUbicacionEstante" class="form-select mt-4 clasePadre6">
+                @foreach ($autores as $autor)
+                  <option value="{{$autor->id}}">{{$autor->nombre1}} {{$autor->nombre2}} {{$autor->apellido1}} {{$autor->apellido2}}</option>
+                @endforeach
+            </select>
+            </div>
+         
+          </div>
+
+          
+          <div style="display:none" id="memberForm5" class="mt-4">
+                    
+                <input type="text" placeholder="Ubicacion estante" class="form-control mt-3" id="ubicacionEstante">
+                <div class="col-12 d-flex justify-content-center">
+                    <button  type="button" value="true" name="formselector" onClick="" class="btn btn-warning col-6 mt-3" id="btnRegistrarUbicacion">Registrar Ubicacion</button>
+                </div>
+
+          </div>            
 
 
+
+
+
+                                                                                      <!--COSTO-->
+          <div class="col-12">
+            <label for="costo" class="mt-5">Costo</label>
+            <input type="text" class="form-control">
+          </div>                                                                                      
+
+
+
+
+
+
+
+
+                                                                                        <!--OBSERVACIONES-->
+          <div class="col-12 mt-5">
+            <label for="observaciones" class="mb-3">Observaciones</label>
+            <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+          </div>
+
+
+
+           <div class="col-12">
+              <button class="btn btn-danger col-12 mt-4 mb-5" style="resize:none;">REGISTRAR LIBRO</button>
+           </div> 
 
 
 
