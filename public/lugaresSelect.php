@@ -12,21 +12,20 @@ if($conexion->connect_errno){
     ];
 }else{
     $conexion->set_charset("utf8");
-    $sentencia = $conexion->prepare("SELECT * FROM autores");
+    $sentencia = $conexion->prepare("SELECT * FROM lugares");
     $sentencia->execute();
     $resultados = $sentencia->get_result();
 
     $respuesta = [];
     
     while($fila = $resultados->fetch_assoc()){
-        $autor = [
+        $lugares = [
             "id" => $fila["id"],
-            "nombre1" => $fila["nombre1"],
-            "nombre2" => $fila["nombre2"],
-            "apellido1" => $fila["apellido1"],
-            "apellido2" => $fila["apellido2"]
+            "pais" => $fila["pais"],
+            "estado" => $fila["estado"],
+            "ciudad" => $fila["ciudad"]
         ];
-        array_push($respuesta,$autor);
+        array_push($respuesta,$lugares);
     }
     echo json_encode($respuesta);
 }

@@ -2,14 +2,14 @@
 
 
 
-$primerNombre = $_POST['primerNombre'];
-$segundoNombre = $_POST['segundoNombre'];
-$primerApellido = $_POST['primerApellido'];
-$segundoApellido = $_POST['segundoApellido'];
+$nombre1 = $_POST['nombre1'];
+$nombre2 = $_POST['nombre2'];
+$apellido1 = $_POST['apellido1'];
+$apellido2 = $_POST['apellido2'];
 
 
 
-$conexion = new mysqli("localhost","root","","basededatoshistorico");
+$conexion = new mysqli("localhost","root","","basedatoshistorico");
 
 
 
@@ -19,8 +19,8 @@ if($conexion->connect_errno){
     ];
 }else{
     $conexion->set_charset("utf8");
-    $sentencia = $conexion->prepare("INSERT INTO autores(nombre,primerApellido,segundoApellido) VALUES(?,?,?)");
-    $sentencia->bind_param("sss",$primerNombre,$primerApellido,$segundoApellido);
+    $sentencia = $conexion->prepare("INSERT INTO autores(nombre1,nombre2,apellido1,apellido2) VALUES(?,?,?,?)");
+    $sentencia->bind_param("ssss",$nombre1,$nombre2,$apellido1,$apellido2);
     $sentencia->execute();
     echo "Autor registrado";
 }

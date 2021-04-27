@@ -5,8 +5,11 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Lugares extends Model
+class Lugar extends Model
 {
     use HasFactory;
     protected $table = "lugares";
+    protected $fillable = ["ciudad"];
+    public $timestamps = false;
+    
 }
