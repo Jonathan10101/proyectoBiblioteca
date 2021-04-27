@@ -123,11 +123,10 @@ input:checked + .slider:before {
             </select>
             </div>
 
-            
-            <div class="col-12 d-flex justify-content-end mt-3">
-              <button class="btn btn-danger" id="btnEliminarAutores" >-</button>
-              <button class="btn btn-success" id="btnAgregarAutores" >+</button>
-            </div>
+            <div class="col-12 d-flex justify-content-end mt-3">  
+              <button type="button" class="btn btn-danger btn-circle btn-xl" id="btnEliminarAutores">-<i class="fa fa-times"></i></button>
+              <button type="button" class="btn btn-primary btn-circle btn-xl" id="btnAgregarAutores">+<i class="fa fa-times"></i></button>
+            </div>                        
             
           </div>
 
@@ -319,8 +318,8 @@ input:checked + .slider:before {
 
             
             <div class="col-12 d-flex justify-content-end mt-3">
-              <button class="btn btn-danger" id="btnEliminarCoordinadores" >-</button>
-              <button class="btn btn-success" id="btnAgregarCoordinadores" >+</button>
+              <button type="button" class="btn btn-danger btn-circle btn-xl" id="btnEliminarCoordinadores">-<i class="fa fa-times"></i></button>
+              <button type="button" class="btn btn-primary btn-circle btn-xl" id="btnAgregarCoordinadores">+<i class="fa fa-times"></i></button>
             </div>
             
           </div>
@@ -415,7 +414,7 @@ input:checked + .slider:before {
 
 
            <div class="col-12">
-              <button class="btn btn-danger col-12 mt-4 mb-5" style="resize:none;">REGISTRAR LIBRO</button>
+              <button class="btn col-12 mt-4 mb-5" style="resize:none;" id="btnRegistrarLibroButton">ACEPTAR</button>
            </div> 
 
 
