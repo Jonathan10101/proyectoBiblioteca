@@ -7,11 +7,20 @@
     var btnAgregarCoordinadores= document.getElementById("btnAgregarCoordinadores");
     var btnEliminarCoordinadores = document.getElementById("btnEliminarCoordinadores");
     var btnRegistrarCoordinador = document.getElementById("btnRegistrarCoordinador");
+    var switch1 = document.getElementById("switch1");
+    var i = 1;
+
 
     
-    var i = 1;
         
     function displayForm(c) {
+        
+        if(switch1.checked==true){
+           c.value = 2;
+        }else{
+            c.value = 1;
+        }
+        
         if (c.value == "2") {    
             jQuery('#memberForm').toggle('show');
             jQuery('#requestForm').hide();
@@ -20,9 +29,17 @@
             jQuery('#requestForm').toggle('show');
             jQuery('#memberForm').hide();
         }
+        
     };
 
     function displayForm2(c) {
+
+        if(switch2.checked==true){
+            c.value = 2;
+        }else{
+             c.value = 1;
+        }
+
         if (c.value == "2") {    
             jQuery('#memberForm2').toggle('show');
             jQuery('#requestForm2').hide();
@@ -34,6 +51,13 @@
     };
 
     function displayForm3(c) {
+
+        if(switch3.checked==true){
+            c.value = 2;
+        }else{
+             c.value = 1;
+        }
+
         if (c.value == "2") {    
             jQuery('#memberForm3').toggle('show');
             jQuery('#requestForm3').hide();
@@ -45,6 +69,13 @@
     };
 
     function displayForm4(c) {
+
+        if(switch4.checked==true){
+            c.value = 2;
+        }else{
+             c.value = 1;
+        }
+
         if (c.value == "2") {    
             jQuery('#memberForm4').toggle('show');
             jQuery('#requestForm4').hide();
@@ -56,6 +87,13 @@
     };
     
     function displayForm5(c) {
+
+        if(switch5.checked==true){
+            c.value = 2;
+        }else{
+             c.value = 1;
+        }
+
         if (c.value == "2") {    
             jQuery('#memberForm5').toggle('show');
             jQuery('#requestForm5').hide();
@@ -68,6 +106,13 @@
 
         
     function displayForm6(c) {
+
+        if(switch6.checked==true){
+            c.value = 2;
+        }else{
+             c.value = 1;
+        }
+
         if (c.value == "2") {    
             jQuery('#memberForm6').toggle('show');
             jQuery('#requestForm6').hide();
@@ -77,6 +122,7 @@
             jQuery('#memberForm6').hide();
         }
     };
+
 
     btnEliminarMasAutores.addEventListener("click",function(e){
         e.preventDefault();
