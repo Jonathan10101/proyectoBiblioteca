@@ -7,6 +7,9 @@
     var btnAgregarCoordinadores= document.getElementById("btnAgregarCoordinadores");
     var btnEliminarCoordinadores = document.getElementById("btnEliminarCoordinadores");
     var btnRegistrarCoordinador = document.getElementById("btnRegistrarCoordinador");
+    var btnRegistrarColeccion = document.getElementById("btnRegistrarColeccion");
+    var btnRegistrarUbicacion = document.getElementById("btnRegistrarUbicacion");
+    var btnRegistrarColeccion = document.getElementById("btnRegistrarColeccion");
     var switch1 = document.getElementById("switch1");
     var i = 1;
 
@@ -103,7 +106,6 @@
             jQuery('#memberForm5').hide();
         }
     };
-
         
     function displayForm6(c) {
 
@@ -164,11 +166,21 @@
         setTimeout(actualizarSelectPrueba3,2000);
     });
 
+    btnRegistrarUbicacion.addEventListener("click",function(){
+        registrarUbicacion();
+        setTimeout(actualizarSelectPrueba5,2000);
+    })
+
+
+    btnRegistrarColeccion.addEventListener("click",function(){
+        registrarColeccion();
+        setTimeout(actualizarSelectPrueba6,2000);
+    })
+
     
     btnRegistrarCoordinador.addEventListener("click",function(){
         registrarCoordinador();
         setTimeout(actualizarSelectBorrar,2000);
-
         //registrarAutor();
         //setTimeout(actualizarSelectPrueba,2000);
     });
@@ -327,6 +339,31 @@
 
     }
 
+    function registrarUbicacion(){
+        var ubicacionEstante = document.getElementById("ubicacionEstante").value.toString();
+
+        var peticion = new XMLHttpRequest();
+        peticion.open("POST","http://localhost/base/proyecto/public/registrarUbicacion.php");
+        
+        var parametros = "ubicacionEstante="+ubicacionEstante;
+        peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        
+        peticion.send(parametros);
+    }
+
+
+    function registrarColeccion(){
+        var coleccion = document.getElementById("coleccion").value.toString();
+
+        var peticion = new XMLHttpRequest();
+        peticion.open("POST","http://localhost/base/proyecto/public/registrarColeccion.php");
+        
+        var parametros = "coleccion="+coleccion;
+        peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+        
+        peticion.send(parametros);
+    }
+
 
     function registrarCoordinador(){
         var nombre1 = document.getElementById("nombre1Coordinador").value.toString();
@@ -424,6 +461,65 @@
           for(var i=0;i<datos.length;i++){
             var elemento = document.createElement("option");
             elemento.innerHTML += datos[i].nombreEditorial+" ";                
+            
+            select.appendChild(elemento);
+          }
+          
+         console.log(select);
+          
+    
+        }
+
+        peticion2.send();
+    }
+
+
+    function actualizarSelectPrueba5(){
+        var peticion2 = new XMLHttpRequest();        
+        peticion2.open("GET","http://localhost/base/proyecto/public/selectUbicacion.php");
+        select.innerHTML = "<option></option>";
+
+        peticion2.onload = function(){
+          var datos = JSON.parse(peticion2.responseText);
+
+          
+          
+          var select = document.getElementById("selectUbicacionEstante");
+          select.innerHTML = "";
+          
+          
+          for(var i=0;i<datos.length;i++){
+            var elemento = document.createElement("option");
+            elemento.innerHTML += datos[i].ubicacion+" ";                
+            
+            select.appendChild(elemento);
+          }
+          
+         console.log(select);
+          
+    
+        }
+
+        peticion2.send();
+    }
+
+    function actualizarSelectPrueba6(){
+        var peticion2 = new XMLHttpRequest();        
+        peticion2.open("GET","http://localhost/base/proyecto/public/selectColeccion.php");
+        select.innerHTML = "<option></option>";
+
+        peticion2.onload = function(){
+          var datos = JSON.parse(peticion2.responseText);
+
+          
+          
+          var select = document.getElementById("selectColeccion");
+          select.innerHTML = "";
+          
+          
+          for(var i=0;i<datos.length;i++){
+            var elemento = document.createElement("option");
+            elemento.innerHTML += datos[i].nombre+" ";                
             
             select.appendChild(elemento);
           }

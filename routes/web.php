@@ -5,17 +5,14 @@ use Illuminate\Support\Facades\Route;
 
 
 
+//Route::get('/', function () {
+  //  return view('welcome');
+//});
+
+
+
 Route::get('/', function () {
-    return view('welcome');
+    return view("login");
 });
-
-
-
-/*
-Route::get('libros/crear', function () {
-    return view("nuevoLibro");
-});
-*/
-
 
 Route::get('libros/crear',[LibroController::class,"index"]);

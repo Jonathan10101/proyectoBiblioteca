@@ -8,67 +8,6 @@
     <link rel="icon" type="image/png" href="{{ asset('logo IIE.png') }}" />
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
     <link rel="stylesheet" href="{{ asset('estilos1.css') }}">
-    <style>
-.switch {
-  position: relative;
-  display: inline-block;
-  width: 60px;
-  height: 34px;
-}
-
-.switch input { 
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.slider {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #ccc;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-.slider:before {
-  position: absolute;
-  content: "";
-  height: 26px;
-  width: 26px;
-  left: 4px;
-  bottom: 4px;
-  background-color: white;
-  -webkit-transition: .4s;
-  transition: .4s;
-}
-
-input:checked + .slider {
-  background-color: #2196F3;
-}
-
-input:focus + .slider {
-  box-shadow: 0 0 1px #2196F3;
-}
-
-input:checked + .slider:before {
-  -webkit-transform: translateX(26px);
-  -ms-transform: translateX(26px);
-  transform: translateX(26px);
-}
-
-/* Rounded sliders */
-.slider.round {
-  border-radius: 34px;
-}
-
-.slider.round:before {
-  border-radius: 50%;
-}
-</style>
 </head>
 <body>
 
@@ -137,7 +76,7 @@ input:checked + .slider:before {
                 <input type="text" placeholder="Primer apellido" class="form-control mt-3" id="apellido1">
                 <input type="text" placeholder="Segundo apellido" class="form-control mt-3" id="apellido2">
                 <div class="col-12 d-flex justify-content-center">
-                    <button  type="button" value="true" name="formselector" onClick="" class="btn btn-warning col-6 mt-3" id="btnRegistrarAutor">Registrar Autor</button>
+                    <button  type="button" value="true" name="formselector" onClick="" class="btn btn-warning col-6 mt-4" id="btnRegistrarAutor">Registrar Autor</button>
                 </div>
 
           </div>
@@ -190,7 +129,7 @@ input:checked + .slider:before {
                 <input type="text" placeholder="Estado" class="form-control mt-3" id="estado">
                 <input type="text" placeholder="Pais" class="form-control mt-3" id="pais">
                 <div class="col-12 d-flex justify-content-center">
-                    <button  type="button" value="true" name="formselector" onClick="" class="btn btn-warning col-6 mt-3" id="btnRegistrarLugar">Registrar Lugar</button>
+                    <button  type="button" value="true" name="formselector" onClick="" class="btn btn-warning col-6 mt-4" id="btnRegistrarLugar">Registrar Lugar</button>
                 </div>
 
           </div>                                                                          
@@ -240,7 +179,7 @@ input:checked + .slider:before {
                     
                 <input type="text" placeholder="Nombre Editorial" class="form-control mt-3" id="nombreEditorial">
                 <div class="col-12 d-flex justify-content-center">
-                    <button  type="button" value="true" name="formselector" onClick="" class="btn btn-warning col-6 mt-3" id="btnRegistrarEditorial">Registrar Editorial</button>
+                    <button  type="button" value="true" name="formselector" onClick="" class="btn btn-warning col-6 mt-4" id="btnRegistrarEditorial">Registrar Editorial</button>
                 </div>
 
           </div>            
@@ -331,7 +270,7 @@ input:checked + .slider:before {
                 <input type="text" placeholder="Primer apellido" class="form-control mt-3" id="apellido1Coordinador">
                 <input type="text" placeholder="Segundo apellido" class="form-control mt-3" id="apellido2Coordinador">
                 <div class="col-12 d-flex justify-content-center">
-                    <button  type="button" value="true" name="formselector" onClick="" class="btn btn-warning col-6 mt-3" id="btnRegistrarCoordinador">Registrar Coordinador</button>
+                    <button  type="button" value="true" name="formselector" onClick="" class="btn btn-warning col-6 mt-4" id="btnRegistrarCoordinador">Registrar Coordinador</button>
                 </div>
 
           </div>
@@ -370,8 +309,8 @@ input:checked + .slider:before {
             
             <div id="padre6" >
             <select name="" id="selectUbicacionEstante" class="form-select mt-4 clasePadre6">
-                @foreach ($autores as $autor)
-                  <option value="{{$autor->id}}">{{$autor->nombre1}} {{$autor->nombre2}} {{$autor->apellido1}} {{$autor->apellido2}}</option>
+                @foreach ($ubicaciones as $ubicacion)
+                  <option value="{{$ubicacion->id}}">{{$ubicacion->ubicacion}}</option>
                 @endforeach
             </select>
             </div>
@@ -383,7 +322,7 @@ input:checked + .slider:before {
                     
                 <input type="text" placeholder="Ubicacion estante" class="form-control mt-3" id="ubicacionEstante">
                 <div class="col-12 d-flex justify-content-center">
-                    <button  type="button" value="true" name="formselector" onClick="" class="btn btn-warning col-6 mt-3" id="btnRegistrarUbicacion">Registrar Ubicacion</button>
+                    <button  type="button" value="true" name="formselector" onClick="" class="btn btn-warning col-6 mt-4" id="btnRegistrarUbicacion">Registrar Ubicacion</button>
                 </div>
 
           </div>            
@@ -398,6 +337,52 @@ input:checked + .slider:before {
             <input type="text" class="form-control">
           </div>                                                                                      
 
+
+
+
+
+
+
+
+                                                                                      <!--COLECCION-->
+
+          <div class="col-12  d-flex mt-5">
+            <div class="col-6">
+              <label for="coleccion" class="mb-3">Colección</label>
+            </div>  
+          
+            <div class="col-6">
+              <div class="col-12 d-flex justify-content-end">    
+                <label class="switch">
+                  <input type="checkbox" id="switch6" onclick="displayForm6(this)" value="1">
+                  <span class="slider round"></span>
+                </label> 
+              </div>
+            </div>
+          </div>                                                                        
+
+        
+          <div style="display:block" id="requestForm6">
+            
+            <div id="padre6" >
+            <select name="" id="selectColeccion" class="form-select mt-4 clasePadre6">
+                @foreach ($colecciones as $coleccion)
+                  <option value="{{$coleccion->id}}">{{$coleccion->nombre}}</option>
+                @endforeach
+            </select>
+            </div>
+         
+          </div>
+
+          
+          <div style="display:none" id="memberForm6" class="mt-4">
+                    
+                <input type="text" placeholder="Coleccion" class="form-control mt-3" id="coleccion">
+                <div class="col-12 d-flex justify-content-center">
+                    <button  type="button" value="true" name="formselector" onClick="" class="btn btn-warning col-6 mt-4" id="btnRegistrarColeccion">Registrar Coleccion</button>
+                </div>
+
+          </div>       
 
 
 
