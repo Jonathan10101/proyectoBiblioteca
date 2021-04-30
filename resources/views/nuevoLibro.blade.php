@@ -243,7 +243,7 @@
             
             
             <div id="padre5" >
-            <select name="" id="selectCoordinadores" class="form-select mt-4 clasePadre5">
+            <select name="" id="selectCoordinadores1" class="form-select mt-4 clasePadre5">
                 @foreach ($coordinadores as $coordinador)
                   <option value="{{$autor->id}}">{{$coordinador->nombre1}} {{$coordinador->nombre2}} {{$coordinador->apellido1}} {{$coordinador->apellido2}}</option>
                 @endforeach

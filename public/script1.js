@@ -12,7 +12,9 @@
     var btnRegistrarUbicacion = document.getElementById("btnRegistrarUbicacion");
     var btnRegistrarColeccion = document.getElementById("btnRegistrarColeccion");
     var switch1 = document.getElementById("switch1");
-    var i = 1;
+    var i = 2;
+    var autorBoleano = false;
+    var z = 2;
 
     btnRegistrarLibroButton.addEventListener("click",function(e){
         e.preventDefault();
@@ -140,6 +142,8 @@
         setTimeout(actualizarSelect,2000);
     })
 
+ 
+
     
     btnEliminarCoordinadores.addEventListener("click",function(e){
         e.preventDefault();
@@ -154,6 +158,7 @@
 
     btnRegistrarAutor.addEventListener("click",function(){
         registrarAutor();
+        autorBoleano = true;
         setTimeout(actualizarSelectBorrarAutor,2000);
     });
 
@@ -208,10 +213,16 @@
     }
 
     function agregarAutoresMas(){
+        
         var padre = document.getElementById("padre");
         var select = document.createElement("select");
         select.className ="form-select mt-4 clasePadre";
-        select.id = "selectAutor"+i
+        if(autorBoleano){
+            i = 1;
+            autorBoleano = false;
+        }
+        
+        select.id = "selectAutor"+i;
 
         var peticion2 = new XMLHttpRequest();
         peticion2.open("GET","http://localhost/base/proyecto/public/autores.php");
@@ -241,7 +252,7 @@
         var padre = document.getElementById("padre5");
         var select = document.createElement("select");
         select.className ="form-select mt-4 clasePadre5";
-        select.id = i
+        select.id = z;
 
         var peticion2 = new XMLHttpRequest();
         peticion2.open("GET","http://localhost/base/proyecto/public/coordinadoresSelect.php");
@@ -263,7 +274,7 @@
 
         peticion2.send();
         padre.appendChild(select);
-        i++;
+        z++;
     }
 
     function eliminarAutoresMas(){
@@ -640,7 +651,7 @@
         var observaciones = document.getElementById("observacionesTextArea").value;
 
 
-        var padreAutores = document.getElementById("padre");
+        
         var selects = document.getElementsByClassName("clasePadre");
         var nSelects = selects.length;
 
@@ -655,6 +666,27 @@
         }
 
         console.log(arregloAutores);
+
+
+        /*
+        var selects = document.getElementsByClassName("clasePadre5");
+        var nSelects = selects.length;
+
+
+        
+        var x = 1;
+        var arregloCoordinadores = [];
+
+        while(x<=nSelects){
+            var id = "selectCoordinadores1"+x;
+            var valor = document.getElementById(id).value.toString();
+            arregloCoordinadores.push(valor);
+            x++;
+        }
+
+
+        console.log(arregloCoordinadores);
+        */
         
         
         
