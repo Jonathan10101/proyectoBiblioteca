@@ -1,3 +1,4 @@
+    var btnRegistrarLibroButton = document.getElementById("btnRegistrarLibroButton");
     var btnAgregarMasAutores = document.getElementById("btnAgregarAutores");
     var btnRegistrarAutor = document.getElementById("btnRegistrarAutor");
     var btnEliminarMasAutores = document.getElementById("btnEliminarAutores");
@@ -13,9 +14,11 @@
     var switch1 = document.getElementById("switch1");
     var i = 1;
 
-
-    
-        
+    btnRegistrarLibroButton.addEventListener("click",function(e){
+        e.preventDefault();
+        registrarLibro();
+    })
+      
     function displayForm(c) {
         
         if(switch1.checked==true){
@@ -147,12 +150,10 @@
     btnAgregarCoordinadores.addEventListener("click",function(e){
         e.preventDefault();
         agergarCoordinadoresMas();
-        //setTimeout(actualizarSelect,2000);
     })
 
     btnRegistrarAutor.addEventListener("click",function(){
         registrarAutor();
-        //setTimeout(actualizarSelectPrueba,2000);
         setTimeout(actualizarSelectBorrarAutor,2000);
     });
 
@@ -171,18 +172,14 @@
         setTimeout(actualizarSelectPrueba5,2000);
     })
 
-
     btnRegistrarColeccion.addEventListener("click",function(){
         registrarColeccion();
         setTimeout(actualizarSelectPrueba6,2000);
     })
-
     
     btnRegistrarCoordinador.addEventListener("click",function(){
         registrarCoordinador();
         setTimeout(actualizarSelectBorrar,2000);
-        //registrarAutor();
-        //setTimeout(actualizarSelectPrueba,2000);
     });
 
     function actualizarSelectBorrar(){
@@ -192,15 +189,11 @@
 
         var x = 0;
         while(x<=nSelects){
-            //console.log(selects);
             padre.removeChild(selects[selects.length-1]);
-            
-
             x++;
         }
 
     }
-
 
     function actualizarSelectBorrarAutor(){
         var padre = document.getElementById("padre");
@@ -209,10 +202,7 @@
 
         var x = 0;
         while(x<=nSelects){
-            //console.log(selects);
             padre.removeChild(selects[selects.length-1]);
-            
-
             x++;
         }
     }
@@ -221,7 +211,7 @@
         var padre = document.getElementById("padre");
         var select = document.createElement("select");
         select.className ="form-select mt-4 clasePadre";
-        select.id = i
+        select.id = "selectAutor"+i
 
         var peticion2 = new XMLHttpRequest();
         peticion2.open("GET","http://localhost/base/proyecto/public/autores.php");
@@ -232,6 +222,7 @@
 
           for(var i=0;i<datos.length;i++){
             var elemento = document.createElement("option");
+            elemento.value = datos[i].id;
             elemento.innerHTML += datos[i].nombre1+" ";                
             elemento.innerHTML += datos[i].nombre2+" ";                
             elemento.innerHTML += datos[i].apellido1+" "; 
@@ -357,9 +348,17 @@
 
         var peticion = new XMLHttpRequest();
         peticion.open("POST","http://localhost/base/proyecto/public/registrarColeccion.php");
-        
         var parametros = "coleccion="+coleccion;
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+
+        peticion.onload = function(){
+            var datos = JSON.parse(peticion.responseText);
+            alert(datos);
+        }
+
+
+
         
         peticion.send(parametros);
     }
@@ -429,6 +428,7 @@
           
           for(var i=0;i<datos.length;i++){
             var elemento = document.createElement("option");
+            elemento.value = datos[i].id;
             elemento.innerHTML += datos[i].pais+" ";                
             elemento.innerHTML += datos[i].estado+" ";
             elemento.innerHTML += datos[i].ciudad+" "; 
@@ -460,6 +460,7 @@
           
           for(var i=0;i<datos.length;i++){
             var elemento = document.createElement("option");
+            elemento.value = datos[i].id;
             elemento.innerHTML += datos[i].nombreEditorial+" ";                
             
             select.appendChild(elemento);
@@ -490,7 +491,8 @@
           
           for(var i=0;i<datos.length;i++){
             var elemento = document.createElement("option");
-            elemento.innerHTML += datos[i].ubicacion+" ";                
+            elemento.innerHTML += datos[i].ubicacion+" ";   
+            elemento.value = datos[i].id;              
             
             select.appendChild(elemento);
           }
@@ -519,6 +521,7 @@
           
           for(var i=0;i<datos.length;i++){
             var elemento = document.createElement("option");
+            elemento.value = datos[i].id;
             elemento.innerHTML += datos[i].nombre+" ";                
             
             select.appendChild(elemento);
@@ -568,31 +571,6 @@
           
         peticion2.send();
 
-        /*
-        var peticion2 = new XMLHttpRequest();        
-        peticion2.open("GET","http://localhost/base/proyecto/public/selectEditoriales.php");
-        select.innerHTML = "<option></option>";
-
-        peticion2.onload = function(){
-          var datos = JSON.parse(peticion2.responseText);
-
-          
-          
-          var select = document.getElementById("selectCoordinadores");
-          select.innerHTML = "";
-          
-          
-          for(var i=0;i<datos.length;i++){
-            var elemento = document.createElement("option");
-            elemento.innerHTML += datos[i].nombreEditorial+" ";                
-            
-            select.appendChild(elemento);
-          }
-              
-        }
-
-        peticion2.send();
-        */
     }
 
     function actualizarSelect(){
@@ -651,7 +629,36 @@
     }
 
 
+    function registrarLibro(){
+        var floatingInputTitulo = document.getElementById("floatingInputTitulo").value.toString();
+        var selectLugar = document.getElementById("selectLugar").value;
+        var selectEditorial = document.getElementById("selectEditorial").value;
+        var yearPublicacion = document.getElementById("yearPublicacion").value;
+        var stock = document.getElementById("stock").value;
+        var selectUbicacionEstante = document.getElementById("selectUbicacionEstante").value;
+        var costo = document.getElementById("costo").value;
+        var observaciones = document.getElementById("observacionesTextArea").value;
 
+
+        var padreAutores = document.getElementById("padre");
+        var selects = document.getElementsByClassName("clasePadre");
+        var nSelects = selects.length;
+
+        var x = 1;
+        var arregloAutores = [];
+
+        while(x<=nSelects){
+            var id = "selectAutor"+x;
+            var valor = document.getElementById(id).value.toString();
+            arregloAutores.push(valor);
+            x++;
+        }
+
+        console.log(arregloAutores);
+        
+        
+        
+    }
 
 
 

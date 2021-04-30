@@ -24,8 +24,8 @@
         <form action="" class="col-5 mt-5">
                       
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInput"  name="titulo" placeholder="name@example.com">
-            <label for="floatingInput">Titulo</label>
+            <input type="text" class="form-control" id="floatingInputTitulo"  name="titulo" placeholder="name@example.com">
+            <label for="floatingInputTitulo">Titulo</label>
           </div>
         
                                                                         <!--AUTORES-->
@@ -44,18 +44,13 @@
             </div>
           </div>                                                                        
 
-          <!--
-          <div class="col-12 d-flex justify-content-between">
-            <button  type="button" value="1" name="formselector" onClick="displayForm(this)" class="btn btn-primary col-2">BUSCAR</button>
-            <button value="2" type="button" name="formselector" onClick="displayForm(this)"  class="btn btn-primary col-2">REGISTRAR</button>
-          </div>
-          -->
+
         
           <div style="display:block" id="requestForm">
             
             
             <div id="padre" >
-            <select name="" id="selectAutor" class="form-select mt-4 clasePadre">
+            <select name="" id="selectAutor1" class="form-select mt-4 clasePadre">
                 @foreach ($autores as $autor)
                   <option value="{{$autor->id}}">{{$autor->nombre1}} {{$autor->nombre2}} {{$autor->apellido1}} {{$autor->apellido2}}</option>
                 @endforeach
@@ -166,7 +161,7 @@
             <div id="padre3" >
             <select name="" id="selectEditorial" class="form-select mt-4 clasePadre3">
                 @foreach ($editoriales as $editorial)
-                  <option value="{{$autor->id}}">{{$editorial->nombre}}</option>
+                  <option value="{{$editorial->id}}">{{$editorial->nombre}}</option>
                 @endforeach
             </select>
             </div>
@@ -193,13 +188,13 @@
             <div class="col-6">
               <label for="editorial" class="mt-5 mb-2">Año de publicación</label>
               <div id="padre4" class="clasePadre4">
-                <input type="number" class="form-control">
+                <input type="number" class="form-control" id="yearPublicacion">
               </div>             
             </div>  
 
             <div class="col-6">
               <label for="editorial" class="mt-5 mb-2">Stock</label>
-              <input type="number" class="form-control">
+              <input type="number" class="form-control" id="stock">
             </div>
 
           </div>
@@ -334,7 +329,7 @@
                                                                                       <!--COSTO-->
           <div class="col-12">
             <label for="costo" class="mt-5">Costo</label>
-            <input type="text" class="form-control">
+            <input type="text" class="form-control" id="costo">
           </div>                                                                                      
 
 
@@ -393,7 +388,7 @@
                                                                                         <!--OBSERVACIONES-->
           <div class="col-12 mt-5">
             <label for="observaciones" class="mb-3">Observaciones</label>
-            <textarea name="" id="" cols="30" rows="10" class="form-control"></textarea>
+            <textarea name="" id="observacionesTextArea" cols="30" rows="10" class="form-control"></textarea>
           </div>
 
 

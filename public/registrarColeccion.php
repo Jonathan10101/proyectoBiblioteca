@@ -22,7 +22,7 @@ if($conexion->connect_errno){
     $sentencia = $conexion->prepare("INSERT INTO coleccion(nombre) VALUES(?)");
     $sentencia->bind_param("s",$coleccion);
     $sentencia->execute();
-    echo "Coleccion registrada";
+    echo json_encode("coleccion registrada");
 }
 
 
