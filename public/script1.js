@@ -11,9 +11,16 @@
     var btnRegistrarColeccion = document.getElementById("btnRegistrarColeccion");
     var btnRegistrarUbicacion = document.getElementById("btnRegistrarUbicacion");
     var btnRegistrarColeccion = document.getElementById("btnRegistrarColeccion");
+
+    var btnEliminarUbicacionesSelectMenos = document.getElementById("btnEliminarUbicaciones");
+    var btnAgregarUbicacionesSelectMas = document.getElementById("btnAgregarUbicaciones");
+
+
+
     var switch1 = document.getElementById("switch1");
     var i = 2;
     var z = 2;
+    var w = 2;
     var autorBoleano = false;
     var coordinadorBoleano = false;
     
@@ -158,6 +165,18 @@
         agergarCoordinadoresMas();
     })
 
+    btnAgregarUbicacionesSelectMas.addEventListener("click",function(e){
+        e.preventDefault();
+        agregarUbicacionesMas();
+        //alert("+ ubicaciones");
+    })
+    
+
+    btnEliminarUbicacionesSelectMenos.addEventListener("click",function(e){
+        e.preventDefault();
+        eliminarUbicacionesMas();
+    })
+
     btnRegistrarAutor.addEventListener("click",function(){
         registrarAutor();
         autorBoleano = true;
@@ -283,6 +302,46 @@
         peticion2.send();
         padre.appendChild(select);
         z++;
+    }
+
+    function agregarUbicacionesMas(){
+        var padre = document.getElementById("padreUbicaciones");
+        var select = document.createElement("select");
+        select.className ="form-select mt-4 clasePadreUbicaciones";
+        if(coordinadorBoleano){
+            w = 1;
+            coordinadorBoleano = false;
+        }
+        select.id = "selectUbicacionEstante"+w;
+
+        var peticion2 = new XMLHttpRequest();
+        peticion2.open("GET","http://localhost/base/proyecto/public/selectUbicacion.php");
+        
+
+        peticion2.onload = function(){
+          var datos = JSON.parse(peticion2.responseText);
+
+          for(var i=0;i<datos.length;i++){
+            var elemento = document.createElement("option");
+            elemento.value = datos[i].id;
+            elemento.innerHTML += datos[i].ubicacion+" ";                
+            select.appendChild(elemento);
+          }
+
+        }
+
+        peticion2.send();
+        padre.appendChild(select);
+        z++;
+    }
+
+    function eliminarUbicacionesMas(){
+        var padre = document.getElementById("padreUbicaciones");        
+        
+        var parrafos = document.querySelectorAll(".clasePadreUbicaciones");
+        var ultimoSelect = parrafos[parrafos.length-1];
+
+        padre.removeChild(ultimoSelect);
     }
 
     function eliminarAutoresMas(){
@@ -500,28 +559,38 @@
     function actualizarSelectPrueba5(){
         var peticion2 = new XMLHttpRequest();        
         peticion2.open("GET","http://localhost/base/proyecto/public/selectUbicacion.php");
-        var select = document.getElementById("selectUbicacionEstante");
-        //select.innerHTML = "<option></option>";
-
+       
         peticion2.onload = function(){
-          var datos = JSON.parse(peticion2.responseText);
+            var datos = JSON.parse(peticion2.responseText);
+            var selects = document.querySelectorAll(".clasePadreUbicaciones");
+            var nSelects = selects.length;
+            var padre = document.getElementById("padreUbicaciones");    
 
-          
-          
-          
-          select.innerHTML = "";
-          
-          
-          for(var i=0;i<datos.length;i++){
-            var elemento = document.createElement("option");
-            elemento.innerHTML += datos[i].ubicacion+" ";   
-            elemento.value = datos[i].id;              
+
             
-            select.appendChild(elemento);
-          }
-          
-         console.log(select);
-          
+            
+            //Borro todos los selects
+
+            var x = 0;
+            while(x<=nSelects){
+                
+              
+              var padre = document.getElementById("padreUbicaciones");        
+              var selects = document.querySelectorAll(".clasePadreUbicaciones");
+              var ultimoSelect = selects[selects.length-1];
+              
+      
+              padre.removeChild(ultimoSelect);
+               
+               
+              
+              
+  
+  
+              x++;
+            } 
+
+
     
         }
 

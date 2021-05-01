@@ -302,13 +302,19 @@
         
           <div style="display:block" id="requestForm5">
             
-            <div id="padre6" >
-            <select name="" id="selectUbicacionEstante" class="form-select mt-4 clasePadre6">
+            <div id="padreUbicaciones" >
+            <select name="" id="selectUbicacionEstante" class="form-select mt-4 clasePadreUbicaciones">
                 @foreach ($ubicaciones as $ubicacion)
                   <option value="{{$ubicacion->id}}">{{$ubicacion->ubicacion}}</option>
                 @endforeach
             </select>
             </div>
+
+
+            <div class="col-12 d-flex justify-content-end mt-3">  
+              <button type="button" class="btn btn-danger btn-circle btn-xl" id="btnEliminarUbicaciones">-<i class="fa fa-times"></i></button>
+              <button type="button" class="btn btn-primary btn-circle btn-xl" id="btnAgregarUbicaciones">+<i class="fa fa-times"></i></button>
+            </div>                        
          
           </div>
 
