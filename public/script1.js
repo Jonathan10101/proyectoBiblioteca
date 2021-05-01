@@ -4,7 +4,7 @@
     var btnEliminarMasAutores = document.getElementById("btnEliminarAutores");
     var btnRegistrarLugar = document.getElementById("btnRegistrarLugar");
     var btnRegistrarEditorial = document.getElementById("btnRegistrarEditorial");
-    var select = document.getElementById("selectAutor");
+    
     var btnAgregarCoordinadores= document.getElementById("btnAgregarCoordinadores");
     var btnEliminarCoordinadores = document.getElementById("btnEliminarCoordinadores");
     var btnRegistrarCoordinador = document.getElementById("btnRegistrarCoordinador");
@@ -434,14 +434,16 @@
     function actualizarSelectPrueba2(){
         var peticion2 = new XMLHttpRequest();        
         peticion2.open("GET","http://localhost/base/proyecto/public/lugaresSelect.php");
-        select.innerHTML = "<option></option>";
+        var select = document.getElementById("selectLugar");
+        select.innerHTML = "";
+        //select.innerHTML = "<option></option>";
 
         peticion2.onload = function(){
           var datos = JSON.parse(peticion2.responseText);
 
           
           
-          var select = document.getElementById("selectLugar");
+          
           select.innerHTML = "";
           
           
@@ -466,14 +468,15 @@
     function actualizarSelectPrueba3(){
         var peticion2 = new XMLHttpRequest();        
         peticion2.open("GET","http://localhost/base/proyecto/public/selectEditoriales.php");
-        select.innerHTML = "<option></option>";
+        //select.innerHTML = "<option></option>";
+        var select = document.getElementById("selectEditorial");
 
         peticion2.onload = function(){
           var datos = JSON.parse(peticion2.responseText);
 
           
           
-          var select = document.getElementById("selectEditorial");
+          
           select.innerHTML = "";
           
           
@@ -497,14 +500,15 @@
     function actualizarSelectPrueba5(){
         var peticion2 = new XMLHttpRequest();        
         peticion2.open("GET","http://localhost/base/proyecto/public/selectUbicacion.php");
-        select.innerHTML = "<option></option>";
+        var select = document.getElementById("selectUbicacionEstante");
+        //select.innerHTML = "<option></option>";
 
         peticion2.onload = function(){
           var datos = JSON.parse(peticion2.responseText);
 
           
           
-          var select = document.getElementById("selectUbicacionEstante");
+          
           select.innerHTML = "";
           
           
@@ -527,14 +531,15 @@
     function actualizarSelectPrueba6(){
         var peticion2 = new XMLHttpRequest();        
         peticion2.open("GET","http://localhost/base/proyecto/public/selectColeccion.php");
-        select.innerHTML = "<option></option>";
+        //select.innerHTML = "<option></option>";
+        var select = document.getElementById("selectColeccion");
 
         peticion2.onload = function(){
           var datos = JSON.parse(peticion2.responseText);
 
           
           
-          var select = document.getElementById("selectColeccion");
+          
           select.innerHTML = "";
           
           
@@ -595,7 +600,9 @@
     function actualizarSelect(){
         var peticion2 = new XMLHttpRequest();        
         peticion2.open("GET","http://localhost/base/proyecto/public/autores.php");
-        select.innerHTML = "<option></option>";
+        //select.innerHTML = "<option></option>";
+        var select = document.getElementById("selectAutor");
+        
 
         peticion2.onload = function(){
           var datos = JSON.parse(peticion2.responseText);
@@ -623,7 +630,8 @@
     function actualizarSelect2(){
         var peticion2 = new XMLHttpRequest();        
         peticion2.open("GET","http://localhost/base/proyecto/public/autoresSelect.php");
-        select.innerHTML = "<option></option>";
+        //select.innerHTML = "<option></option>";
+        select.innerHTML = "";
 
         peticion2.onload = function(){
           var datos = JSON.parse(peticion2.responseText);
@@ -648,7 +656,7 @@
     }
 
 
-    function registrarLibro(){
+    function registrarLibro(){        
         var floatingInputTitulo = document.getElementById("floatingInputTitulo").value.toString();
         var selectLugar = document.getElementById("selectLugar").value;
         var selectEditorial = document.getElementById("selectEditorial").value.toString();
@@ -659,7 +667,9 @@
         var selectColeccion = document.getElementById("selectColeccion").value;
         var observaciones = document.getElementById("observacionesTextArea").value.toString();
 
+        
 
+/*
         //AUTORES
         var selects = document.getElementsByClassName("clasePadre");
         var nSelects = selects.length;
@@ -673,6 +683,8 @@
             arregloAutores.push(valor);
             x++;
         }
+
+        //console.log("autores"+arregloAutores);
 
         
 
@@ -691,12 +703,14 @@
         }
 
         
+        //console.log("coordinadores"+arregloCoordinadores);
+*/
 
 
         //ENVIAR DATOS PARA REGISTRAR LIBRO
-
-        var peticion = new XMLHttpRequest();
+        peticion = new XMLHttpRequest();
         peticion.open("POST","http://localhost/base/proyecto/public/registrarLibro.php");
+        
         
         
         var parametros = "titulo="+floatingInputTitulo+"&costo="+costo+"&nEjemplares="+stock
@@ -704,16 +718,16 @@
                          +"&coleccion_id="+selectColeccion+"&observaciones="+observaciones;
         
 
-
-        //var parametros = "observaciones="+observaciones;
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 
         
-
+        
         peticion.onload = function(){
             var respuesta = JSON.parse(peticion.responseText);
             alert(respuesta);
         }
+        
+        
 
 
         peticion.send(parametros);
