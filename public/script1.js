@@ -13,8 +13,10 @@
     var btnRegistrarColeccion = document.getElementById("btnRegistrarColeccion");
     var switch1 = document.getElementById("switch1");
     var i = 2;
-    var autorBoleano = false;
     var z = 2;
+    var autorBoleano = false;
+    var coordinadorBoleano = false;
+    
 
     btnRegistrarLibroButton.addEventListener("click",function(e){
         e.preventDefault();
@@ -184,6 +186,7 @@
     
     btnRegistrarCoordinador.addEventListener("click",function(){
         registrarCoordinador();
+        coordinadorBoleano  = true;
         setTimeout(actualizarSelectBorrar,2000);
     });
 
@@ -252,7 +255,11 @@
         var padre = document.getElementById("padre5");
         var select = document.createElement("select");
         select.className ="form-select mt-4 clasePadre5";
-        select.id = z;
+        if(coordinadorBoleano){
+            z = 1;
+            coordinadorBoleano = false;
+        }
+        select.id = "selectCoordinadores"+z;
 
         var peticion2 = new XMLHttpRequest();
         peticion2.open("GET","http://localhost/base/proyecto/public/coordinadoresSelect.php");
@@ -263,6 +270,7 @@
 
           for(var i=0;i<datos.length;i++){
             var elemento = document.createElement("option");
+            elemento.value = datos[i].id;
             elemento.innerHTML += datos[i].nombre1+" ";                
             elemento.innerHTML += datos[i].nombre2+" ";                
             elemento.innerHTML += datos[i].apellido1+" "; 
@@ -643,15 +651,16 @@
     function registrarLibro(){
         var floatingInputTitulo = document.getElementById("floatingInputTitulo").value.toString();
         var selectLugar = document.getElementById("selectLugar").value;
-        var selectEditorial = document.getElementById("selectEditorial").value;
+        var selectEditorial = document.getElementById("selectEditorial").value.toString();
         var yearPublicacion = document.getElementById("yearPublicacion").value;
         var stock = document.getElementById("stock").value;
         var selectUbicacionEstante = document.getElementById("selectUbicacionEstante").value;
         var costo = document.getElementById("costo").value;
-        var observaciones = document.getElementById("observacionesTextArea").value;
+        var selectColeccion = document.getElementById("selectColeccion").value;
+        var observaciones = document.getElementById("observacionesTextArea").value.toString();
 
 
-        
+        //AUTORES
         var selects = document.getElementsByClassName("clasePadre");
         var nSelects = selects.length;
 
@@ -665,28 +674,53 @@
             x++;
         }
 
-        console.log(arregloAutores);
+        
 
-
-        /*
+        //COORDINADORES
         var selects = document.getElementsByClassName("clasePadre5");
         var nSelects = selects.length;
-
-
         
         var x = 1;
         var arregloCoordinadores = [];
 
         while(x<=nSelects){
-            var id = "selectCoordinadores1"+x;
+            var id = "selectCoordinadores"+x;
             var valor = document.getElementById(id).value.toString();
             arregloCoordinadores.push(valor);
             x++;
         }
 
+        
 
-        console.log(arregloCoordinadores);
-        */
+
+        //ENVIAR DATOS PARA REGISTRAR LIBRO
+
+        var peticion = new XMLHttpRequest();
+        peticion.open("POST","http://localhost/base/proyecto/public/registrarLibro.php");
+        
+        
+        var parametros = "titulo="+floatingInputTitulo+"&costo="+costo+"&nEjemplares="+stock
+                         +"&year="+yearPublicacion+"&lugar_id="+selectLugar+"&editorial_id="+selectEditorial
+                         +"&coleccion_id="+selectColeccion+"&observaciones="+observaciones;
+        
+
+
+        //var parametros = "observaciones="+observaciones;
+        peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+        
+
+        peticion.onload = function(){
+            var respuesta = JSON.parse(peticion.responseText);
+            alert(respuesta);
+        }
+
+
+        peticion.send(parametros);
+
+        
+        
+        
         
         
         
