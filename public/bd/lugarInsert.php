@@ -1,5 +1,5 @@
 <?php 
-
+require_once '../conexion/conexion.php';
 
 
 
@@ -9,8 +9,8 @@ $pais = $_POST['pais'];
 
 
 
-
-$conexion = new mysqli("localhost","root","","basedatoshistorico");
+$conect = new Conexion();
+$conexion = $conect->conectarse();
 
 
 

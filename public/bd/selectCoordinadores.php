@@ -1,8 +1,10 @@
 <?php 
+require_once '../conexion/conexion.php';
 
 
 
-$conexion = new mysqli("localhost","root","","basedatoshistorico");
+$conect = new Conexion();
+$conexion = $conect->conectarse();
 
 
 

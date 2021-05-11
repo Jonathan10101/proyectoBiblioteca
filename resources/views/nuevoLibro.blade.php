@@ -305,7 +305,7 @@
             <div id="padreUbicaciones" >
             <select name="" id="selectUbicacionEstante" class="form-select mt-4 clasePadreUbicaciones">
                 @foreach ($ubicaciones as $ubicacion)
-                  <option value="{{$ubicacion->id}}">{{$ubicacion->ubicacion}}</option>
+                  <option value="{{$ubicacion->id}}">{{$ubicacion->estante}}</option>
                 @endforeach
             </select>
             </div>

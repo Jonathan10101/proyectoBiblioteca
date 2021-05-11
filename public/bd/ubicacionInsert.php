@@ -1,5 +1,9 @@
 <?php 
 
+require_once '../conexion/conexion.php';
+
+$conect = new Conexion();
+$conexion = $conect->conectarse();
 
 
 
@@ -9,9 +13,6 @@ $ubicacionEstante = $_POST['ubicacionEstante'];
 
 
 
-$conexion = new mysqli("localhost","root","","basedatoshistorico");
-
-
 
 if($conexion->connect_errno){
     $respuesta = [
@@ -19,7 +20,7 @@ if($conexion->connect_errno){
     ];
 }else{
     $conexion->set_charset("utf8");
-    $sentencia = $conexion->prepare("INSERT INTO ubicaciones(ubicacion) VALUES(?)");
+    $sentencia = $conexion->prepare("INSERT INTO ubicaciones(estante) VALUES(?)");
     $sentencia->bind_param("s",$ubicacionEstante);
     $sentencia->execute();
     echo "Ubicacion de estante registrada";

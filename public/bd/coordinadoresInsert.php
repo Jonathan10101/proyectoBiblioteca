@@ -1,4 +1,5 @@
 <?php 
+require_once '../conexion/conexion.php';
 
 
 
@@ -9,7 +10,9 @@ $apellido2 = $_POST['apellido2'];
 
 
 
-$conexion = new mysqli("localhost","root","","basedatoshistorico");
+$conect = new Conexion();
+$conexion = $conect->conectarse();
+
 
 
 
@@ -19,10 +22,10 @@ if($conexion->connect_errno){
     ];
 }else{
     $conexion->set_charset("utf8");
-    $sentencia = $conexion->prepare("INSERT INTO autores(nombre1,nombre2,apellido1,apellido2) VALUES(?,?,?,?)");
+    $sentencia = $conexion->prepare("INSERT INTO coordinadores(nombre1,nombre2,apellido1,apellido2) VALUES(?,?,?,?)");
     $sentencia->bind_param("ssss",$nombre1,$nombre2,$apellido1,$apellido2);
     $sentencia->execute();
-    echo "Autor registrado";
+    echo "Coordinador registrado";
 }
 
 

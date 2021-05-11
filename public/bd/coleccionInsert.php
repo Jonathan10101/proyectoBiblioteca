@@ -1,15 +1,19 @@
 <?php 
-
+require_once '../conexion/conexion.php';
 
 
 
 $coleccion = $_POST['coleccion'];
 
 
+$conect = new Conexion();
+$conexion = $conect->conectarse();
 
 
 
-$conexion = new mysqli("localhost","root","","basedatoshistorico");
+
+
+$conexion = new mysqli("localhost","root","","basedatoshistoricoconmigraciones");
 
 
 

@@ -1,8 +1,9 @@
 <?php 
+require_once '../conexion/conexion.php';
 
+$conect = new Conexion();
+$conexion = $conect->conectarse();
 
-
-$conexion = new mysqli("localhost","root","","basedatoshistorico");
 
 
 
@@ -12,18 +13,20 @@ if($conexion->connect_errno){
     ];
 }else{
     $conexion->set_charset("utf8");
-    $sentencia = $conexion->prepare("SELECT * FROM coleccion");
+    $sentencia = $conexion->prepare("SELECT * FROM lugares");
     $sentencia->execute();
     $resultados = $sentencia->get_result();
 
     $respuesta = [];
     
     while($fila = $resultados->fetch_assoc()){
-        $ubicaciones = [
+        $lugares = [
             "id" => $fila["id"],
-            "nombre" => $fila["nombre"]
+            "pais" => $fila["pais"],
+            "estado" => $fila["estado"],
+            "ciudad" => $fila["ciudad"]
         ];
-        array_push($respuesta,$ubicaciones);
+        array_push($respuesta,$lugares);
     }
     echo json_encode($respuesta);
 }

@@ -1,8 +1,12 @@
 <?php 
 
 
+require_once '../conexion/conexion.php';
 
-$conexion = new mysqli("localhost","root","","basedatoshistorico");
+$conect = new Conexion();
+$conexion = $conect->conectarse();
+
+
 
 
 
@@ -12,18 +16,18 @@ if($conexion->connect_errno){
     ];
 }else{
     $conexion->set_charset("utf8");
-    $sentencia = $conexion->prepare("SELECT * FROM ubicaciones");
+    $sentencia = $conexion->prepare("SELECT * FROM editoriales");
     $sentencia->execute();
     $resultados = $sentencia->get_result();
 
     $respuesta = [];
     
     while($fila = $resultados->fetch_assoc()){
-        $ubicaciones = [
+        $editorial = [
             "id" => $fila["id"],
-            "ubicacion" => $fila["ubicacion"]
+            "nombreEditorial" => $fila["nombre"]
         ];
-        array_push($respuesta,$ubicaciones);
+        array_push($respuesta,$editorial);
     }
     echo json_encode($respuesta);
 }

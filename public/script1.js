@@ -247,7 +247,7 @@
         select.id = "selectAutor"+i;
 
         var peticion2 = new XMLHttpRequest();
-        peticion2.open("GET","http://localhost/base/proyecto/public/autores.php");
+        peticion2.open("GET","http://localhost/base/proyecto/public/bd/selectAutores.php");
         
 
         peticion2.onload = function(){
@@ -281,7 +281,7 @@
         select.id = "selectCoordinadores"+z;
 
         var peticion2 = new XMLHttpRequest();
-        peticion2.open("GET","http://localhost/base/proyecto/public/coordinadoresSelect.php");
+        peticion2.open("GET","http://localhost/base/proyecto/public/bd/selectCoordinadores.php");
         
 
         peticion2.onload = function(){
@@ -315,7 +315,7 @@
         select.id = "selectUbicacionEstante"+w;
 
         var peticion2 = new XMLHttpRequest();
-        peticion2.open("GET","http://localhost/base/proyecto/public/selectUbicacion.php");
+        peticion2.open("GET","http://localhost/base/proyecto/public/bd/selectUbicacion.php");
         
 
         peticion2.onload = function(){
@@ -324,7 +324,7 @@
           for(var i=0;i<datos.length;i++){
             var elemento = document.createElement("option");
             elemento.value = datos[i].id;
-            elemento.innerHTML += datos[i].ubicacion+" ";                
+            elemento.innerHTML += datos[i].estante+" ";                
             select.appendChild(elemento);
           }
 
@@ -369,7 +369,8 @@
         var apellido2 = document.getElementById("apellido2").value.toString();
         
         var peticion = new XMLHttpRequest();
-        peticion.open("POST","http://localhost/base/proyecto/public/libros.php");
+        peticion.open("POST","http://localhost/base/proyecto/public/bd/autoresInsert.php");
+        
         
         var parametros = "nombre1="+nombre1+"&nombre2="+nombre2+"&apellido1="+apellido1+"&apellido2="+apellido2;
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -385,7 +386,7 @@
         
         
         var peticion = new XMLHttpRequest();
-        peticion.open("POST","http://localhost/base/proyecto/public/lugar.php");
+        peticion.open("POST","http://localhost/base/proyecto/public/bd/lugarInsert.php");
         
         var parametros = "ciudad="+ciudad+"&estado="+estado+"&pais="+pais;
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -399,7 +400,7 @@
         var nombreEditorial = document.getElementById("nombreEditorial").value.toString();
 
         var peticion = new XMLHttpRequest();
-        peticion.open("POST","http://localhost/base/proyecto/public/registrarEditorial.php");
+        peticion.open("POST","http://localhost/base/proyecto/public/bd/editorialInsert.php");
         
         var parametros = "nombreEditorial="+nombreEditorial;
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -412,7 +413,7 @@
         var ubicacionEstante = document.getElementById("ubicacionEstante").value.toString();
 
         var peticion = new XMLHttpRequest();
-        peticion.open("POST","http://localhost/base/proyecto/public/registrarUbicacion.php");
+        peticion.open("POST","http://localhost/base/proyecto/public/bd/ubicacionInsert.php");
         
         var parametros = "ubicacionEstante="+ubicacionEstante;
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -425,7 +426,7 @@
         var coleccion = document.getElementById("coleccion").value.toString();
 
         var peticion = new XMLHttpRequest();
-        peticion.open("POST","http://localhost/base/proyecto/public/registrarColeccion.php");
+        peticion.open("POST","http://localhost/base/proyecto/public/bd/coleccionInsert.php");
         var parametros = "coleccion="+coleccion;
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 
@@ -449,7 +450,7 @@
         var apellido2 = document.getElementById("apellido2Coordinador").value.toString();
         
         var peticion = new XMLHttpRequest();
-        peticion.open("POST","http://localhost/base/proyecto/public/coordinadoresInsert.php");
+        peticion.open("POST","http://localhost/base/proyecto/public/bd/coordinadoresInsert.php");
         
         var parametros = "nombre1="+nombre1+"&nombre2="+nombre2+"&apellido1="+apellido1+"&apellido2="+apellido2;
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -492,7 +493,7 @@
 
     function actualizarSelectPrueba2(){
         var peticion2 = new XMLHttpRequest();        
-        peticion2.open("GET","http://localhost/base/proyecto/public/lugaresSelect.php");
+        peticion2.open("GET","http://localhost/base/proyecto/public/bd/lugaresSelect.php");
         var select = document.getElementById("selectLugar");
         select.innerHTML = "";
         //select.innerHTML = "<option></option>";
@@ -526,7 +527,7 @@
 
     function actualizarSelectPrueba3(){
         var peticion2 = new XMLHttpRequest();        
-        peticion2.open("GET","http://localhost/base/proyecto/public/selectEditoriales.php");
+        peticion2.open("GET","http://localhost/base/proyecto/public/bd/selectEditoriales.php");
         //select.innerHTML = "<option></option>";
         var select = document.getElementById("selectEditorial");
 
@@ -558,7 +559,7 @@
 
     function actualizarSelectPrueba5(){
         var peticion2 = new XMLHttpRequest();        
-        peticion2.open("GET","http://localhost/base/proyecto/public/selectUbicacion.php");
+        peticion2.open("GET","http://localhost/base/proyecto/public/bd/selectUbicacion.php");
        
         peticion2.onload = function(){
             var datos = JSON.parse(peticion2.responseText);
@@ -599,7 +600,7 @@
 
     function actualizarSelectPrueba6(){
         var peticion2 = new XMLHttpRequest();        
-        peticion2.open("GET","http://localhost/base/proyecto/public/selectColeccion.php");
+        peticion2.open("GET","http://localhost/base/proyecto/public/bd/selectColeccion.php");
         //select.innerHTML = "<option></option>";
         var select = document.getElementById("selectColeccion");
 
@@ -632,7 +633,7 @@
     
     function actualizarSelectPrueba4(){
         var peticion2 = new XMLHttpRequest();        
-        peticion2.open("GET","http://localhost/base/proyecto/public/selectEditoriales.php");    
+        peticion2.open("GET","http://localhost/base/proyecto/public/bd/selectEditoriales.php");    
         
 
         peticion2.onload = function(){
@@ -668,7 +669,7 @@
 
     function actualizarSelect(){
         var peticion2 = new XMLHttpRequest();        
-        peticion2.open("GET","http://localhost/base/proyecto/public/autores.php");
+        peticion2.open("GET","http://localhost/base/proyecto/public/bd/selectAutores.php");
         //select.innerHTML = "<option></option>";
         var select = document.getElementById("selectAutor");
         
@@ -698,7 +699,7 @@
 
     function actualizarSelect2(){
         var peticion2 = new XMLHttpRequest();        
-        peticion2.open("GET","http://localhost/base/proyecto/public/autoresSelect.php");
+        peticion2.open("GET","http://localhost/base/proyecto/public/bd/selectAutores.php");
         //select.innerHTML = "<option></option>";
         select.innerHTML = "";
 
@@ -778,7 +779,7 @@
 
         //ENVIAR DATOS PARA REGISTRAR LIBRO
         peticion = new XMLHttpRequest();
-        peticion.open("POST","http://localhost/base/proyecto/public/registrarLibro.php");
+        peticion.open("POST","http://localhost/base/proyecto/public/bd/libroInsert.php");
         
         
         

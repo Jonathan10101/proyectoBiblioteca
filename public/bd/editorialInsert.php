@@ -1,5 +1,5 @@
 <?php 
-
+require_once '../conexion/conexion.php';
 
 
 
@@ -8,8 +8,8 @@ $nombreEditorial = $_POST['nombreEditorial'];
 
 
 
-
-$conexion = new mysqli("localhost","root","","basedatoshistorico");
+$conect = new Conexion();
+$conexion = $conect->conectarse();
 
 
 
