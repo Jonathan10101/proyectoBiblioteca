@@ -17,8 +17,8 @@ class CreateAutoresLibrosTable extends Migration
        DB::statement("
         CREATE TABLE autores_libros(
         id int NOT NULL AUTO_INCREMENT,
-        autor_id int NOT NULL,
         libro_id int NOT NULL,
+        autor_id int NOT NULL,
         CONSTRAINT pk_autores_libros PRIMARY KEY(id),
         CONSTRAINT fk_autores_libros1 FOREIGN KEY(autor_id) REFERENCES autores(id),
         CONSTRAINT fk_autores_libros2 FOREIGN KEY(libro_id) REFERENCES libros(id)

@@ -17,8 +17,8 @@ class CreateUbicacionesLibrosTable extends Migration
         DB::statement("
             CREATE TABLE ubicaciones_libros(
             id int NOT NULL AUTO_INCREMENT,
-            ubicacion_id int NOT NULL,
             libro_id int NOT NULL,
+            ubicacion_id int NOT NULL,
             CONSTRAINT pk_ubicaciones_libros PRIMARY KEY(id),
             CONSTRAINT fk_ubicaciones_libros1 FOREIGN KEY(ubicacion_id) REFERENCES ubicaciones(id),
             CONSTRAINT fk_ubicaciones_libros2 FOREIGN KEY(libro_id) REFERENCES libros(id)

@@ -17,8 +17,8 @@ class CreateLugaresTable extends Migration
         DB::statement("
             CREATE TABLE lugares(
             id int NOT NULL AUTO_INCREMENT,
-            estado varchar(99),
-            ciudad varchar(99),
+            ciudad varchar(99) NOT NULL,
+            estado varchar(99),            
             pais varchar(99),
             CONSTRAINT pk_lugar PRIMARY KEY(id)
             )ENGINE=INNODB;

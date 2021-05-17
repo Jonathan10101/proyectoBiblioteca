@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Schema;
 
 class CreateLibrosTable extends Migration
 {
+    ////////////ACABEEEEEEEEEEEEEEE LIBROOOOOOOOOOO
     /**
      * Run the migrations.
      *
@@ -17,14 +18,14 @@ class CreateLibrosTable extends Migration
         DB::statement("
             CREATE TABLE libros(
             id int NOT NULL AUTO_INCREMENT,
-            titulo varchar(99), 
-            costo double,
-            nEjemplares int,
-            year int,
-            lugar_id int,
+            titulo varchar(99) NOT NULL,  
+            year INT NOT NULL,
+            costo double NOT NULL,
+            stock int NOT NULL,
+            observacion varchar(255),
             editorial_id int,
+            lugar_id int,
             coleccion_id int,
-            observacion text,
             CONSTRAINT pk_libros PRIMARY KEY(id),
             CONSTRAINT pk_libros_lugares FOREIGN KEY(lugar_id) REFERENCES lugares(id),
             CONSTRAINT pk_libros_editoriales FOREIGN KEY(editorial_id) REFERENCES editoriales(id),

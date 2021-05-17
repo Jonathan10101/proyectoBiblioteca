@@ -17,7 +17,7 @@ class CreateAutoresTable extends Migration
         DB::statement("
             CREATE TABLE autores(
             id int NOT NULL AUTO_INCREMENT,
-            nombre1 varchar(99),
+            nombre1 varchar(99) NOT NULL,
             nombre2 varchar(99),
             apellido1 varchar(99),
             apellido2 varchar(99),
