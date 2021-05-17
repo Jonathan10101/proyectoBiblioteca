@@ -66,8 +66,8 @@
 
           <div style="display:none" id="memberForm" class="mt-4">
                     
-                <input type="text" placeholder="Nombre" class="form-control mt-3" id="nombre1">
-                <input type="text" placeholder="Segundo nombre (opcional)" class="form-control mt-3" id="nombre2">
+                <input type="text" placeholder="Nombre (OBLIGATORIO)" class="form-control mt-3" id="nombre1">
+                <input type="text" placeholder="Segundo nombre" class="form-control mt-3" id="nombre2">
                 <input type="text" placeholder="Primer apellido" class="form-control mt-3" id="apellido1">
                 <input type="text" placeholder="Segundo apellido" class="form-control mt-3" id="apellido2">
                 <div class="col-12 d-flex justify-content-center">
@@ -120,7 +120,7 @@
 
           <div style="display:none" id="memberForm2" class="mt-4">
                     
-                <input type="text" placeholder="Ciudad" class="form-control mt-3" id="ciudad">
+                <input type="text" placeholder="Ciudad (OBLIGATORIO)" class="form-control mt-3" id="ciudad">
                 <input type="text" placeholder="Estado" class="form-control mt-3" id="estado">
                 <input type="text" placeholder="Pais" class="form-control mt-3" id="pais">
                 <div class="col-12 d-flex justify-content-center">
@@ -194,7 +194,7 @@
 
             <div class="col-6">
               <label for="editorial" class="mt-5 mb-2">Stock</label>
-              <input type="number" class="form-control" id="stock" value="-1"> 
+              <input type="number" class="form-control" id="stock"> 
             </div>
 
           </div>
@@ -260,8 +260,8 @@
 
           <div style="display:none" id="memberForm4" class="mt-4">
                     
-                <input type="text" placeholder="Nombre" class="form-control mt-3" id="nombre1Coordinador">
-                <input type="text" placeholder="Segundo nombre (opcional)" class="form-control mt-3" id="nombre2Coordinador">
+                <input type="text" placeholder="Nombre (OBLIGATORIO)" class="form-control mt-3" id="nombre1Coordinador">
+                <input type="text" placeholder="Segundo nombre" class="form-control mt-3" id="nombre2Coordinador">
                 <input type="text" placeholder="Primer apellido" class="form-control mt-3" id="apellido1Coordinador">
                 <input type="text" placeholder="Segundo apellido" class="form-control mt-3" id="apellido2Coordinador">
                 <div class="col-12 d-flex justify-content-center">
@@ -335,7 +335,7 @@
                                                                                       <!--COSTO-->
           <div class="col-12">
             <label for="costo" class="mt-5">Costo</label>
-            <input type="text" class="form-control" id="costo" value="-1">
+            <input type="text" class="form-control" id="costo">
           </div>                                                                                      
 
 

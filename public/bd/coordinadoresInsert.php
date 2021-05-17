@@ -21,11 +21,16 @@ if($conexion->connect_errno){
         "error"=>true
     ];
 }else{
-    $conexion->set_charset("utf8");
-    $sentencia = $conexion->prepare("INSERT INTO coordinadores(nombre1,nombre2,apellido1,apellido2) VALUES(?,?,?,?)");
-    $sentencia->bind_param("ssss",$nombre1,$nombre2,$apellido1,$apellido2);
-    $sentencia->execute();
-    echo "Coordinador registrado";
+
+    if($nombre1==""){
+        echo json_encode("El campo nombre es obligatorio, si no tienes datos del autor puedes elegir la opcion SIN COORDINADOR(ES)");
+    }else{            
+        $conexion->set_charset("utf8");
+        $sentencia = $conexion->prepare("INSERT INTO coordinadores(nombre1,nombre2,apellido1,apellido2) VALUES(?,?,?,?)");
+        $sentencia->bind_param("ssss",$nombre1,$nombre2,$apellido1,$apellido2);
+        $sentencia->execute();
+        echo json_encode("Coordinador Registrado");
+    }
 }
 
 

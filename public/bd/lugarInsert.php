@@ -19,11 +19,17 @@ if($conexion->connect_errno){
         "error"=>true
     ];
 }else{
-    $conexion->set_charset("utf8");
-    $sentencia = $conexion->prepare("INSERT INTO lugares(pais,estado,ciudad) VALUES(?,?,?)");
-    $sentencia->bind_param("sss",$pais,$estado,$ciudad);
-    $sentencia->execute();
-    echo "Lugar registrado";
+
+
+    if($ciudad==""){
+        echo json_encode("El campo Ciudad es obligatorio, si no tienes datos del lugar de publicacion puedes elegir la opcion SIN DATOS");
+    }else{
+        $conexion->set_charset("utf8");
+        $sentencia = $conexion->prepare("INSERT INTO lugares(pais,estado,ciudad) VALUES(?,?,?)");
+        $sentencia->bind_param("sss",$pais,$estado,$ciudad);
+        $sentencia->execute();
+        echo json_encode("Lugar Registrado");
+    }
 }
 
 

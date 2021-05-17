@@ -29,20 +29,18 @@ if($conexion->connect_errno){
 }else{
     
     
+    if($titulo == "" || $costo == 0 || $nEjemplares == 0 || $year == 0 || $lugar_id < 0 || $editorial_id < 0 || $select_coleccion < 0){
+        echo json_encode("Por favor digita todos los datos");
+    }else{
     
+        $conexion->set_charset("utf8");    
     
-    $conexion->set_charset("utf8");
-    
-    
-    
-    $sentencia = $conexion->prepare("INSERT INTO libros(titulo,costo,nEjemplares,year,lugar_id,editorial_id,coleccion_id,observacion) VALUES(?,?,?,?,?,?,?,?)");
-    //echo json_encode("d");
-    
+        $sentencia = $conexion->prepare("INSERT INTO libros(titulo,year,costo,stock,observacion,editorial_id,lugar_id,coleccion_id) VALUES(?,?,?,?,?,?,?,?)");
 
-    $sentencia->bind_param("sdiiiiis",$titulo,$costo,$nEjemplares,$year,$lugar_id,$editorial_id,$select_coleccion,$observaciones);
-    $sentencia->execute();
-    echo json_encode("Libro registrado");
-    
+        $sentencia->bind_param("sidisiii",$titulo,$year,$costo,$nEjemplares,$observaciones,$editorial_id,$lugar_id,$select_coleccion);
+        $sentencia->execute();
+        echo json_encode("Libro registrado");
+    }
 
     
 }

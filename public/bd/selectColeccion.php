@@ -14,7 +14,7 @@ if($conexion->connect_errno){
     ];
 }else{
     $conexion->set_charset("utf8");
-    $sentencia = $conexion->prepare("SELECT * FROM coleccion");
+    $sentencia = $conexion->prepare("SELECT * FROM colecciones");
     $sentencia->execute();
     $resultados = $sentencia->get_result();
 

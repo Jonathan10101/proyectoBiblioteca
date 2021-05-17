@@ -18,11 +18,17 @@ if($conexion->connect_errno){
         "error"=>true
     ];
 }else{
-    $conexion->set_charset("utf8");
-    $sentencia = $conexion->prepare("INSERT INTO editoriales(nombre) VALUES(?)");
-    $sentencia->bind_param("s",$nombreEditorial);
-    $sentencia->execute();
-    echo "Editorial registrado";
+    
+    if($nombreEditorial==""){
+        echo json_encode("El campo Editorial es obligatorio, si no tienes datos puedes elegir la opcion SIN EDITORIAL");
+    }else{
+        $conexion->set_charset("utf8");
+        $sentencia = $conexion->prepare("INSERT INTO editoriales(nombre) VALUES(?)");
+        $sentencia->bind_param("s",$nombreEditorial);
+        $sentencia->execute();
+    
+        echo json_encode("Editorial Registrado");
+    }
 }
 
 

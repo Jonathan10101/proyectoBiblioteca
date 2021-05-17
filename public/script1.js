@@ -215,7 +215,7 @@
         var nSelects = selects.length;
 
         var x = 0;
-        while(x<=nSelects){
+        while(x<nSelects){
             padre.removeChild(selects[selects.length-1]);
             x++;
         }
@@ -228,7 +228,7 @@
         var nSelects = selects.length;
 
         var x = 0;
-        while(x<=nSelects){
+        while(x<nSelects){
             padre.removeChild(selects[selects.length-1]);
             x++;
         }
@@ -368,12 +368,38 @@
         var apellido1 = document.getElementById("apellido1").value.toString();
         var apellido2 = document.getElementById("apellido2").value.toString();
         
+        
+
+
         var peticion = new XMLHttpRequest();
         peticion.open("POST","http://localhost/base/proyecto/public/bd/autoresInsert.php");
-        
+
         
         var parametros = "nombre1="+nombre1+"&nombre2="+nombre2+"&apellido1="+apellido1+"&apellido2="+apellido2;
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+
+
+
+        peticion.onload = function(){
+            var datos = JSON.parse(peticion.responseText);
+            alert(datos);
+            
+            if(datos=="Autor Registrado"){
+                console.log("registra");
+                document.getElementById("nombre1").value = "";
+                document.getElementById("nombre2").value = "";
+                document.getElementById("apellido1").value = "";
+                document.getElementById("apellido2").value = "";
+                
+            }
+            
+        }
+        
+        
+
+
+
         
         peticion.send(parametros);
     }
@@ -390,6 +416,19 @@
         
         var parametros = "ciudad="+ciudad+"&estado="+estado+"&pais="+pais;
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+
+        peticion.onload = function(){
+            var datos = JSON.parse(peticion.responseText);
+            alert(datos);
+
+            if(datos=="Lugar Registrado"){                
+                document.getElementById("ciudad").value = "";
+                document.getElementById("estado").value = "";
+                document.getElementById("pais").value = "";                
+            }
+        }
+
         
         peticion.send(parametros);
     }
@@ -404,6 +443,18 @@
         
         var parametros = "nombreEditorial="+nombreEditorial;
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+
+
+        peticion.onload = function(){
+            var datos = JSON.parse(peticion.responseText);
+            alert(datos);
+
+            if(datos=="Editorial Registrado"){                
+                document.getElementById("nombreEditorial").value = "";            
+            }
+        }
+
         
         peticion.send(parametros);
 
@@ -417,6 +468,16 @@
         
         var parametros = "ubicacionEstante="+ubicacionEstante;
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+
+        peticion.onload = function(){
+            var datos = JSON.parse(peticion.responseText);
+            alert(datos);
+
+            if(datos=="Ubicacion Registrada"){                
+                document.getElementById("ubicacionEstante").value = "";            
+            }
+        }
         
         peticion.send(parametros);
     }
@@ -434,6 +495,10 @@
         peticion.onload = function(){
             var datos = JSON.parse(peticion.responseText);
             alert(datos);
+
+            if(datos=="Coleccion registrada"){                
+                document.getElementById("coleccion").value = "";            
+            }
         }
 
 
@@ -454,6 +519,23 @@
         
         var parametros = "nombre1="+nombre1+"&nombre2="+nombre2+"&apellido1="+apellido1+"&apellido2="+apellido2;
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
+
+
+        peticion.onload = function(){
+            var datos = JSON.parse(peticion.responseText);
+            alert(datos);
+            
+            if(datos=="Coordinador Registrado"){
+                console.log("registra");
+                document.getElementById("nombre1Coordinador").value = "";
+                document.getElementById("nombre2Coordinador").value = "";
+                document.getElementById("apellido1Coordinador").value = "";
+                document.getElementById("apellido2Coordinador").value = "";
+                
+            }
+            
+        }
+        
         
         peticion.send(parametros);
     }
@@ -516,7 +598,7 @@
             select.appendChild(elemento);
           }
           
-         console.log(select);
+         //console.log(select);
           
     
         }
@@ -621,7 +703,7 @@
             select.appendChild(elemento);
           }
           
-         console.log(select);
+         //console.log(select);
           
     
         }
@@ -739,7 +821,7 @@
 
         
 
-/*
+
         //AUTORES
         var selects = document.getElementsByClassName("clasePadre");
         var nSelects = selects.length;
@@ -774,7 +856,7 @@
 
         
         //console.log("coordinadores"+arregloCoordinadores);
-*/
+
 
 
         //ENVIAR DATOS PARA REGISTRAR LIBRO
@@ -787,7 +869,9 @@
                          +"&year="+yearPublicacion+"&lugar_id="+selectLugar+"&editorial_id="+selectEditorial
                          +"&coleccion_id="+selectColeccion+"&observaciones="+observaciones;
         
-
+        
+        console.log(parametros);
+/*
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 
         
@@ -801,7 +885,7 @@
 
 
         peticion.send(parametros);
-
+*/
         
         
         
