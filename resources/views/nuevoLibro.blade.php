@@ -188,13 +188,13 @@
             <div class="col-6">
               <label for="editorial" class="mt-5 mb-2">Año de publicación</label>
               <div id="padre4" class="clasePadre4">
-                <input type="number" class="form-control" id="yearPublicacion" value="-1">
+                <input type="number" class="form-control" id="yearPublicacion" placeholder="Dejar en blanco si no sabes el dato"  min="0" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;" autocomplete=off>
               </div>             
             </div>  
 
             <div class="col-6">
               <label for="editorial" class="mt-5 mb-2">Stock</label>
-              <input type="number" class="form-control" id="stock" value="-1"> 
+              <input type="number" class="form-control" id="stock" placeholder="Dejar en blanco si no sabes el dato" min="0" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;" autocomplete=off>
             </div>
 
           </div>
@@ -335,7 +335,7 @@
                                                                                       <!--COSTO-->
           <div class="col-12">
             <label for="costo" class="mt-5">Costo</label>
-            <input type="text" class="form-control" id="costo" value="-1">
+            <input type="number" class="form-control" id="costo" placeholder="Dejar en blanco si no sabes el dato" step="0.10" min="0">
           </div>                                                                                      
 
 

@@ -11,7 +11,9 @@ class LugarFactory extends Factory
     public function definition()
     {
         return [
-            "ciudad" => "SIN LUGAR"
+            "ciudad" => "SIN LUGAR",
+            "estado" => "",
+            "pais" => ""
         ];
     }
 }

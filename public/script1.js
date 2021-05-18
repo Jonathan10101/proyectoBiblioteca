@@ -26,6 +26,62 @@
     var coordinadorBoleano = false;
     var ubicacionEstanteBoleano = false;
     
+   
+    //Evitar enviar decimal
+    const campoNumerico = document.getElementById('yearPublicacion');
+
+    campoNumerico.addEventListener('keydown', function(evento) {
+        const teclaPresionada = evento.key;
+        const teclaPresionadaEsUnNumero =
+        Number.isInteger(parseInt(teclaPresionada));
+
+        const sePresionoUnaTeclaNoAdmitida = 
+        teclaPresionada != 'ArrowDown' &&
+        teclaPresionada != 'ArrowUp' &&
+        teclaPresionada != 'ArrowLeft' &&
+        teclaPresionada != 'ArrowRight' &&
+        teclaPresionada != 'Backspace' &&
+        teclaPresionada != 'Delete' &&
+        teclaPresionada != 'Enter' &&
+        !teclaPresionadaEsUnNumero;
+        const comienzaPorCero = 
+        campoNumerico.value.length === 1 &&
+        teclaPresionada == 1;
+
+        if (sePresionoUnaTeclaNoAdmitida || comienzaPorCero) {
+            evento.preventDefault(); 
+        }
+
+    });
+
+
+    //Evitar enviar decimal
+    const campoNumerico2 = document.getElementById('stock');
+
+    campoNumerico2.addEventListener('keydown', function(evento) {
+            const teclaPresionada = evento.key;
+            const teclaPresionadaEsUnNumero =
+            Number.isInteger(parseInt(teclaPresionada));
+    
+            const sePresionoUnaTeclaNoAdmitida = 
+            teclaPresionada != 'ArrowDown' &&
+            teclaPresionada != 'ArrowUp' &&
+            teclaPresionada != 'ArrowLeft' &&
+            teclaPresionada != 'ArrowRight' &&
+            teclaPresionada != 'Backspace' &&
+            teclaPresionada != 'Delete' &&
+            teclaPresionada != 'Enter' &&
+            !teclaPresionadaEsUnNumero;
+            const comienzaPorCero = 
+            campoNumerico.value.length === 0 &&
+            teclaPresionada == 0;
+    
+            if (sePresionoUnaTeclaNoAdmitida || comienzaPorCero) {
+                evento.preventDefault(); 
+            }
+    
+    });
+
 
     btnRegistrarLibroButton.addEventListener("click",function(e){
         e.preventDefault();
@@ -822,6 +878,44 @@
         var costo = document.getElementById("costo").value;
         var selectColeccion = document.getElementById("selectColeccion").value;
         var observaciones = document.getElementById("observacionesTextArea").value.toString();
+        var autores = document.getElementsByClassName("clasePadre");
+        var nAutores = autores.length;
+        var coordinadores = document.getElementsByClassName("clasePadre5");
+        var nCoordinadores = coordinadores.length;
+        var ubicacionesEstante = document.getElementsByClassName("clasePadreUbicaciones");
+        var nUbicacionesEstante = ubicacionesEstante.length;
+
+
+        
+        
+        if(floatingInputTitulo == "" || nAutores<1 || nCoordinadores<1 || nUbicacionesEstante<1){
+            alert("Porfavor digita todos los campos");
+            return false;
+        }
+
+
+        if(yearPublicacion == ""){
+            yearPublicacion = -1;   
+        }
+
+        if(stock == ""){
+            stock = -1;
+        }
+
+        if(costo == ""){
+            costo = -1;
+        }
+
+
+
+/*
+        if(isNaN(parseInt(stock)) || stock < 0){
+            alert("Porfavor digita un numero de stock valido");
+            return false;      
+        }else{
+            stock = -1;
+        }
+*/
 
         
 
@@ -833,7 +927,7 @@
         var x = 1;
         var arregloAutores = [];
 
-        while(x<=nSelects){
+        while(x<nSelects){
             var id = "selectAutor"+x;
             var valor = document.getElementById(id).value.toString();
             arregloAutores.push(valor);
@@ -852,7 +946,7 @@
         var x = 1;
         var arregloCoordinadores = [];
 
-        while(x<=nSelects){
+        while(x<nSelects){
             var id = "selectCoordinadores"+x;
             var valor = document.getElementById(id).value.toString();
             arregloCoordinadores.push(valor);
@@ -874,7 +968,7 @@
         var x = 1;
         var arregloUbicaciones = [];
 
-        while(x<=nSelects){
+        while(x<nSelects){
             var id = "selectUbicacionEstante"+x;
             var valor = document.getElementById(id).value.toString();
             arregloUbicaciones.push(valor);
@@ -911,10 +1005,11 @@
             if(respuesta=="Libro Registrado"){                
                 document.getElementById("floatingInputTitulo").value = "";            
                 document.getElementById("padre").innerHTML = "";
-                document.getElementById("yearPublicacion").value = "-1";
-                document.getElementById("stock").value = "-1";
+                document.getElementById("yearPublicacion").value = "";
+                document.getElementById("stock").value = "";
                 document.getElementById("padre5").innerHTML = "";
                 document.getElementById("costo").value = "-";
+                document.getElementById("padreUbicaciones").innerHTML = "";
             }
         }
         
