@@ -118,7 +118,7 @@ if($conexion->connect_errno){
 
 
 
-    echo json_encode("Libro registrado");
+    echo json_encode("Libro Registrado");
 
     
 }

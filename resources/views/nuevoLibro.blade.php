@@ -188,13 +188,13 @@
             <div class="col-6">
               <label for="editorial" class="mt-5 mb-2">Año de publicación</label>
               <div id="padre4" class="clasePadre4">
-                <input type="number" class="form-control" id="yearPublicacion">
+                <input type="number" class="form-control" id="yearPublicacion" value="-1">
               </div>             
             </div>  
 
             <div class="col-6">
               <label for="editorial" class="mt-5 mb-2">Stock</label>
-              <input type="number" class="form-control" id="stock"> 
+              <input type="number" class="form-control" id="stock" value="-1"> 
             </div>
 
           </div>
@@ -286,7 +286,7 @@
           -->
           <div class="col-12  d-flex mt-5">
             <div class="col-6">
-              <label for="ubicaione" class="mb-3">Ubicacion</label>
+              <label for="ubicaione" class="mb-3">Ubicacion en Estante</label>
             </div>  
           
             <div class="col-6">
@@ -335,7 +335,7 @@
                                                                                       <!--COSTO-->
           <div class="col-12">
             <label for="costo" class="mt-5">Costo</label>
-            <input type="text" class="form-control" id="costo">
+            <input type="text" class="form-control" id="costo" value="-1">
           </div>                                                                                      
 
 
@@ -394,7 +394,7 @@
                                                                                         <!--OBSERVACIONES-->
           <div class="col-12 mt-5">
             <label for="observaciones" class="mb-3">Observaciones</label>
-            <textarea name="" id="observacionesTextArea" cols="30" rows="10" class="form-control">SIN COMENTARIOS</textarea>
+            <textarea name="" id="observacionesTextArea" cols="30" rows="10" class="form-control">SIN OBSERVACIONES</textarea>
           </div>
 
 

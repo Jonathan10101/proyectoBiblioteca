@@ -908,6 +908,14 @@
         peticion.onload = function(){
             var respuesta = JSON.parse(peticion.responseText);
             alert(respuesta);
+            if(respuesta=="Libro Registrado"){                
+                document.getElementById("floatingInputTitulo").value = "";            
+                document.getElementById("padre").innerHTML = "";
+                document.getElementById("yearPublicacion").value = "-1";
+                document.getElementById("stock").value = "-1";
+                document.getElementById("padre5").innerHTML = "";
+                document.getElementById("costo").value = "-";
+            }
         }
         
         
