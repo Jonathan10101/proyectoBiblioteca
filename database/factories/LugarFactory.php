@@ -11,7 +11,7 @@ class LugarFactory extends Factory
     public function definition()
     {
         return [
-            "ciudad" => $this->faker->title
+            "ciudad" => "SIN LUGAR"
         ];
     }
 }
