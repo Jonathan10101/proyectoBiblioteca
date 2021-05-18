@@ -21,8 +21,10 @@
     var i = 2;
     var z = 2;
     var w = 2;
+    var q = 2;
     var autorBoleano = false;
     var coordinadorBoleano = false;
+    var ubicacionEstanteBoleano = false;
     
 
     btnRegistrarLibroButton.addEventListener("click",function(e){
@@ -195,6 +197,7 @@
 
     btnRegistrarUbicacion.addEventListener("click",function(){
         registrarUbicacion();
+        ubicacionEstanteBoleano = true;
         setTimeout(actualizarSelectPrueba5,2000);
     })
 
@@ -308,11 +311,12 @@
         var padre = document.getElementById("padreUbicaciones");
         var select = document.createElement("select");
         select.className ="form-select mt-4 clasePadreUbicaciones";
-        if(coordinadorBoleano){
-            w = 1;
-            coordinadorBoleano = false;
+        if(ubicacionEstanteBoleano){
+            q = 1;
+            ubicacionEstanteBoleano = false;
         }
-        select.id = "selectUbicacionEstante"+w;
+        select.id = "selectUbicacionEstante"+q;
+        console.log("selectUbicacionEstante"+q);
 
         var peticion2 = new XMLHttpRequest();
         peticion2.open("GET","http://localhost/base/proyecto/public/bd/selectUbicacion.php");
@@ -332,7 +336,7 @@
 
         peticion2.send();
         padre.appendChild(select);
-        z++;
+        q++;
     }
 
     function eliminarUbicacionesMas(){
@@ -814,7 +818,7 @@
         var selectEditorial = document.getElementById("selectEditorial").value.toString();
         var yearPublicacion = document.getElementById("yearPublicacion").value;
         var stock = document.getElementById("stock").value;
-        var selectUbicacionEstante = document.getElementById("selectUbicacionEstante").value;
+        //var selectUbicacionEstante = document.getElementById("selectUbicacionEstante").value;
         var costo = document.getElementById("costo").value;
         var selectColeccion = document.getElementById("selectColeccion").value;
         var observaciones = document.getElementById("observacionesTextArea").value.toString();
@@ -836,13 +840,14 @@
             x++;
         }
 
-        //console.log("autores"+arregloAutores);
+        console.log("autores"+arregloAutores);
 
         
 
         //COORDINADORES
         var selects = document.getElementsByClassName("clasePadre5");
         var nSelects = selects.length;
+        //console.log(nSelects);
         
         var x = 1;
         var arregloCoordinadores = [];
@@ -855,7 +860,30 @@
         }
 
         
-        //console.log("coordinadores"+arregloCoordinadores);
+        console.log("coordinadores"+arregloCoordinadores);
+
+
+
+
+        //UBICACIONES (ESTANTE)
+        var selects = document.getElementsByClassName("clasePadreUbicaciones");
+        var nSelects = selects.length;
+        
+        
+
+        var x = 1;
+        var arregloUbicaciones = [];
+
+        while(x<=nSelects){
+            var id = "selectUbicacionEstante"+x;
+            var valor = document.getElementById(id).value.toString();
+            arregloUbicaciones.push(valor);
+            x++;
+        }
+
+        console.log("ubicaciones"+arregloUbicaciones);
+
+
 
 
 
@@ -867,11 +895,12 @@
         
         var parametros = "titulo="+floatingInputTitulo+"&costo="+costo+"&nEjemplares="+stock
                          +"&year="+yearPublicacion+"&lugar_id="+selectLugar+"&editorial_id="+selectEditorial
-                         +"&coleccion_id="+selectColeccion+"&observaciones="+observaciones;
+                         +"&coleccion_id="+selectColeccion+"&observaciones="+observaciones+"&arregloAutores="+arregloAutores
+                         +"&arregloCoordinadores="+arregloCoordinadores+"&arregloUbicaciones="+arregloUbicaciones;
         
         
         console.log(parametros);
-/*
+
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 
         
@@ -885,7 +914,7 @@
 
 
         peticion.send(parametros);
-*/
+
         
         
         

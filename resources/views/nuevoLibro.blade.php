@@ -303,7 +303,7 @@
           <div style="display:block" id="requestForm5">
             
             <div id="padreUbicaciones" >
-            <select name="" id="selectUbicacionEstante" class="form-select mt-4 clasePadreUbicaciones">
+            <select name="" id="selectUbicacionEstante1" class="form-select mt-4 clasePadreUbicaciones">
                 @foreach ($ubicaciones as $ubicacion)
                   <option value="{{$ubicacion->id}}">{{$ubicacion->estante}}</option>
                 @endforeach
