@@ -916,14 +916,11 @@
         var ubicacionesEstante = document.getElementsByClassName("clasePadreUbicaciones");
         var nUbicacionesEstante = ubicacionesEstante.length;
 
-
-        
         
         if(floatingInputTitulo == "" || nAutores<1 || nCoordinadores<1 || nUbicacionesEstante<1){
             alert("Porfavor digita todos los campos");
             return false;
         }
-
 
         if(yearPublicacion == ""){
             yearPublicacion = -1;   
@@ -938,27 +935,16 @@
         }
 
 
-
-/*
-        if(isNaN(parseInt(stock)) || stock < 0){
-            alert("Porfavor digita un numero de stock valido");
-            return false;      
-        }else{
-            stock = -1;
-        }
-*/
-
-        
-
-
         //AUTORES
         var selects = document.getElementsByClassName("clasePadre");
         var nSelects = selects.length;
+        
+
 
         var x = 1;
         var arregloAutores = [];
 
-        while(x<nSelects){
+        while(x<=nSelects){
             var id = "selectAutor"+x;
             var valor = document.getElementById(id).value.toString();
             arregloAutores.push(valor);
@@ -977,7 +963,7 @@
         var x = 1;
         var arregloCoordinadores = [];
 
-        while(x<nSelects){
+        while(x<=nSelects){
             var id = "selectCoordinadores"+x;
             var valor = document.getElementById(id).value.toString();
             arregloCoordinadores.push(valor);
@@ -999,7 +985,7 @@
         var x = 1;
         var arregloUbicaciones = [];
 
-        while(x<nSelects){
+        while(x<=nSelects){
             var id = "selectUbicacionEstante"+x;
             var valor = document.getElementById(id).value.toString();
             arregloUbicaciones.push(valor);
@@ -1041,6 +1027,7 @@
                 document.getElementById("padre5").innerHTML = "";
                 document.getElementById("costo").value = "-";
                 document.getElementById("padreUbicaciones").innerHTML = "";
+                document.getElementById("observacionesTextArea").innerHTML = "SIN OBSERVACIONES";
             }
         }
         
@@ -1051,7 +1038,7 @@
 
         
         
-        
+
         
         
         

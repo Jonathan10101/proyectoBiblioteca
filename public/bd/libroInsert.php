@@ -4,6 +4,8 @@ require_once '../conexion/conexion.php';
 
 
 
+
+
 $titulo = $_POST['titulo'];
 $costo = $_POST['costo'];
 $nEjemplares = $_POST['nEjemplares'];
@@ -25,6 +27,7 @@ $conexion = $conect->conectarse();
 
 
 
+
 if($conexion->connect_errno){
     $respuesta = [
         "error"=>true
@@ -38,38 +41,38 @@ if($conexion->connect_errno){
 
     $sentencia->bind_param("sidisiii",$titulo,$year,$costo,$nEjemplares,$observaciones,$editorial_id,$lugar_id,$select_coleccion);
     $sentencia->execute();
+    $sentencia->close();
     //echo json_encode("Libro registrado");
-
-    $sentencia2 = $conexion->query("SELECT id FROM libros WHERE titulo LIKE '$titulo'");
-    $idLibro = $sentencia2->fetch_row();
-    //echo json_encode($idLibro);
     
 
+    //Obtener el id del libro        
+    $sentencia = $conexion->query("SELECT id FROM libros WHERE titulo LIKE '$titulo'");
+    $id = $sentencia->fetch_row();
+    $sentencia->close();
+    
+
+    $idLibro = (int)$id[0];
+    
 
 
 
     //Obtenemos los id de los autores que participaron en el libro
     $arregloAutores = explode(",",$arregloAutores);
-    $size =  count($arregloAutores);
-    $arregloAutoresEnviar = [];
-
-
-    for($i=0;$i<$size;$i++){        
-        $sentencia = $conexion->query("SELECT id FROM autores WHERE id = $arregloAutores[$i]");
-        $id = $sentencia->fetch_row();
-        array_push($arregloAutoresEnviar,$id);
-    }
-
+    $size = count($arregloAutores);       
+    //$arregloLibros = [3,3];
 
     for($i=0;$i<$size;$i++){        
-        $sentencia = $conexion->prepare("INSERT INTO autores_libros(id,libro_id,autor_id) VALUES(NULL,?,?)");
-        $autor_id = array_pop($arregloAutoresEnviar);
+        $sentencia = $conexion->prepare("INSERT INTO autores_libros(libro_id,autor_id) VALUES(?,?)");        
+        $autor_id = $arregloAutores[$i];
 
         $sentencia->bind_param("ii",$idLibro,$autor_id);
         $sentencia->execute();
     }
+    echo json_encode("Libro Registrado");
+
+
     
-    
+/*    
 
 
     //Obtenemos los id de los coordinadores que participaron en el libro
@@ -120,7 +123,7 @@ if($conexion->connect_errno){
 
     echo json_encode("Libro Registrado");
 
-    
+*/    
 }
 
 

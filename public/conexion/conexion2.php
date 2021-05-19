@@ -3,7 +3,7 @@
 
 
 
-class Conexion{
+class Conexion2{
 
     public function __construct(){
 
