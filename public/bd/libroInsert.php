@@ -51,7 +51,7 @@ if($conexion->connect_errno){
     $sentencia->close();
     
 
-    $idLibro = (int)$id[0];
+    $libro_id = (int)$id[0];
     
 
 
@@ -65,33 +65,23 @@ if($conexion->connect_errno){
         $sentencia = $conexion->prepare("INSERT INTO autores_libros(libro_id,autor_id) VALUES(?,?)");        
         $autor_id = $arregloAutores[$i];
 
-        $sentencia->bind_param("ii",$idLibro,$autor_id);
+        $sentencia->bind_param("ii",$libro_id,$autor_id);
         $sentencia->execute();
     }
-    echo json_encode("Libro Registrado");
-
-
     
-/*    
+
+
 
 
     //Obtenemos los id de los coordinadores que participaron en el libro
     $arregloCoordinadores = explode(",",$arregloCoordinadores);
     $size =  count($arregloCoordinadores);
-    $arregloCoordinadoresEnviar = [];
-
-
+  
     for($i=0;$i<$size;$i++){        
-        $sentencia = $conexion->query("SELECT id FROM coordinadores WHERE id = $arregloCoordinadores[$i]");
-        $id = $sentencia->fetch_row();
-        array_push($arregloCoordinadoresEnviar,$id);
-    }
+        $sentencia = $conexion->prepare("INSERT INTO coordinadores_libros(libro_id,coordinador_id) VALUES(?,?)");
+        $coordinador_id = $arregloCoordinadores[$i];
 
-    for($i=0;$i<$size;$i++){        
-        $sentencia = $conexion->prepare("INSERT INTO coordinadores_libros(id,libro_id,coordinador_id) VALUES(NULL,?,?)");
-        $coordinador_id = array_pop($arregloCoordinadoresEnviar);
-
-        $sentencia->bind_param("ii",$idLibro,$coordinador_id);
+        $sentencia->bind_param("ii",$libro_id,$coordinador_id);
         $sentencia->execute();
     }
 
@@ -101,20 +91,13 @@ if($conexion->connect_errno){
     //Obtenemos los id de las ubicaciones que participaron en el libro
     $arregloUbicaciones = explode(",",$arregloUbicaciones);
     $size =  count($arregloUbicaciones);
-    $arregloUbicacionesEnviar = [];
 
 
     for($i=0;$i<$size;$i++){        
-        $sentencia = $conexion->query("SELECT id FROM ubicaciones WHERE id = $arregloUbicaciones[$i]");
-        $id = $sentencia->fetch_row();
-        array_push($arregloUbicacionesEnviar,$id);
-    }
+        $sentencia = $conexion->prepare("INSERT INTO ubicaciones_libros(libro_id,ubicacion_id) VALUES(?,?)");
+        $ubicacion_id = $arregloUbicaciones[$i];
 
-    for($i=0;$i<$size;$i++){        
-        $sentencia = $conexion->prepare("INSERT INTO ubicaciones_libros(id,libro_id,ubicacion_id) VALUES(NULL,?,?)");
-        $ubicacion_id = array_pop($arregloUbicacionesEnviar);
-
-        $sentencia->bind_param("ii",$idLibro,$ubicacion_id);
+        $sentencia->bind_param("ii",$libro_id,$ubicacion_id);
         $sentencia->execute();
     }
 
@@ -123,7 +106,7 @@ if($conexion->connect_errno){
 
     echo json_encode("Libro Registrado");
 
-*/    
+
 }
 
 
