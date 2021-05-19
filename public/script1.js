@@ -341,10 +341,22 @@
         var padre = document.getElementById("padre5");
         var select = document.createElement("select");
         select.className ="form-select mt-4 clasePadre5";
+//NEW                
+        var selects = document.querySelectorAll(".clasePadre5");
+        var ultimoSelect = selects[selects.length-1];
+        var nSelects = selects.length+1;                
+//
+
+
+
+
         if(coordinadorBoleano){
             z = 1;
             coordinadorBoleano = false;
+        }else{
+            z = nSelects;
         }
+
         select.id = "selectCoordinadores"+z;
 
         var peticion2 = new XMLHttpRequest();
@@ -372,12 +384,23 @@
     }
 
     function agregarUbicacionesMas(){
+
         var padre = document.getElementById("padreUbicaciones");
         var select = document.createElement("select");
         select.className ="form-select mt-4 clasePadreUbicaciones";
+
+        //NEW                
+        var selects = document.querySelectorAll(".clasePadreUbicaciones");
+        var ultimoSelect = selects[selects.length-1];
+        var nSelects = selects.length+1;                
+//
+
+
         if(ubicacionEstanteBoleano){
             q = 1;
             ubicacionEstanteBoleano = false;
+        }else{
+            q = nSelects;
         }
         select.id = "selectUbicacionEstante"+q;
         console.log("selectUbicacionEstante"+q);
