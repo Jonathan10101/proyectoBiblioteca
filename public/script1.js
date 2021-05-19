@@ -54,7 +54,6 @@
 
     });
 
-
     //Evitar enviar decimal
     const campoNumerico2 = document.getElementById('stock');
 
@@ -201,6 +200,7 @@
     btnEliminarMasAutores.addEventListener("click",function(e){
         e.preventDefault();
         eliminarAutoresMas();
+        
     })
     
     btnAgregarMasAutores.addEventListener("click",function(e){
@@ -298,9 +298,17 @@
         var padre = document.getElementById("padre");
         var select = document.createElement("select");
         select.className ="form-select mt-4 clasePadre";
+
+//NEW                
+        var selects = document.querySelectorAll(".clasePadre");
+        var ultimoSelect = selects[selects.length-1];
+        var nSelects = selects.length+1;                
+//
         if(autorBoleano){
             i = 1;
             autorBoleano = false;
+        }else{
+            i = nSelects;
         }
         
         select.id = "selectAutor"+i;
