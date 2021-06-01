@@ -15,20 +15,12 @@ class LibroController extends Controller
 
     public function index()
     {
-        $autores = Autor::all();
-        $lugares = Lugares::all();
-        $editoriales = Editorial::all();
-        $coordinadores = Coordinador::all();
-        $ubicaciones = Ubicacion::all();
-        $colecciones = Coleccion::all();
-        
-        
-        return view("nuevoLibro",compact("autores","lugares","editoriales","coordinadores","ubicaciones","colecciones"));
+        return view('admin/index');
     }
 
     public function store(Request $request)
     {
-        require 'nuevoLibro';
+        //require 'nuevoLibro';
     }
 
     public function show($id)
@@ -44,5 +36,18 @@ class LibroController extends Controller
     public function destroy($id)
     {
         
+    }
+
+
+    public function create(){
+        $autores = Autor::all();
+        $lugares = Lugares::all();
+        $editoriales = Editorial::all();
+        $coordinadores = Coordinador::all();
+        $ubicaciones = Ubicacion::all();
+        $colecciones = Coleccion::all();
+        
+        
+        return view("nuevoLibro",compact("autores","lugares","editoriales","coordinadores","ubicaciones","colecciones"));
     }
 }
