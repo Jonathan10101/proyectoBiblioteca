@@ -20,7 +20,15 @@ use Illuminate\Support\Facades\Route;
 
 
 //Route::get('admin', [LibroController::class,'index']);
-Route::get('admin', [LibroController::class,'index']);
+
+
 //Route::get('admin/create', [LibroController::class,'create']);
 
-Route::get('admin/create', [LibroController::class,'create']);
+
+
+//Route::get('admin', [LibroController::class,'index']);
+//Route::get('admin/create', [LibroController::class,'create']);
+
+
+
+Route::resource('admin', LibroController::class);

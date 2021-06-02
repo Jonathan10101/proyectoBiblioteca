@@ -1,6 +1,7 @@
 <?php 
 
 require_once '../conexion/conexion.php';
+header('Access-Control-Allow-Origin: *');
 
 $conect = new Conexion();
 $conexion = $conect->conectarse();

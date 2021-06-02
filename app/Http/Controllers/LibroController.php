@@ -25,7 +25,7 @@ class LibroController extends Controller
 
     public function show($id)
     {
-        
+        return "libro ".$id;
     }
 
     public function update(Request $request, $id)
@@ -35,7 +35,7 @@ class LibroController extends Controller
 
     public function destroy($id)
     {
-        
+        return "libro destroy ".$id;
     }
 
 

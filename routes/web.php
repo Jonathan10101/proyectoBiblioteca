@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\ControladorPrueba;
 use App\Http\Controllers\LibroController;
 use Illuminate\Support\Facades\Route;
 

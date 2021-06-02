@@ -226,17 +226,20 @@ return [
 
     'menu' => [
         // Navbar items:
+        
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
             'topnav_right' => true,
         ],
+         
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
-
+        
         // Sidebar items:
+        /**
         [
             'type' => 'sidebar-menu-search',
             'text' => 'search',
@@ -246,28 +249,48 @@ return [
             'url'  => 'admin/blog',
             'can'  => 'manage-blog',
         ],
+        */
         [
-            'text' => 'Registrar Libro',
+            'text' => 'Libros',
             'url' => 'admin/create',
-            'icon' => 'fas fa-book'
+            'icon' => 'fas fa-book',
+            'submenu' => [
+                [
+                    'text' => 'Registrar',
+                    'url'  => 'admin/create',
+                    'icon' => 'fas fa-plus'
+                ],
+                [
+                    'text' => 'Editar',
+                    'url'  => 'admin/update',
+                    'icon' => 'fas fa-edit'
+                ],
+                [
+                    'text' => 'Borrar',
+                    'url'  => 'admin/delete',
+                    'icon' => 'fas fa-trash-alt'
+                ]
+            ]
         ],
         [
-            'text'        => 'pages',
-            'url'         => 'admin/pages',
-            'icon'        => 'far fa-fw fa-file',
-            'label'       => 4,
-            'label_color' => 'success',
-        ],
-        ['header' => 'account_settings'],
-        [
-            'text' => 'profile',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-user',
+            'text' => 'Autores',
+            'url' => 'admin/as',
+            'icon' => 'fas fa-user'
         ],
         [
-            'text' => 'change_password',
-            'url'  => 'admin/settings',
-            'icon' => 'fas fa-fw fa-lock',
+            'text' => 'Coordinadores',
+            'url' => 'admin/as',
+            'icon' => 'fas fa-user-friends'
+        ],
+        [
+            'text' => 'Editoriales',
+            'url' => 'admin/as',
+            'icon' => 'fas fa-user-friends'
+        ],
+        [
+            'text' => 'Colecciones',
+            'url' => 'admin/as',
+            'icon' => 'fas fa-quran'
         ],
         [
             'text'    => 'multilevel',
@@ -307,6 +330,35 @@ return [
                 ],
             ],
         ],
+        /**
+        [
+            'text' => 'Libros',
+            'url' => 'admin/as',
+            'icon' => 'fas fa-book-open'
+        ],
+        [
+            'text' => 'Estantes',
+            'url' => 'admin/as',
+            'icon' => 'fas fa-boxes'
+        ],
+        [
+            'text'        => 'pages',
+            'url'         => 'admin/pages',
+            'icon'        => 'far fa-fw fa-file',
+            'label'       => 4,
+            'label_color' => 'success',
+        ],
+        ['header' => 'account_settings'],
+        [
+            'text' => 'profile',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-user',
+        ],
+        [
+            'text' => 'change_password',
+            'url'  => 'admin/settings',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
         ['header' => 'labels'],
         [
             'text'       => 'important',
@@ -323,6 +375,7 @@ return [
             'icon_color' => 'cyan',
             'url'        => '#',
         ],
+        */
     ],
 
     /*

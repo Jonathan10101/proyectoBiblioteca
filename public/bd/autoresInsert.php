@@ -1,6 +1,6 @@
 <?php 
 require_once '../conexion/conexion.php';
-
+header('Access-Control-Allow-Origin: *');
 
 $nombre1 = $_POST['nombre1'];
 $nombre2 = $_POST['nombre2'];

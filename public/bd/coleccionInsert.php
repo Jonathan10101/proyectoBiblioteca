@@ -1,6 +1,6 @@
 <?php 
 require_once '../conexion/conexion.php';
-
+header('Access-Control-Allow-Origin: *');
 
 
 $coleccion = $_POST['coleccion'];
