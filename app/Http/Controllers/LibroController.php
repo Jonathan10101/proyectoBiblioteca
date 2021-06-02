@@ -6,6 +6,7 @@ use App\Models\Autor;
 use App\Models\Coleccion;
 use App\Models\Coordinador;
 use App\Models\Editorial;
+use App\Models\Libro;
 use App\Models\Lugares;
 use App\Models\Ubicacion;
 use Illuminate\Http\Request;
@@ -15,17 +16,49 @@ class LibroController extends Controller
 
     public function index()
     {
-        return view('admin/index');
+        return view("books/index");
     }
 
     public function store(Request $request)
     {
-        //require 'nuevoLibro';
+        $modelo = $request->tipoBusqueda;
+        
+        switch($modelo){
+            case 'titulo':
+                $tituloLibro = $request->libro;
+                $books = Libro::where("titulo","like","%$tituloLibro%")->get();
+            break;
+            case 'autor':
+                
+            break;
+            case 'coordinador':
+                
+            break;
+            case 'editorial':
+                
+            break;
+            case 'coleccion':
+                
+            break;
+        }
+
+        
+
+
+
+/*        
+        $tituloLibro = $request->libro;
+        $books = Libro::where("titulo","like","%$tituloLibro%")->get();
+        
+        return view("books/books",compact("books"));
+*/        
+        return view("books/books",compact("books"));
     }
 
     public function show($id)
     {
-        return "libro ".$id;
+        $book = Libro::find($id);
+        return view("books/show",compact("book"));
     }
 
     public function update(Request $request, $id)
@@ -35,7 +68,7 @@ class LibroController extends Controller
 
     public function destroy($id)
     {
-        return "libro destroy ".$id;
+        
     }
 
 
@@ -50,4 +83,7 @@ class LibroController extends Controller
         
         return view("nuevoLibro",compact("autores","lugares","editoriales","coordinadores","ubicaciones","colecciones"));
     }
+
+
+  
 }

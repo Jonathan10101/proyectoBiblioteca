@@ -21,7 +21,7 @@
         <form action="" class="col-5 mt-5">
                       
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInputTitulo"  name="titulo" placeholder="name@example.com">
+            <input type="text" class="form-control" id="floatingInputTitulo"  name="titulo" placeholder="">
             <label for="floatingInputTitulo">Titulo</label>
           </div>
         

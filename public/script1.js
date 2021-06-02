@@ -1019,6 +1019,7 @@
         peticion.onload = function(){
             var respuesta = JSON.parse(peticion.responseText);
             alert(respuesta);
+            //confirm(respuesta);
             if(respuesta=="Libro Registrado"){                
                 document.getElementById("floatingInputTitulo").value = "";            
                 document.getElementById("padre").innerHTML = "";

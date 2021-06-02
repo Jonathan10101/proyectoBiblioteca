@@ -230,13 +230,23 @@ return [
         [
             'type'         => 'navbar-search',
             'text'         => 'search',
+            'topnav_right' => false,
+        ],
+
+        [
+            'type' => 'nav-link',
+            'text' => 'Buscar',
+            'url' => 'books',
             'topnav_right' => true,
+            'icon' => 'fas fa-search'            
         ],
          
         [
             'type'         => 'fullscreen-widget',
             'topnav_right' => true,
         ],
+
+        
         
         // Sidebar items:
         /**
@@ -257,19 +267,9 @@ return [
             'submenu' => [
                 [
                     'text' => 'Registrar',
-                    'url'  => 'admin/create',
+                    'url'  => 'books/create',
                     'icon' => 'fas fa-plus'
-                ],
-                [
-                    'text' => 'Editar',
-                    'url'  => 'admin/update',
-                    'icon' => 'fas fa-edit'
-                ],
-                [
-                    'text' => 'Borrar',
-                    'url'  => 'admin/delete',
-                    'icon' => 'fas fa-trash-alt'
-                ]
+                ],              
             ]
         ],
         [

@@ -8,14 +8,23 @@
 
 @section('content')
     <!--<p>Bienvenido al Sistema del Instituto de Investigaciones Historicas</p>-->  
-    <!--<h1 class="display-2 text-center font-weight-bold">IIE Soft</h1>-->
-    
+<div class="container-fluid">
+    <div class="row">
+        <div class="col">
+            <h1>TITULO : {{$book}}</h1>
+        </div>
+    </div>
+ 
+
+</div>
+
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
+    <link rel="stylesheet" href="/css/admin_custom.css">    
 @stop
 
 @section('js')
     <script> console.log('Hi!'); </script>
+    
 @stop
