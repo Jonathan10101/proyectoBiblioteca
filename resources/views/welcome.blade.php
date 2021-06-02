@@ -40,7 +40,7 @@
                         
 
                         @if (Route::has('register'))
-                            <!--<a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Registrarme</a>-->
+                            <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Registrarme</a>
                         @endif
                     @endauth
                 </div>

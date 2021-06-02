@@ -22,6 +22,7 @@ class CreateCoordinadoresLibrosTable extends Migration
         CONSTRAINT pk_coordinadores_libros PRIMARY KEY(id),
         CONSTRAINT fk_coordinadores_libros1 FOREIGN KEY(coordinador_id) REFERENCES coordinadores(id),
         CONSTRAINT fk_coordinadores_libros2 FOREIGN KEY(libro_id) REFERENCES libros(id)
+        ON DELETE CASCADE ON UPDATE CASCADE
         )ENGINE=INNODB;
        ");
     }

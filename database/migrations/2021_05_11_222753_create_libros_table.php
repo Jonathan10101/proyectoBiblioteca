@@ -30,6 +30,8 @@ class CreateLibrosTable extends Migration
             CONSTRAINT pk_libros_lugares FOREIGN KEY(lugar_id) REFERENCES lugares(id),
             CONSTRAINT pk_libros_editoriales FOREIGN KEY(editorial_id) REFERENCES editoriales(id),
             CONSTRAINT pk_libros_colecciones FOREIGN KEY(coleccion_id) REFERENCES colecciones(id)
+            ON DELETE CASCADE ON UPDATE CASCADE
+            
             )ENGINE=INNODB;
         ");
     }

@@ -8,58 +8,49 @@
 
 @section('content')
     <!--<p>Bienvenido al Sistema del Instituto de Investigaciones Historicas</p>-->  
-<div class="container-fluid mt-5">
-    
-    <div class="row">
-        <h1 class="col text-center display-4">IIE SOFT</h1>
+
+
+
+<div class="container-fluid mt-2">    
+
+    <div class="row mt-2">
+        <div class="col">
+            <h1 class="text-center">Todos los libros</h1>
+        </div>
     </div>
     
-    <div class="row mt-4">        
-        
-            <form action="{{route('books.store')}}" class="col-12" method="POST">
-                @csrf
-                <div class="row">
-                    <div class="col d-flex justify-content-center">                        
-                            <input type="text" name="libro" class="form-control col-6" placeholder="Buscar Libro" required>                                            
-                            <input type="submit" value="Buscar" class="btn btn-primary">                        
-                    </div>
-                </div>
+    <div class="row mt-5">
+       <div class="col">
+            @foreach($books as $book)
+                <a href="{{route('books.show',$book)}}">{{$book->titulo}}</a><br>
+            @endforeach
 
-                <div class="row">
-                    <div class="col d-flex justify-content-around">
-                        <fieldset>
-                            <legend class="text-center mt-2">Elige una forma de busqueda</legend>
-                                <label class="mr-3">
-                                    <input type="radio" name="tipoBusqueda" value="titulo" class="mr-2" checked>Titulo
-                                </label>
-                                <label class="mr-3">
-                                    <input type="radio" name="tipoBusqueda" value="autor" class="mr-2">Autor
-                                </label>
-                                <label class="mr-3">
-                                    <input type="radio" name="tipoBusqueda" value="coordinador" class="mr-2">Coordinador
-                                </label>
-                                <label class="mr-3">
-                                    <input type="radio" name="tipoBusqueda" value="editorial" class="mr-2">Editorial
-                                </label>
-                                <label class="mr-3">
-                                    <input type="radio" name="tipoBusqueda" value="coleccion" class="mr-2">Colección
-                                </label>
-                        </fieldset>
-                    </div>
-                </div>
-                
-            </form>
-        </div>        
-    
-
+            {{$books->links()}}
+       </div>
     </div>
+    
+    
+</div>
 
 @stop
 
 @section('css')
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
+    <link rel="stylesheet" href="{{ asset('estilos1.css') }}">
+    <style>
+        a{
+            text-decoration: none;
+        }
+    </style>
+    
 @stop
 
 @section('js')
     <script> console.log('Hi!'); </script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.min.js" integrity="sha384-j0CNLUeiqtyaRmlzUHCPZ+Gy5fQu0dQ6eZ/xAww941Ai1SxSY+0EQqNXNE6DZiVc" crossorigin="anonymous"></script>
 @stop

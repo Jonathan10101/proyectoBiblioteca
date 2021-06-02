@@ -16,32 +16,35 @@ class LibroController extends Controller
 
     public function index()
     {
-        return view("books/index");
+        $books = Libro::paginate(2);
+        
+        return view("books/index",compact("books"));
     }
 
     public function store(Request $request)
-    {
-        $modelo = $request->tipoBusqueda;
+    {   
+     
+            $modelo = $request->tipoBusqueda;
         
-        switch($modelo){
-            case 'titulo':
-                $tituloLibro = $request->libro;
-                $books = Libro::where("titulo","like","%$tituloLibro%")->get();
-            break;
-            case 'autor':
-                
-            break;
-            case 'coordinador':
-                
-            break;
-            case 'editorial':
-                
-            break;
-            case 'coleccion':
-                
-            break;
-        }
+            switch($modelo){
+                case 'titulo':
+                    $tituloLibro = $request->libro;
+                    $books = Libro::where("titulo","like","%$tituloLibro%")->get();
+                break;
+                case 'autor':
 
+                break;
+                case 'coordinador':
+                
+                break;
+                case 'editorial':
+
+                break;
+                case 'coleccion':
+                
+                break;
+            }
+        
         
 
 
@@ -51,8 +54,8 @@ class LibroController extends Controller
         $books = Libro::where("titulo","like","%$tituloLibro%")->get();
         
         return view("books/books",compact("books"));
-*/        
-        return view("books/books",compact("books"));
+*/        return view("books/books",compact("books"));
+        
     }
 
     public function show($id)
@@ -61,6 +64,8 @@ class LibroController extends Controller
         return view("books/show",compact("book"));
     }
 
+
+
     public function update(Request $request, $id)
     {
         
@@ -68,7 +73,9 @@ class LibroController extends Controller
 
     public function destroy($id)
     {
-        
+        $libro = Libro::find($id);        
+        $libro->delete();
+        return redirect()->route("books.index");
     }
 
 
@@ -81,9 +88,13 @@ class LibroController extends Controller
         $colecciones = Coleccion::all();
         
         
-        return view("nuevoLibro",compact("autores","lugares","editoriales","coordinadores","ubicaciones","colecciones"));
+        return view("books/nuevoLibro",compact("autores","lugares","editoriales","coordinadores","ubicaciones","colecciones"));
     }
 
+
+    public function index2($id){
+        return "id a buscar".$id;
+    }
 
   
 }

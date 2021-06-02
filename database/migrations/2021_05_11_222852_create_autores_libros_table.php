@@ -22,6 +22,7 @@ class CreateAutoresLibrosTable extends Migration
         CONSTRAINT pk_autores_libros PRIMARY KEY(id),
         CONSTRAINT fk_autores_libros1 FOREIGN KEY(autor_id) REFERENCES autores(id),
         CONSTRAINT fk_autores_libros2 FOREIGN KEY(libro_id) REFERENCES libros(id)
+        ON DELETE CASCADE ON UPDATE CASCADE
         )ENGINE=INNODB;
        ");
     }

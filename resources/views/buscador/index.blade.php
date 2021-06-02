@@ -8,8 +8,7 @@
 
 @section('content')
     <!--<p>Bienvenido al Sistema del Instituto de Investigaciones Historicas</p>-->  
-    <!--<h1 class="display-2 text-center font-weight-bold">IIE Soft</h1>-->
-    <div class="container-fluid mt-5">
+<div class="container-fluid mt-5">
     
     <div class="row">
         <h1 class="col text-center display-4">IIE SOFT</h1>
@@ -54,8 +53,7 @@
     
 
     </div>
-</div>
-    
+
 @stop
 
 @section('css')

@@ -44,13 +44,13 @@ return [
     | https://github.com/jeroennoten/Laravel-AdminLTE/wiki/Basic-Configuration
     |
     */
-
-    'logo' => '<b>IIE</b> Soft',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    
+    'logo' => '<b>IIE</b> Soft | UMSNH',
+    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.pngs',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => '',
 
     /*
     |--------------------------------------------------------------------------
@@ -188,7 +188,7 @@ return [
     */
 
     'use_route_url' => false,
-    'dashboard_url' => 'home',
+    'dashboard_url' => 'admin',
     'logout_url' => 'logout',
     'login_url' => 'login',
     'register_url' => 'register',
@@ -236,7 +236,7 @@ return [
         [
             'type' => 'nav-link',
             'text' => 'Buscar',
-            'url' => 'books',
+            'url' => 'admin',
             'topnav_right' => true,
             'icon' => 'fas fa-search'            
         ],
@@ -266,9 +266,14 @@ return [
             'icon' => 'fas fa-book',
             'submenu' => [
                 [
+                    'text' => 'Mostrar Todos',
+                    'url'  => 'books',
+                    'icon' => 'fas fa-align-justify'
+                ], 
+                [
                     'text' => 'Registrar',
                     'url'  => 'books/create',
-                    'icon' => 'fas fa-plus'
+                    'icon' => 'fas fa-plus-circle'
                 ],              
             ]
         ],
