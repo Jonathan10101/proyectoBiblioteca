@@ -146,7 +146,7 @@ return [
     */
 
     'sidebar_mini' => true,
-    'sidebar_collapse' => false,
+    'sidebar_collapse' => true,
     'sidebar_collapse_auto_size' => false,
     'sidebar_collapse_remember' => false,
     'sidebar_collapse_remember_no_transition' => true,
@@ -266,15 +266,15 @@ return [
             'icon' => 'fas fa-book',
             'submenu' => [
                 [
-                    'text' => 'Mostrar Todos',
-                    'url'  => 'books',
-                    'icon' => 'fas fa-align-justify'
-                ], 
-                [
                     'text' => 'Registrar',
                     'url'  => 'books/create',
                     'icon' => 'fas fa-plus-circle'
-                ],              
+                ], 
+                [
+                    'text' => 'Mostrar Todos',
+                    'url'  => 'books',
+                    'icon' => 'fas fa-align-justify'
+                ]           
             ]
         ],
         [

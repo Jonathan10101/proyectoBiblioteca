@@ -15,7 +15,7 @@ class CreateAutoresLibrosTable extends Migration
     public function up()
     {
        DB::statement("
-        CREATE TABLE autores_libros(
+        CREATE TABLE autor_libro(
         id int NOT NULL AUTO_INCREMENT,
         libro_id int NOT NULL,
         autor_id int NOT NULL,

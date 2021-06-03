@@ -7,6 +7,7 @@ use App\Models\Coleccion;
 use App\Models\Coordinador;
 use App\Models\Editorial;
 use App\Models\Libro;
+use App\Models\Lugar;
 use App\Models\Lugares;
 use App\Models\Ubicacion;
 use Illuminate\Http\Request;
@@ -81,7 +82,7 @@ class LibroController extends Controller
 
     public function create(){
         $autores = Autor::all();
-        $lugares = Lugares::all();
+        $lugares = Lugar::all();
         $editoriales = Editorial::all();
         $coordinadores = Coordinador::all();
         $ubicaciones = Ubicacion::all();

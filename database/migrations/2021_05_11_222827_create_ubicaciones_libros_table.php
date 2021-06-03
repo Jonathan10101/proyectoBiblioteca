@@ -15,7 +15,7 @@ class CreateUbicacionesLibrosTable extends Migration
     public function up()
     {
         DB::statement("
-            CREATE TABLE ubicaciones_libros(
+            CREATE TABLE libro_ubicacion(
             id int NOT NULL AUTO_INCREMENT,
             libro_id int NOT NULL,
             ubicacion_id int NOT NULL,

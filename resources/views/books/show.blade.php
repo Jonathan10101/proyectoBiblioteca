@@ -8,38 +8,72 @@
 
 @section('content')
     <!--<p>Bienvenido al Sistema del Instituto de Investigaciones Historicas</p>-->  
-<div class="container-fluid">
+<div class="">
     <div class="row">
         <div class="col-12">
             <h1 class="text-center">Detalles de Libro</h1>
         </div>
-        <div class="col-12 mt-4">
-            <table class="table">
-            <!--<p>TITULO : {{$book->titulo}}</p>-->
-                <tr>
-                    <th>Titulo</th>
-                    <th>Año</th>
-                    <th>Costo</th>
-                    <th>Stock</th>
-                    <th>Observaciones</th>
-                    <th>Editorial</th>
-                    <th>Lugar</th>
-                    <th>Colección</th>
-                </tr>
 
-                <tr>
-                    <td>{{$book->titulo}}</td>
-                    <td>{{$book->year}}</td>
-                    <td>{{$book->costo}}</td>
-                    <td>{{$book->costo}}</td>
-                    <td>{{$book->observacion}}</td>
-                    <td>{{$book->editorial_id}}</td>
-                    <td>{{$book->lugar_id}}</td>
-                    <td>{{$book->coleccion_id}}</td>
+        <div class="col-12 mt-4">
+            <table class="table inline-flex">       
+              <thead>
+                <tr class="thead-dark">
+                    <th class="text-center">Titulo</th>
+                    <th class="text-center">Año</th>
+                    <th class="text-center">Costo</th>
+                    <th class="text-center">Stock</th>
+                    <th class="text-center">Observaciones</th>
+                    <th class="text-center">Editorial</th>
+                    <th class="text-center">Lugar</th>                    
+                    <th class="text-center">Colección</th>                    
+                    <th class="text-center">Autor(es)</th>                
+                    <th class="text-center">Coordinador(es)</th>
+                    <th class="text-center">Ubicacion(es) estante</th>
+                    
                 </tr>
-            
+              </thead>     
+                @php
+                    $sizeUbi = sizeof($book->ubicacion);
+                    $sizeAutores = sizeof($book->autor);
+                    $sizeCoordinadores = sizeof($book->coordinador);
+                @endphp
+              <tbody>
+                <tr>
+                    <td>{{$book->titulo}}</td>                
+                    <td>{{$book->year}}</td>                
+                    <td>{{$book->costo}}</td>
+                    <td>{{$book->stock}}</td>
+                    <td>{{$book->observacion}}</td>
+                    <td>{{$book->editorial["nombre"]}}</td>
+                    <td>{{$book->lugar["ciudad"]}}</td>                    
+                    <td>{{$book->coleccion["nombre"]}}</td>                    
+                    <td>                    
+                        @for ($i = 0; $i < $sizeAutores; $i++)                        
+                            -{{$book->autor[$i]["nombre1"]}}                            
+                            {{$book->autor[$i]["nombre2"]}}                            
+                            {{$book->autor[$i]["apellido1"]}}
+                            {{$book->autor[$i]["apellido2"]}}                               
+                        @endfor                    
+                    </td>
+                    
+                    <td>                    
+                        @for ($i = 0; $i < $sizeCoordinadores; $i++)                        
+                            -{{$book->coordinador[$i]["nombre1"]}}                            
+                            {{$book->coordinador[$i]["nombre2"]}}                            
+                            {{$book->coordinador[$i]["apellido1"]}}
+                            {{$book->coordinador[$i]["apellido2"]}} 
+                        @endfor                    
+                    <td>                    
+                    <td>
+                       @for ($i = 0; $i < $sizeUbi; $i++)                        
+                            {{$book->ubicacion[$i]["estante"]}}                        
+                        @endfor
+                    <td>                                     
+                </tr>
+              <tbody>
             </table>
         </div>
+
         <div class="col-12 mt-2 d-flex justify-content-end">
             <form action="{{route('books.destroy',$book->id)}}" method="POST">
                 @csrf
@@ -52,9 +86,7 @@
         </div>
 
 
-    </div>
- 
-
+    </div> 
 </div>
 
 @stop

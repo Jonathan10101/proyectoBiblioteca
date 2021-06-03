@@ -62,7 +62,7 @@ if($conexion->connect_errno){
     //$arregloLibros = [3,3];
 
     for($i=0;$i<$size;$i++){        
-        $sentencia = $conexion->prepare("INSERT INTO autores_libros(libro_id,autor_id) VALUES(?,?)");        
+        $sentencia = $conexion->prepare("INSERT INTO autor_libro(libro_id,autor_id) VALUES(?,?)");        
         $autor_id = $arregloAutores[$i];
 
         $sentencia->bind_param("ii",$libro_id,$autor_id);
@@ -78,7 +78,7 @@ if($conexion->connect_errno){
     $size =  count($arregloCoordinadores);
   
     for($i=0;$i<$size;$i++){        
-        $sentencia = $conexion->prepare("INSERT INTO coordinadores_libros(libro_id,coordinador_id) VALUES(?,?)");
+        $sentencia = $conexion->prepare("INSERT INTO coordinador_libro(libro_id,coordinador_id) VALUES(?,?)");
         $coordinador_id = $arregloCoordinadores[$i];
 
         $sentencia->bind_param("ii",$libro_id,$coordinador_id);
@@ -94,7 +94,7 @@ if($conexion->connect_errno){
 
 
     for($i=0;$i<$size;$i++){        
-        $sentencia = $conexion->prepare("INSERT INTO ubicaciones_libros(libro_id,ubicacion_id) VALUES(?,?)");
+        $sentencia = $conexion->prepare("INSERT INTO libro_ubicacion(libro_id,ubicacion_id) VALUES(?,?)");
         $ubicacion_id = $arregloUbicaciones[$i];
 
         $sentencia->bind_param("ii",$libro_id,$ubicacion_id);

@@ -15,7 +15,7 @@ class CreateCoordinadoresLibrosTable extends Migration
     public function up()
     {
        DB::statement("
-        CREATE TABLE coordinadores_libros(
+        CREATE TABLE coordinador_libro(
         id int NOT NULL AUTO_INCREMENT,
         libro_id int NOT NULL,
         coordinador_id int NOT NULL,        
