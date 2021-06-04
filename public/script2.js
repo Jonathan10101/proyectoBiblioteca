@@ -1000,7 +1000,7 @@ function registrarLibro(){
 
     //ENVIAR DATOS PARA REGISTRAR LIBRO
     peticion = new XMLHttpRequest();
-    peticion.open("POST","http://localhost/base/proyecto/public/bd/libroInsert.php");
+    peticion.open("POST","http://localhost/base/proyecto/public/bd/libroInsertUpdate.php");
     
     
     
@@ -1020,7 +1020,8 @@ function registrarLibro(){
         var respuesta = JSON.parse(peticion.responseText);
         alert(respuesta);
         //confirm(respuesta);
-        if(respuesta=="Libro Registrado"){                
+        if(respuesta=="Libro Actualizado"){      
+            /*          
             document.getElementById("floatingInputTitulo").value = "";            
             document.getElementById("padre").innerHTML = "";
             document.getElementById("yearPublicacion").value = "";
@@ -1029,7 +1030,8 @@ function registrarLibro(){
             document.getElementById("costo").value = "-";
             document.getElementById("padreUbicaciones").innerHTML = "";
             document.getElementById("observacionesTextArea").innerHTML = "SIN OBSERVACIONES";
-            window.location = "http://www.mysite.com/books/create";
+            */
+            window.location = "http://www.mysite.com/books";
         }
     }
     
