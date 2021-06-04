@@ -171,6 +171,8 @@
             <input type="text" class="form-control" id="floatingInputTitulo"  name="titulo" placeholder="" value="{{$book->titulo}}">
             <label for="floatingInputTitulo">Titulo</label>
           </div>
+
+          <input type="hidden" value="{{$book['id']}}" id="id_libro">
         
                                                                         <!--AUTORES-->
           <div class="col-12  d-flex mt-5">

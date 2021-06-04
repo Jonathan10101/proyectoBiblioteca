@@ -905,6 +905,7 @@ function registrarLibro(){
     var selectEditorial = document.getElementById("selectEditorial").value.toString();
     var yearPublicacion = document.getElementById("yearPublicacion").value;
     var stock = document.getElementById("stock").value;
+    var libro_id = document.getElementById("id_libro").value;
     //var selectUbicacionEstante = document.getElementById("selectUbicacionEstante").value;
     var costo = document.getElementById("costo").value;
     var selectColeccion = document.getElementById("selectColeccion").value;
@@ -1007,7 +1008,7 @@ function registrarLibro(){
     var parametros = "titulo="+floatingInputTitulo+"&costo="+costo+"&nEjemplares="+stock
                      +"&year="+yearPublicacion+"&lugar_id="+selectLugar+"&editorial_id="+selectEditorial
                      +"&coleccion_id="+selectColeccion+"&observaciones="+observaciones+"&arregloAutores="+arregloAutores
-                     +"&arregloCoordinadores="+arregloCoordinadores+"&arregloUbicaciones="+arregloUbicaciones;
+                     +"&arregloCoordinadores="+arregloCoordinadores+"&arregloUbicaciones="+arregloUbicaciones+"&libro_id="+libro_id;
     
     
     console.log(parametros);

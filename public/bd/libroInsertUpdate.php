@@ -17,7 +17,7 @@ $observaciones = $_POST['observaciones'];
 $arregloAutores = $_POST['arregloAutores'];
 $arregloCoordinadores = $_POST['arregloCoordinadores'];
 $arregloUbicaciones = $_POST['arregloUbicaciones'];
-
+$libro_id = $_POST['libro_id'];
 
 
 $conect = new Conexion();
@@ -38,14 +38,14 @@ if($conexion->connect_errno){
 
 
     //$sentencia = $conexion->prepare("INSERT INTO libros(titulo,year,costo,stock,observacion,editorial_id,lugar_id,coleccion_id) VALUES(?,?,?,?,?,?,?,?)");
-    $sentencia = $conexion->prepare("UPDATE libros SET titulo = ?, year = ? , costo = ? , stock = ? , observacion = ?, editorial_id = ?, lugar_id = ? ,coleccion_id = ? ");
+    $sentencia = $conexion->prepare("UPDATE libros SET titulo = ?, year = ? , costo = ? , stock = ? , observacion = ?, editorial_id = ?, lugar_id = ? ,coleccion_id = ? WHERE id = ?");
 
-    $sentencia->bind_param("sidisiii",$titulo,$year,$costo,$nEjemplares,$observaciones,$editorial_id,$lugar_id,$select_coleccion);
+    $sentencia->bind_param("sidisiiii",$titulo,$year,$costo,$nEjemplares,$observaciones,$editorial_id,$lugar_id,$select_coleccion,$libro_id);
     $sentencia->execute();
     $sentencia->close();
     //echo json_encode("Libro registrado");
     
-/*
+
     //Obtener el id del libro        
     $sentencia = $conexion->query("SELECT id FROM libros WHERE titulo LIKE '$titulo'");
     $id = $sentencia->fetch_row();
@@ -62,6 +62,10 @@ if($conexion->connect_errno){
     $size = count($arregloAutores);       
     //$arregloLibros = [3,3];
 
+    $sentencia = $conexion->prepare("DELETE FROM autor_libro WHERE libro_id = ?");        
+    $sentencia->bind_param("i",$libro_id);
+    $sentencia->execute();
+
     for($i=0;$i<$size;$i++){        
         $sentencia = $conexion->prepare("INSERT INTO autor_libro(libro_id,autor_id) VALUES(?,?)");        
         $autor_id = $arregloAutores[$i];
@@ -77,6 +81,10 @@ if($conexion->connect_errno){
     //Obtenemos los id de los coordinadores que participaron en el libro
     $arregloCoordinadores = explode(",",$arregloCoordinadores);
     $size =  count($arregloCoordinadores);
+
+    $sentencia = $conexion->prepare("DELETE FROM coordinador_libro WHERE libro_id = ?");        
+    $sentencia->bind_param("i",$libro_id);
+    $sentencia->execute();
   
     for($i=0;$i<$size;$i++){        
         $sentencia = $conexion->prepare("INSERT INTO coordinador_libro(libro_id,coordinador_id) VALUES(?,?)");
@@ -93,6 +101,9 @@ if($conexion->connect_errno){
     $arregloUbicaciones = explode(",",$arregloUbicaciones);
     $size =  count($arregloUbicaciones);
 
+    $sentencia = $conexion->prepare("DELETE FROM libro_ubicacion WHERE libro_id = ?");        
+    $sentencia->bind_param("i",$libro_id);
+    $sentencia->execute();
 
     for($i=0;$i<$size;$i++){        
         $sentencia = $conexion->prepare("INSERT INTO libro_ubicacion(libro_id,ubicacion_id) VALUES(?,?)");
@@ -103,7 +114,7 @@ if($conexion->connect_errno){
     }
 
 
-*/
+
 
     echo json_encode("Libro Actualizado");
 
