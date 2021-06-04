@@ -10,7 +10,7 @@
 
 <div class="container-fluid">
 
-    <div class="row">
+  <div class="row">
     
       <div class="col-12 mt-5">
         <h1 class="text-center">REGISTRAR LIBRO</h1>
@@ -50,6 +50,7 @@
             <select name="" id="selectAutor1" class="form-select mt-4 clasePadre">
                 @foreach ($autores as $autor)
                   <option value="{{$autor->id}}">{{$autor->nombre1}} {{$autor->nombre2}} {{$autor->apellido1}} {{$autor->apellido2}}</option>
+
                 @endforeach
             </select>
             </div>
@@ -242,7 +243,7 @@
             <div id="padre5" >
             <select name="" id="selectCoordinadores1" class="form-select mt-4 clasePadre5">
                 @foreach ($coordinadores as $coordinador)
-                  <option value="{{$autor->id}}">{{$coordinador->nombre1}} {{$coordinador->nombre2}} {{$coordinador->apellido1}} {{$coordinador->apellido2}}</option>
+                  <option value="{{$coordinador->id}}">{{$coordinador->nombre1}} {{$coordinador->nombre2}} {{$coordinador->apellido1}} {{$coordinador->apellido2}}</option>
                 @endforeach
             </select>
             </div>
@@ -400,42 +401,11 @@
               <button class="btn col-12 mt-4 mb-5" style="resize:none;" id="btnRegistrarLibroButton">ACEPTAR</button>
            </div> 
 
+      </div>
 
+  </div>
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-                                                                
-
-
-
-
-
-
+</div>
 
 @stop
 
