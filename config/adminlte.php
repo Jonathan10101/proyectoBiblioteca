@@ -267,7 +267,7 @@ return [
             'submenu' => [
                 [
                     'text' => 'Agregar nuevo libro',
-                    'url'  => 'books/create',
+                    'url'  => 'books/create',                    
                     'icon' => 'fas fa-plus-circle'
                 ], 
                 [

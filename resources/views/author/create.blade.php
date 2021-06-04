@@ -35,13 +35,13 @@
                     </div>
                 </div>
                 <div class="col d-flex justify-content-center">
-                    <input type="text" class="col-5 mt-3 form-control" placeholder="Segundo Nombre">
+                    <input type="text" class="col-5 mt-3 form-control" placeholder="Segundo Nombre" name="nombre2">
                 </div>
                 <div class="col d-flex justify-content-center">
-                    <input type="text" class="col-5 mt-3 form-control" placeholder="Primer Apellido">
+                    <input type="text" class="col-5 mt-3 form-control" placeholder="Primer Apellido" name="apellido1">
                 </div>
                 <div class="col d-flex justify-content-center">    
-                    <input type="text" class="col-5 mt-3 form-control" placeholder="Primer Apellido">
+                    <input type="text" class="col-5 mt-3 form-control" placeholder="Primer Apellido" name="apellido2">
                 </div>
                 <div class="col d-flex justify-content-center">
                     <input type="submit" value="REGISTRAR" class="col-2 mt-3 btn btn-warning">

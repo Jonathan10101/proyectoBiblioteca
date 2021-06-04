@@ -32,10 +32,17 @@ class AutorController extends Controller
         $autor = Autor::find($id);
         return view("author/show",compact("autor"));
     }
-
+    
    
     public function update(Request $request, $id)
     {
+        $autor = Autor::find($id);
+        $request->validate([
+            "nombre1"=>"required|min:4|max:20"
+        ]);
+        $autor->update($request->all());
+        
+        return redirect()->route("autores.index");
         
     }
 

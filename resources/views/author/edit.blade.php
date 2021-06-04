@@ -16,8 +16,9 @@
 
     <div class="row">
         <div class="col">
-            <form action="{{route('autores.store')}}" method="post">
+            <form action="{{route('autores.update',$autor->id)}}" method="post">                
                 @csrf
+                @method("PUT")
                 
                 <div class="col d-flex justify-content-center">
                     <input type="text" class="col-5 mt-3 form-control" placeholder="Primer Nombre (Obligatorio)" name="nombre1" required value="{{$autor->nombre1}}">                                    
@@ -30,13 +31,13 @@
                     </div>
                 </div>
                 <div class="col d-flex justify-content-center">
-                    <input type="text" class="col-5 mt-3 form-control" placeholder="Segundo Nombre" value="{{$autor->nombre2}}">
+                    <input type="text" class="col-5 mt-3 form-control" placeholder="Segundo Nombre" value="{{$autor->nombre2}}" name="nombre2">
                 </div>
                 <div class="col d-flex justify-content-center">
-                    <input type="text" class="col-5 mt-3 form-control" placeholder="Primer Apellido" value="{{$autor->apellido1}}">
+                    <input type="text" class="col-5 mt-3 form-control" placeholder="Primer Apellido" value="{{$autor->apellido1}}" name="apellido1">
                 </div>
                 <div class="col d-flex justify-content-center">    
-                    <input type="text" class="col-5 mt-3 form-control" placeholder="Primer Apellido" value="{{$autor->apellido2}}">
+                    <input type="text" class="col-5 mt-3 form-control" placeholder="Primer Apellido" value="{{$autor->apellido2}}" name="apellido2">
                 </div>
                 <div class="col d-flex justify-content-center">
                     <input type="submit" value="REGISTRAR" class="col-2 mt-3 btn btn-warning">

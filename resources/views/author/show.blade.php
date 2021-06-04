@@ -7,12 +7,14 @@
 @stop
 
 @section('content')
-    <!--<p>Bienvenido al Sistema del Instituto de Investigaciones Historicas</p>-->  
+    <!--<p>Bienvenido al Sistema del Instituto de Investigaciones Historicas</p>--> 
+    
 <div class="">
     <div class="row">
         <div class="col-12">
             <h1 class="text-center">Detalles de Autor</h1>
         </div>
+        
 
         <div class="col-12 mt-4">
             <table class="table inline-flex">       
@@ -37,6 +39,7 @@
         </div>
         
         <div class="col-12 mt-2 d-flex justify-content-end">
+      
             <form action="" method="POST">
                 @csrf
                 @method("delete")
@@ -47,6 +50,41 @@
             <a href="{{route('autores.edit',$autor->id)}}" class="btn btn-outline-dark fas fa-edit ml-2"> Editar</a>
         </div>
 
+
+
+        @php
+            $nLibrosEscritos = sizeof($autor->libro);            
+        @endphp
+            
+        <div class="col-12 mt-5">
+            <h1 class="text-center">Libros escritos</h1>
+        </div>
+        
+        <div class="col-12 mt-4">
+            <table class="table inline-flex">       
+              <thead class="thead-light">
+                <tr class="">
+                    <th class="text-center">#</th>
+                    <th class="text-center">Titulo</th>
+                    <th class="text-center">Año de publicacion</th>
+                    <th class="text-center">Observacion</th>
+                    <th class="text-center">Detalles</th>                    
+                </tr>
+              </thead>     
+                
+              <tbody>
+                @for($i=0;$i<$nLibrosEscritos;$i++)
+                <tr>
+                    <td class="text-center">{{$i+1}}</td>
+                    <td class="text-center">{{$autor->libro[$i]['titulo']}}</td>
+                    <td class="text-center">{{$autor->libro[$i]['year']}}</td>
+                    <td class="text-center">{{$autor->libro[$i]['observacion']}}}</td>
+                    <td class="text-center"><a href="{{route('books.show',$autor->libro[$i]['id'])}}">Ver</a></td>
+                </tr>
+                @endfor
+              <tbody>
+            </table>
+        </div>
 
 
 
