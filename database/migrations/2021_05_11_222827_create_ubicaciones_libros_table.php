@@ -34,6 +34,6 @@ class CreateUbicacionesLibrosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('ubicaciones_libros');
+        Schema::dropIfExists('libro_ubicacion');
     }
 }

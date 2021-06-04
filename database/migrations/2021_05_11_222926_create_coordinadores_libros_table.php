@@ -34,6 +34,6 @@ class CreateCoordinadoresLibrosTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('coordinadores_libros');
+        Schema::dropIfExists('coordinador_libro');
     }
 }

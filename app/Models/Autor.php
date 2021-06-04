@@ -11,6 +11,7 @@ class Autor extends Model
     use HasFactory;
     protected $table = "autores";
     public $timestamps = false;
+    protected $guarded = [];
 
     public function libro(){
         return $this->belongsToMany(Libro::class);

@@ -11,7 +11,7 @@
 <div class="container-fluid">
     <div class="row">
         <div class="col-1"></div>
-        <h1 class="col">Resultados de la busqueda</h1>
+        <h1 class="col">Resultados de la busqueda por Autor</h1>
         <a href="{{route('admin.index')}}" class="btn-btn danger">Volver a Buscar</a>
     </div>
     
@@ -19,7 +19,7 @@
         <div class="col-1"></div>
         <div class="col">
             @foreach ($books as $book)
-                <a href="{{route('books.show',$book->id)}}">{{$book->titulo}}</a><br>
+                <a href="{{route('books.show',$book->id)}}">{{$book}}</a><br>
             @endforeach
         </div>        
     </div>

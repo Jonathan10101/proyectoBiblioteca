@@ -266,12 +266,12 @@ return [
             'icon' => 'fas fa-book',
             'submenu' => [
                 [
-                    'text' => 'Registrar',
+                    'text' => 'Agregar nuevo libro',
                     'url'  => 'books/create',
                     'icon' => 'fas fa-plus-circle'
                 ], 
                 [
-                    'text' => 'Mostrar Todos',
+                    'text' => 'Mostrar todos los libros',
                     'url'  => 'books',
                     'icon' => 'fas fa-align-justify'
                 ]           
@@ -279,8 +279,20 @@ return [
         ],
         [
             'text' => 'Autores',
-            'url' => 'admin/as',
-            'icon' => 'fas fa-user'
+            'url' => 'autores',
+            'icon' => 'fas fa-user',
+            'submenu' => [
+                [
+                    'text' => 'Agregar nuevo autor',
+                    'url'  => 'autores/create',
+                    'icon' => 'fas fa-user-plus'
+                ], 
+                [
+                    'text' => 'Mostrar todos los autores',
+                    'url'  => 'autores',
+                    'icon' => 'fas fa-users'
+                ]           
+            ]
         ],
         [
             'text' => 'Coordinadores',

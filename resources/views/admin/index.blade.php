@@ -17,19 +17,20 @@
     
     <div class="row mt-4">        
         
-            <form action="{{route('books.store')}}" class="col-12" method="POST">
+            <form action="{{route('admin.store')}}" class="col-12" method="POST">
                 @csrf
                 <div class="row">
                     <div class="col d-flex justify-content-center">                        
-                            <input type="text" name="libro" class="form-control col-6" placeholder="Buscar Libro" required>                                            
-                            <input type="submit" value="Buscar" class="btn btn-primary">                        
+                        <input type="text" name="libro" class="form-control col-6" placeholder="Buscar libro por titulo" required>                                            
+                        <input type="submit" value="Buscar" class="btn btn-primary">                        
                     </div>
                 </div>
 
+<!--
                 <div class="row">
                     <div class="col d-flex justify-content-around">
                         <fieldset>
-                            <legend class="text-center mt-2">Elige una forma de busqueda</legend>
+                            <legend class="text-center mt-2">Elige lo que estas buscando</legend>
                                 <label class="mr-3">
                                     <input type="radio" name="tipoBusqueda" value="titulo" class="mr-2" checked>Titulo
                                 </label>
@@ -48,7 +49,7 @@
                         </fieldset>
                     </div>
                 </div>
-                
+-->                
             </form>
         </div>        
     
