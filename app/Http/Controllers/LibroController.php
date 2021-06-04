@@ -17,7 +17,7 @@ class LibroController extends Controller
 
     public function index()
     {
-        $books = Libro::paginate(2);
+        $books = Libro::paginate(19);
         
         return view("books/index",compact("books"));
     }

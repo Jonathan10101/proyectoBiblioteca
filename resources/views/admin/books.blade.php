@@ -8,46 +8,37 @@
 
 @section('content')
     <!--<p>Bienvenido al Sistema del Instituto de Investigaciones Historicas</p>-->  
-
-
-
-<div class="container-fluid mt-2">    
-
-    <div class="row mt-2">
-        <div class="col">
-            <h1 class="text-center">Todos los libros</h1>
+<div class="container-fluid">
+    <div class="row">
+        <div class="col-1"></div>
+        <div class="col-9">
+            <h1 class="display-4">IIE Soft </h1>
+            <p class="ml-1 mt-2">Resultados de la busqueda</p>            
+        </div>
+        <div class="col-2">
+            <a href="{{route('admin.index')}}" class="text-dark">Volver a buscar</a>
         </div>
     </div>
     
-    <div class="row mt-5">
-       <div class="col">
-            @foreach($books as $book)
-                <a href="{{route('books.show',$book)}}">{{$book->titulo}}</a><br>
-                <p>{{$book->observacion}}</p>
+    <div class="row mt-5">      
+        <div class="col-1"></div>  
+        <div class="col">
+            @foreach ($bookss as $book)
+                <a href="{{route('books.show',$book->id)}}">{{$book->titulo}}</a><br>
             @endforeach
 
-            <div class="col mt-5 mb-5">
-                {{$books->links()}}
-            </div>
-       </div>
+            
+        </div>        
     </div>
-    
-    
+
 </div>
 
 @stop
 
 @section('css')
-    <link rel="stylesheet" href="/css/admin_custom.css">
-    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">
-    <link rel="stylesheet" href="{{ asset('estilos1.css') }}">
-    <style>
-        a{
-            text-decoration: none;
-        }
-    </style>
-    
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="/css/admin_custom.css">    
 @stop
 
 @section('js')

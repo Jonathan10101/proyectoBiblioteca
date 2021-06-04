@@ -1029,6 +1029,7 @@
                 document.getElementById("costo").value = "-";
                 document.getElementById("padreUbicaciones").innerHTML = "";
                 document.getElementById("observacionesTextArea").innerHTML = "SIN OBSERVACIONES";
+                window.location = "http://www.mysite.com/books/create";
             }
         }
         
