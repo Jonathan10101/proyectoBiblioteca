@@ -297,7 +297,19 @@ return [
         [
             'text' => 'Coordinadores',
             'url' => 'admin/as',
-            'icon' => 'fas fa-user-friends'
+            'icon' => 'fas fa-user-friends',
+            'submenu' => [
+                [
+                    'text' => 'Agregar nuevo coordinador',
+                    'url'  => 'coordinadores/create',
+                    'icon' => 'fas fa-user-plus'
+                ], 
+                [
+                    'text' => 'Mostrar todos los coordinadores',
+                    'url'  => 'coordinadores',
+                    'icon' => 'fas fa-users'
+                ],  
+            ]
         ],
         [
             'text' => 'Editoriales',
