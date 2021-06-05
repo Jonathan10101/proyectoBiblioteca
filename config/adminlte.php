@@ -314,13 +314,25 @@ return [
         [
             'text' => 'Editoriales',
             'url' => 'admin/as',
-            'icon' => 'fas fa-user-friends'
+            'icon' => 'fas fa-newspaper',
+            'submenu' => [
+                [
+                    'text' => 'Agregar nueva editorial',
+                    'url'  => 'editoriales/create',
+                    'icon' => ' fas fa-plus-square'
+                ], 
+                [
+                    'text' => 'Mostrar todas las editoriales',
+                    'url'  => 'editoriales',
+                    'icon' => 'fas fa-th'
+                ]  
+            ]
         ],
         [
             'text' => 'Colecciones',
             'url' => 'admin/as',
             'icon' => 'fas fa-quran'
-        ],        
+        ]        
         /**
         [
             'text' => 'Libros',

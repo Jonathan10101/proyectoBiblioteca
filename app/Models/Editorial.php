@@ -11,6 +11,7 @@ class Editorial extends Model
     use HasFactory;
     protected $table = "editoriales";
     public $timestamps = false;
+    protected $guarded = [];
 
 
     public function libro()

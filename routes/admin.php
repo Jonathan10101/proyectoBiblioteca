@@ -4,6 +4,7 @@ use App\Http\Controllers\Admin\HomeController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AutorController;
 use App\Http\Controllers\CoordinadorController;
+use App\Http\Controllers\EditorialController;
 use App\Http\Controllers\LibroController;
 use App\Http\Controllers\LibroController2;
 use App\Http\Controllers\SearchController;
@@ -31,4 +32,5 @@ Route::resource('autores', AutorController::class);
 Route::resource('admin', AdminController::class);
 Route::resource('books2', LibroController2::class);
 Route::resource('coordinadores', CoordinadorController::class);
+Route::resource('editoriales', EditorialController::class);
 
