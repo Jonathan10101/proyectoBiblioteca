@@ -19,7 +19,7 @@
         <div class="col-1"></div>
         <div class="col">
             @foreach ($coordinadores as $coordinador)
-                <a href="{{route('coordinador.show',$coordinador->id)}}">{{$coordinador->nombre1}}</a><br>
+                <a href="{{route('coordinadores.show',$coordinador->id)}}">{{$coordinador->nombre1}}</a><br>
             @endforeach
         </div>        
     </div>

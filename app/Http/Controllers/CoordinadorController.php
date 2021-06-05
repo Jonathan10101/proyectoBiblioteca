@@ -10,7 +10,7 @@ class CoordinadorController extends Controller
 
     public function index()
     {
-        $coordinadores = Coordinador::paginate(8);
+        $coordinadores = Coordinador::paginate(1);
         return view("coordinador/index",compact("coordinadores"));
         
     }
@@ -32,20 +32,29 @@ class CoordinadorController extends Controller
     
     public function update(Request $request, $id)
     {
+        $coordinador = Coordinador::find($id);
+        $request->validate([
+            "nombre1"=>"required|min:4|max:20"
+        ]);
+        $coordinador->update($request->all());
         
+        return redirect()->route("coordinadores.index");
     }
     
     public function destroy($id)
     {
-
+        $coordinador = Coordinador::find($id);        
+        $coordinador->delete();
+        return redirect()->route("coordinadores.index");
     }
 
     public function create(){
         return view("coordinador/create");
     }
 
-    public function edit(){
-        
+    public function edit($id){
+        $coordinador = Coordinador::find($id);
+        return view("coordinador/edit",compact("coordinador"));
     }
 }
 
