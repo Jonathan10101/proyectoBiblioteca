@@ -291,7 +291,7 @@ return [
                     'text' => 'Mostrar todos los autores',
                     'url'  => 'autores',
                     'icon' => 'fas fa-users'
-                ]           
+                ],  
             ]
         ],
         [

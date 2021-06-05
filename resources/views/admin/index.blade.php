@@ -21,18 +21,20 @@
                 @csrf
                 <div class="row">
                     <div class="col d-flex justify-content-center">                        
-                        <input type="text" name="libro" class="form-control col-6" placeholder="Buscar libro por titulo" required>                                            
-                        <input type="submit" value="Buscar" class="btn btn-primary">                        
+                        <input type="text" name="libro" class="form-control col-6" placeholder="Buscar" required>                                            
+                        <!--<input type="submit" value="" class="btn btn-primary fas fa-search">-->
+                        <button type="input" class="btn btn-primary"><i class="fas fa-search"></i></button>
+                                             
                     </div>
                 </div>
 
-<!--
+
                 <div class="row">
-                    <div class="col d-flex justify-content-around">
+                    <div class="col d-flex justify-content-around mt-2">
                         <fieldset>
                             <legend class="text-center mt-2">Elige lo que estas buscando</legend>
                                 <label class="mr-3">
-                                    <input type="radio" name="tipoBusqueda" value="titulo" class="mr-2" checked>Titulo
+                                    <input type="radio" name="tipoBusqueda" value="titulo" class="mr-2" checked>Libro
                                 </label>
                                 <label class="mr-3">
                                     <input type="radio" name="tipoBusqueda" value="autor" class="mr-2">Autor
@@ -49,7 +51,9 @@
                         </fieldset>
                     </div>
                 </div>
--->                
+
+
+
             </form>
         </div>        
     

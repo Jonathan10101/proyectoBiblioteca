@@ -63,5 +63,8 @@ class AutorController extends Controller
         return view("author/edit",compact("autor"));
     }
 
+    public function search(){
+        return "search";
+    }
 
 }

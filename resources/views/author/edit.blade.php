@@ -40,7 +40,7 @@
                     <input type="text" class="col-5 mt-3 form-control" placeholder="Primer Apellido" value="{{$autor->apellido2}}" name="apellido2">
                 </div>
                 <div class="col d-flex justify-content-center">
-                    <input type="submit" value="REGISTRAR" class="col-2 mt-3 btn btn-warning">
+                    <input type="submit" value="ACEPTAR" class="col-2 mt-3 btn btn-warning">
                 </div>
                 
             </form>     
