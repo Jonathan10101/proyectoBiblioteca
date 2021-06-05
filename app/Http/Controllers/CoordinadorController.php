@@ -10,7 +10,7 @@ class CoordinadorController extends Controller
 
     public function index()
     {
-        $coordinadores = Coordinador::paginate(1);
+        $coordinadores = Coordinador::paginate(8);
         return view("coordinador/index",compact("coordinadores"));
         
     }

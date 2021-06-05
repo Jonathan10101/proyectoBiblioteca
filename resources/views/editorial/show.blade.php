@@ -74,7 +74,7 @@
                     <td class="text-center">{{$i+1}}</td>
                     <td class="text-center">{{$editorial->libro[$i]['titulo']}}</td>
                     <td class="text-center">{{$editorial->libro[$i]['year']}}</td>
-                    <td class="text-center">{{$editorial->libro[$i]['observacion']}}}</td>
+                    <td class="text-center">{{$editorial->libro[$i]['observacion']}}</td>
                     <td class="text-center"><a href="{{route('books.show',$editorial->libro[$i]['id'])}}">Ver</a></td>
                 </tr>
                 @endfor

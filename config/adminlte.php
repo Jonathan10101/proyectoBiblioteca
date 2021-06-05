@@ -331,8 +331,56 @@ return [
         [
             'text' => 'Colecciones',
             'url' => 'admin/as',
-            'icon' => 'fas fa-quran'
-        ]        
+            'icon' => 'fas fa-quran',
+            'submenu' => [
+                [
+                    'text' => 'Agregar nueva coleccion',
+                    'url'  => 'colecciones/create',
+                    'icon' => 'fas fa-plus'
+                ], 
+                [
+                    'text' => 'Mostrar todas las colecciones',
+                    'url'  => 'colecciones',
+                    'icon' => 'fas fa-list-alt'
+                ],  
+            ]
+        ],
+        [
+            'text' => 'Lugares',
+            'url' => 'admin/as',
+            'icon' => 'fas fa-globe-americas',
+            'submenu' => [
+                [
+                    'text' => 'Agregar nuevo lugar',
+                    'url'  => 'lugares/create',
+                    'icon' => 'fas fa-plus'
+                ], 
+                [
+                    'text' => 'Mostrar todos los lugares',
+                    'url'  => 'lugares',
+                    'icon' => 'fas fa-list-alt'
+                ],  
+            ]
+        ],
+        [
+            'text' => 'Estantes',
+            'url' => 'admin/as',
+            'icon' => 'fas fa-boxes',
+            'submenu' => [
+                [
+                    'text' => 'Agregar nuevo estante',
+                    'url'  => 'estantes/create',
+                    'icon' => 'fas fa-plus'
+                ], 
+                [
+                    'text' => 'Mostrar todos las estantes',
+                    'url'  => 'estantes',
+                    'icon' => 'fas fa-list-alt'
+                ],  
+            ]
+        ]  
+
+
         /**
         [
             'text' => 'Libros',
