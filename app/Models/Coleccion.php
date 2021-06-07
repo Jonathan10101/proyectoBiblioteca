@@ -11,9 +11,10 @@ class Coleccion extends Model
     use HasFactory;
     protected $table = "colecciones";
     public $timestamps = false;
+    protected $guarded = [];
 
 
     public function libro(){
-        return $this->hasMany(Coleccion::class);
+        return $this->hasMany(Libro::class);
     }
 }

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Autor;
+use App\Models\Coleccion;
 use App\Models\Coordinador;
 use App\Models\Editorial;
 use App\Models\Libro;
@@ -36,7 +37,11 @@ class AdminController extends Controller
             case "editorial":
                 $editoriales = Editorial::where("nombre","LIKE","%$request->libro%")->get();                
                 return view("editorial/editorialSearch",compact("editoriales"));
-            break;    
+            break;  
+            case "coleccion":
+                $colecciones = Coleccion::where("nombre","LIKE","%$request->libro%")->get();                
+                return view("coleccion/coleccionSearch",compact("colecciones"));
+            break;
         }
         
     }
