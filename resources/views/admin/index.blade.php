@@ -17,8 +17,8 @@
     
     <div class="row mt-4">        
         
-            <form action="{{route('admin.store')}}" class="col-12" method="POST">
-                @csrf
+            <form action="{{route('admin.index')}}" class="col-12" method="GET">
+                
                 <div class="row">
                     <div class="col d-flex justify-content-center">                        
                         <input type="text" name="libro" class="form-control col-6" placeholder="Buscar" required>                                            
@@ -50,12 +50,22 @@
                                 </label>
                         </fieldset>
                     </div>
-                </div>
-
+                </div>                    
 
 
             </form>
-        </div>        
+    </div>        
+
+    <div class="row mt-4">    
+        @if(isset($books) && count($books)>0)
+            @forEach($books as $book)
+                <a href="">{{$book->titulo}}</a>
+            @endforeach
+
+            {{$books->links()}}
+        @endif
+
+    </div>
     
 
     </div>
@@ -64,6 +74,7 @@
 @stop
 
 @section('css')
+    <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/admin_custom.css">
 @stop
 

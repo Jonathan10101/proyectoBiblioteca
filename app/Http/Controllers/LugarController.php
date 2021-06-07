@@ -2,62 +2,58 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Lugar;
 use Illuminate\Http\Request;
 
 class LugarController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
+    
     public function index()
     {
-        //
+        $lugares = Lugar::paginate(9);        
+        return view("lugar/index",compact("lugares"));   
     }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
+    
     public function store(Request $request)
     {
-        //
+        $request->validate([
+            "ciudad"=>"required|min:4|max:80"
+        ]);
+        Lugar::create($request->all());
+        return redirect()->route("lugares.create");
     }
 
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
     public function show($id)
     {
-        //
+        $lugar = Lugar::find($id);
+        return view("lugar/show",compact("lugar"));
     }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function update(Request $request, $id)
     {
-        //
+        $lugar = Lugar::find($id);
+        $request->validate([
+            "ciudad"=>"required|min:4|max:80"
+        ]);
+        $lugar->update($request->all());
+        
+        return redirect()->route("lugares.index");
     }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
+    
     public function destroy($id)
     {
-        //
+        $lugar = Lugar::find($id);        
+        $lugar->delete();
+        return redirect()->route("lugares.index");
     }
+
+    public function create(){
+        return view("lugar/create");
+    }
+
+    public function edit($id){
+        $lugar = Lugar::find($id);        
+        return view("lugar/edit",compact("lugar"));
+    }
+
 }

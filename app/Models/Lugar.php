@@ -16,7 +16,7 @@ class Lugar extends Model
 
     
     public function libro(){
-        return $this->hasOne(Libro::class);
+        return $this->hasMany(Libro::class);
     }
     
 }

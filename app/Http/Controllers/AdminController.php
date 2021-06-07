@@ -12,18 +12,26 @@ use Illuminate\Http\Request;
 class AdminController extends Controller
 {
 
-    public function index()
-    {
-        return view('admin/index');
+    public function index(Request $request)
+    {        
+        $tipoBusqueda = $request->tipoBusqueda;                
+        
+     
+        $books = Libro::where("titulo","LIKE","%$request->libro%")->paginate(1);                
+        return view("admin/index",compact("books"));
+                
+
+        
     }
 
     public function store(Request $request)
     {   
+        /*
         $tipoBusqueda = $request->tipoBusqueda;
         
         switch($tipoBusqueda){
             case "titulo":
-                $books = Libro::where("titulo","LIKE","%$request->libro%")->get();
+                $books = Libro::where("titulo","LIKE","%$request->libro%")->paginate(1);                
                 return view("books/books",compact("books"));
             break;
             case "autor":
@@ -43,6 +51,10 @@ class AdminController extends Controller
                 return view("coleccion/coleccionSearch",compact("colecciones"));
             break;
         }
+
+
+        return view("admin/index");
+        */
         
     }
 

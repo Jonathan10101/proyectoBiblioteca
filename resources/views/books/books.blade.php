@@ -22,6 +22,7 @@
                 <a href="{{route('books.show',$book->id)}}">{{$book->titulo}}</a><br>
             @endforeach
         </div>        
+        {{$books->links()}}
     </div>
 
 </div>
