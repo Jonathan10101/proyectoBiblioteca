@@ -19,8 +19,10 @@ class LugarController extends Controller
         $request->validate([
             "ciudad"=>"required|min:4|max:80"
         ]);
+                
         Lugar::create($request->all());
         return redirect()->route("lugares.create");
+        
     }
 
     public function show($id)

@@ -32,12 +32,16 @@ class AdminController extends Controller
             case "autor":
                 $autores = Autor::where("nombre1","LIKE","%$request->libro%")
                             ->orWhere("nombre2","LIKE","%$request->libro%")
+                            ->orWhere("apellido1","LIKE","%$request->libro%")
+                            ->orWhere("apellido2","LIKE","%$request->libro%")
                             ->get();                
                 return view("author/autoresSearch",compact("autores"));
             break;
             case "coordinador":
                 $coordinadores = Coordinador::where("nombre1","LIKE","%$request->libro%")
                             ->orWhere("nombre2","LIKE","%$request->libro%")
+                            ->orWhere("apellido1","LIKE","%$request->libro%")
+                            ->orWhere("apellido2","LIKE","%$request->libro%")
                             ->get();                
                 return view("coordinador/coordinadorSearch",compact("coordinadores"));
             break;    

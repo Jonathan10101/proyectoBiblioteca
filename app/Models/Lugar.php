@@ -10,7 +10,7 @@ class Lugar extends Model
 {
     use HasFactory;
     protected $table = "lugares";
-    protected $fillable = ["ciudad"];
+    protected $fillable = ["ciudad","estado","pais"];
     public $timestamps = false;
 
 

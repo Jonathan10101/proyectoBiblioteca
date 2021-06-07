@@ -842,7 +842,7 @@
 
     function actualizarSelect(){
         var peticion2 = new XMLHttpRequest();        
-        peticion2.open("GET","http://localhost/base/proyecto/public/bd/selectAutores.php");
+        peticion2.open("GET","http://localhost/base/proyecto/public/bd/selectAutoSres.php");
         //select.innerHTML = "<option></option>";
         var select = document.getElementById("selectAutor");
         
@@ -856,8 +856,8 @@
           var nSelects = selects.length;
 
           for(var i=0;i<datos.length;i++){
-            var elemento = document.createElement("option");
-            elemento.innerHTML += datos[i].nombre1+" ";                
+            var elemento = document.createElement("option");            
+            elemento.innerHTML += datos[i].nombre1+" ";
             elemento.innerHTML += datos[i].nombre2+" ";
             elemento.innerHTML += datos[i].apellido1+" "; 
             elemento.innerHTML += datos[i].apellido2; 
