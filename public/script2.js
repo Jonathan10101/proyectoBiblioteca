@@ -983,14 +983,14 @@ function registrarLibro(){
     
     
 
-    var x = 1;
+    var w = 1;
     var arregloUbicaciones = [];
 
-    while(x<=nSelects){
-        var id = "selectUbicacionEstante"+x;
+    while(w<=nSelects){
+        var id = "selectUbicacionEstante"+w;
         var valor = document.getElementById(id).value.toString();
         arregloUbicaciones.push(valor);
-        x++;
+        w++;
     }
 
     console.log("ubicaciones"+arregloUbicaciones);
@@ -1032,7 +1032,7 @@ function registrarLibro(){
             document.getElementById("padreUbicaciones").innerHTML = "";
             document.getElementById("observacionesTextArea").innerHTML = "SIN OBSERVACIONES";
             */
-            window.location = "http://www.mysite.com/books";
+            //window.location = "http://www.mysite.com/books";
         }
     }
     

@@ -401,7 +401,7 @@
             <div id="padre5" >
 
               @for ($i = 0; $i < $sizeCoordinadores; $i++)         
-                <select name="" id="selectCoordinadores1" class="form-select mt-4 clasePadre5">
+                <select name="" id="selectCoordinadores{{$i+1}}" class="form-select mt-4 clasePadre5">
                     <option value="{{$book->coordinador[$i]['pivot']['coordinador_id']}}" select="select">{{$book->coordinador[$i]["nombre1"]}} {{$book->coordinador[$i]["nombre2"]}} {{$book->coordinador[$i]["apellido1"]}} {{$book->coordinador[$i]["apellido2"]}}</option>                        
                   @foreach ($coordinadores as $coordinador)
                     <option value="{{$coordinador->id}}">{{$coordinador->nombre1}} {{$coordinador->nombre2}} {{$coordinador->apellido1}} {{$coordinador->apellido2}}</option>
@@ -465,14 +465,24 @@
           
             <div id="padreUbicaciones" >
             
+            
+            @for ($i = 0; $i < $sizeUbicaciones; $i++)         
+                <select name="" id="selectUbicacionEstante{{$i+1}}" class="form-select mt-4 clasePadreUbicaciones">                                                              
+                    <option value="{{$book->ubicacion[0]['pivot']['ubicacion_id']}}" select="select">{{$book->ubicacion[$i]['estante']}}</option>                        
+                    @foreach ($ubicaciones as $ubicacion)                                                                      
+                      <option value="{{$ubicacion->id}}">{{$ubicacion->estante}}</option>                                                                                                  
+                    @endforeach                                        
+                </select>                                        
+              @endfor             
+<!--            
             @for ($i = 0; $i < $sizeUbicaciones; $i++)     
-            <select name="" id="selectUbicacionEstante1" class="form-select mt-4 clasePadreUbicaciones">                
-                  <option value="{{$book->estante[$i]['pivot']['ubicacion_id']}}" select="select">{{$book->ubicacion[$i]['estante']}}</option>              
+            <select name="" id="selectUbicacionEstante{{$i+1}}" class="form-select mt-4 clasePadreUbicaciones">                              
                 @foreach ($ubicaciones as $ubicacion)
                   <option value="{{$ubicacion->id}}">{{$ubicacion->estante}}</option>
                 @endforeach
             </select>
             @endfor
+-->            
             </div>
 
 
@@ -531,11 +541,14 @@
           <div style="display:block" id="requestForm6">
             
             <div id="padre6" >
-            <select name="" id="selectColeccion" class="form-select mt-4 clasePadre6">
+            
+            <select name="" id="selectColeccion" class="form-select mt-4 clasePadre6">                
+                  <option value="{{$book->coleccion['id']}}">{{$book->coleccion["nombre"]}}</option>
                 @foreach ($colecciones as $coleccion)
                   <option value="{{$coleccion->id}}">{{$coleccion->nombre}}</option>
                 @endforeach
             </select>
+
             </div>
          
           </div>
