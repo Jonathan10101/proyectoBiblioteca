@@ -19,7 +19,7 @@
         <div class="col-1"></div>
         <div class="col">
             @foreach ($autores as $autor)
-                <a href="{{route('autores.show',$autor->id)}}">{{$autor->nombre1}}</a><br>
+                <a href="{{route('autores.show',$autor->id)}}">{{$autor->nombre1}} {{$autor->nombre2}} {{$autor->apellido1}} {{$autor->apellido2}}</a><br>
             @endforeach
         </div>        
     </div>

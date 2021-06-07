@@ -17,8 +17,8 @@
     
     <div class="row mt-4">        
         
-            <form action="{{route('admin.index')}}" class="col-12" method="GET">
-                
+            <form action="{{route('admin.store')}}" class="col-12" method="POST">
+                @csrf    
                 <div class="row">
                     <div class="col d-flex justify-content-center">                        
                         <input type="text" name="libro" class="form-control col-6" placeholder="Buscar" required>                                            
@@ -47,6 +47,12 @@
                                 </label>
                                 <label class="mr-3">
                                     <input type="radio" name="tipoBusqueda" value="coleccion" class="mr-2">Colección
+                                </label>
+                                <label class="mr-3">
+                                    <input type="radio" name="tipoBusqueda" value="lugar" class="mr-2">Lugar de publicación
+                                </label>
+                                <label class="mr-3">
+                                    <input type="radio" name="tipoBusqueda" value="estante" class="mr-2">Estante
                                 </label>
                         </fieldset>
                     </div>
