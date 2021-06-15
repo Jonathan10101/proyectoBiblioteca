@@ -22,8 +22,17 @@ class AutorController extends Controller
         $request->validate([
             "nombre1"=>"required|min:4|max:20"
         ]);
-        Autor::create($request->all());
-        return redirect()->route("autores.create");
+        $registrado = Autor::create($request->all());
+
+        //return $registrado;
+        if($registrado){
+            //echo '<script type="text/javascript">alert("'."Autor registrado".'");</script>';            
+            $mensajeR = "Autor(es) Registrados";
+            return view("author/create",compact("mensajeR"));
+        }
+
+        //return redirect()->route("autores.create");
+        
     }
 
    

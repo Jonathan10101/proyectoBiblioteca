@@ -28,9 +28,9 @@
                     <input type="text" class="col-5 mt-3 form-control" placeholder="Primer Nombre (Obligatorio)" name="nombre1" required>                                    
                 </div>
                 <div class="col d-flex justify-content-center">
-                    <div class="col-5 mt-1 text-center  bg-danger">
+                    <div class="col-5 mt-2 text-center  bg-danger">
                         @error("nombre1")
-                            {{$message}}
+                            <p class="p-2 pb-0">{{$message}}</p>
                         @enderror
                     </div>
                 </div>
@@ -43,6 +43,13 @@
                 <div class="col d-flex justify-content-center">    
                     <input type="text" class="col-5 mt-3 form-control" placeholder="Primer Apellido" name="apellido2">
                 </div>
+
+                <div class="col d-flex justify-content-center mt-4">                        
+                    @if(isset($mensajeR))
+                        <p class="col-5 bg-primary p-2 text-center">{{$mensajeR}}</p>
+                    @endIf
+                </div>                    
+                    
                 <div class="col d-flex justify-content-center">
                     <input type="submit" value="REGISTRAR" class="col-2 mt-3 btn btn-warning">
                 </div>
