@@ -18,8 +18,8 @@ class CreateLugaresTable extends Migration
             CREATE TABLE lugares(
             id int NOT NULL AUTO_INCREMENT,
             ciudad varchar(99) NOT NULL,
-            estado varchar(99),            
-            pais varchar(99),
+            estado varchar(99) DEFAULT ' ',
+            pais varchar(99) DEFAULT ' ',
             CONSTRAINT pk_lugar PRIMARY KEY(id)
             )ENGINE=INNODB;
         ");

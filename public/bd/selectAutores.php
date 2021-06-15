@@ -19,9 +19,9 @@ if($conexion->connect_errno){
 
     $respuesta = [];
     
-    while($fila = $resultados->fetch_assoc()){
+    while($fila = $resultados->fetch_assoc()){             
         $autor = [
-            "id" => $fila["id"],
+            "id" => $fila["id"],            
             "nombre1" => $fila["nombre1"],
             "nombre2" => $fila["nombre2"],
             "apellido1" => $fila["apellido1"],

@@ -18,9 +18,9 @@ class CreateAutoresTable extends Migration
             CREATE TABLE autores(
             id int NOT NULL AUTO_INCREMENT,
             nombre1 varchar(99) NOT NULL,
-            nombre2 varchar(99),
-            apellido1 varchar(99),
-            apellido2 varchar(99),
+            nombre2 varchar(99) DEFAULT ' ',
+            apellido1 varchar(99) DEFAULT ' ',
+            apellido2 varchar(99) DEFAULT ' ',
             CONSTRAINT pk_autor PRIMARY KEY(id)
             )ENGINE=INNODB;
         ");
