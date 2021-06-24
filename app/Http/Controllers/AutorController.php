@@ -22,6 +22,9 @@ class AutorController extends Controller
         $request->validate([
             "nombre1"=>"required|min:4|max:20"
         ]);
+
+        
+
         $registrado = Autor::create($request->all());
 
         //return $registrado;

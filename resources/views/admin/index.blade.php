@@ -12,7 +12,10 @@
     <div class="container-fluid mt-5">
     
     <div class="row">
-        <h1 class="col text-center display-4">IIE SOFT</h1>
+        <h1 class="col text-center display-4">IIE SOFT</h1>        
+    </div>
+    <div class="row">
+        <p class="col text-center">Desarrollado por Jonathan Bedolla</p>
     </div>
     
     <div class="row mt-4">        
@@ -72,9 +75,8 @@
         @endif
 
     </div>
-    
+        
 
-    </div>
 </div>
     
 @stop

@@ -241,6 +241,11 @@ return [
             'icon' => 'fas fa-search'            
         ],
         */
+        [            
+            'topnav_right' => true,
+            'text' => 'Buscar',
+            'url'  => 'admin',
+        ],
          
         [
             'type'         => 'fullscreen-widget',

@@ -20,9 +20,8 @@ class CreateUbicacionesLibrosTable extends Migration
             libro_id int NOT NULL,
             ubicacion_id int NOT NULL,
             CONSTRAINT pk_ubicaciones_libros PRIMARY KEY(id),
-            CONSTRAINT fk_ubicaciones_libros1 FOREIGN KEY(ubicacion_id) REFERENCES ubicaciones(id),
-            CONSTRAINT fk_ubicaciones_libros2 FOREIGN KEY(libro_id) REFERENCES libros(id)
-            ON DELETE CASCADE ON UPDATE CASCADE
+            CONSTRAINT fk_ubicaciones_libros1 FOREIGN KEY(ubicacion_id) REFERENCES ubicaciones(id) ON DELETE CASCADE ,
+            CONSTRAINT fk_ubicaciones_libros2 FOREIGN KEY(libro_id) REFERENCES libros(id) ON DELETE CASCADE 
             )ENGINE=INNODB;"
         );
     }

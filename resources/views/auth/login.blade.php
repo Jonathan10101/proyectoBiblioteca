@@ -1,4 +1,7 @@
 <x-guest-layout>
+    
+    <script type="text/javascript" src="{{asset('proyecto/public/js/app.css')}}"></script>
+    
     <x-jet-authentication-card>
         <x-slot name="logo">
             <!--<x-jet-authentication-card-logo />-->
