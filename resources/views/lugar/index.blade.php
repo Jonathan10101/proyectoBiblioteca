@@ -18,6 +18,29 @@
             <h1 class="text-center">Todos los Lugares</h1>
         </div>
     </div>
+
+        @if(session("statusr"))
+            <div class="row">
+                <div class="col mt-1 text-center text-success mt-4">                        
+                    {{session("statusr")}}                    
+                </div>
+            </div>
+        @endif
+        
+        @if(session("status"))
+            <div class="row">
+                <div class="col mt-1 text-center text-danger mt-4">                        
+                    {{session("status")}}                    
+                </div>
+            </div>
+        @endif
+        @if(session("status2"))
+            <div class="row">
+                <div class="col mt-1 text-center text-primary mt-4">                        
+                    {{session("status2")}}                    
+                </div>
+            </div>
+        @endif
     
     <div class="row mt-5">
        <div class="col">

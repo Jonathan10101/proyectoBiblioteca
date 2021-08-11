@@ -11,12 +11,16 @@
     <!--<h1 class="display-2 text-center font-weight-bold">IIE Soft</h1>-->
     <div class="container-fluid mt-5">
     
+
     <div class="row">
         <h1 class="col text-center display-4">IIE SOFT</h1>        
     </div>
+
+<!--
     <div class="row">
         <p class="col text-center">Desarrollado por Jonathan Bedolla</p>
     </div>
+-->    
     
     <div class="row mt-4">        
         

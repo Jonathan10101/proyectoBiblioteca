@@ -17,13 +17,37 @@
         <div class="col">
             <h1 class="text-center">Todos los Estantes</h1>
         </div>
+
+        @if(session("statusr"))
+            <div class="row">
+                <div class="col mt-1 text-center text-success mt-4">                        
+                    {{session("statusr")}}                    
+                </div>
+            </div>
+        @endif
+        
+        @if(session("status"))
+            <div class="row">
+                <div class="col mt-1 text-center text-danger mt-4">                        
+                    {{session("status")}}                    
+                </div>
+            </div>
+        @endif
+        @if(session("status2"))
+            <div class="row">
+                <div class="col mt-1 text-center text-primary mt-4">                        
+                    {{session("status2")}}                    
+                </div>
+            </div>
+        @endif
     </div>
     
     <div class="row mt-5">
+
        <div class="col">
+           
             @foreach($estantes as $estante)
-                <a href="{{route('estantes.show',$estante->id)}}">{{$estante->estante}}</a><br>
-                
+                <a href="{{route('estantes.show',$estante->id)}}">{{$estante->estante}}</a><br>                
             @endforeach
 
             <div class="col mt-5 mb-5">

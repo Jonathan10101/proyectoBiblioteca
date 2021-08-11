@@ -38,11 +38,12 @@
                     @else                        
                         <a href="{{ route('login') }}" class="btn  btn-iniciarSesion">Iniciar Sesión</a>
                         
-                        <!--
+                        
                         @if (Route::has('register'))
                             <a href="{{ route('register') }}" class="ml-4 text-sm text-gray-700 underline">Registrarme</a>
                         @endif
-                        -->
+                        
+                        
                         
                         
                     @endauth

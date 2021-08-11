@@ -25,14 +25,21 @@
                 @csrf
                 
                 <div class="col d-flex justify-content-center">
-                    <input type="text" class="col-5 mt-3 form-control" placeholder="Nombre del estante (Obligatorio)" name="estante" required>                                    
+                    <input type="text" class="col-5 mt-3 form-control" placeholder="Nombre del estante (Obligatorio)" name="estante" pattern="[1234567890]+" required>                                    
                 </div>
                 <div class="col d-flex justify-content-center">
-                    <div class="col-5 mt-1 text-center  bg-danger">
-                        @error("estante")
-                            {{$message}}
-                        @enderror
+                    @if(session("status1"))
+                    <div class="col-5 mt-1 text-center text-danger mt-4">                        
+                            {{session("status1")}}                    
                     </div>
+                    @endif
+                           
+                    
+                    @error("estante")
+                    <div class="col-5 mt-1 text-center  bg-danger">                        
+                            {{$message}}                    
+                    </div>
+                    @enderror
                 </div>                
                 <div class="col d-flex justify-content-center mt-2">
                     <input type="submit" value="REGISTRAR" class="col-2 mt-3 btn btn-warning">

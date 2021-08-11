@@ -35,11 +35,18 @@
                 </div>
 
                 <div class="col d-flex justify-content-center">
-                    <div class="col-5 mt-1 text-center  bg-danger">
-                        @error("nombre")
-                            {{$message}}
-                        @enderror
+                    @if(session("status1"))
+                    <div class="col-5 mt-1 text-center text-danger mt-4">                        
+                            {{session("status1")}}                    
                     </div>
+                    @endif
+                    
+                    @error("nombre")
+                    <div class="col-5 mt-1 text-center  bg-danger">                        
+                            {{$message}}                    
+                    </div>
+                    @enderror
+                    
                 </div>                
                 <div class="col d-flex justify-content-center mt-2">
                     <input type="submit" value="REGISTRAR" class="col-2 mt-3 btn btn-warning">
