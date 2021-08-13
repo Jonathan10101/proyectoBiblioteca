@@ -17,10 +17,18 @@ class EditorialController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "nombre"=>"required|min:4|max:80"
+            "nombre"=>"required|min:1|max:80"
         ]);
-        Editorial::create($request->all());
-        return redirect()->route("editoriales.create");
+
+        $duplicado = Editorial::where('nombre',$request->nombre)->first();
+        if($duplicado){
+            
+            return redirect()->route("editoriales.create")->with("status1","La editorial que quieres registrar ya existe");
+        }else{
+            Editorial::create($request->all()); 
+            return redirect()->route("editoriales.index")->with("statusr","Editorial registrada con exito"); 
+        }
+
     }
     
     public function show($id)
@@ -33,18 +41,18 @@ class EditorialController extends Controller
     {
         $editorial = Editorial::find($id);
         $request->validate([
-            "nombre"=>"required|min:4|max:80"
+            "nombre"=>"required|min:1|max:80"
         ]);
         $editorial->update($request->all());
         
-        return redirect()->route("editoriales.index");
+        return redirect()->route("editoriales.index")->with("status2","Lugar actualizado");;;        
     }
     
     public function destroy($id)
     {
         $editorial = Editorial::find($id);        
-        $editorial->delete();
-        return redirect()->route("editoriales.index");
+        $editorial->delete();        
+        return redirect()->route("editoriales.index")->with("status","Lugar eliminado");;
     }
 
     public function create(){

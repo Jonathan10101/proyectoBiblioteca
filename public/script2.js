@@ -314,7 +314,7 @@ function agregarAutoresMas(){
     select.id = "selectAutor"+i;
 
     var peticion2 = new XMLHttpRequest();
-    peticion2.open("GET","http://www.superoficinista.com/proyecto/public/bd/selectAutores.php");
+    peticion2.open("GET","C:/wamp64/www/base/proyecto/public/bd/selectAutores.php");
     
 
     peticion2.onload = function(){

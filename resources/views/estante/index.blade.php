@@ -4,6 +4,46 @@
 
 @section('content_header')
     <!--<h1 class="bg-dark">Dashboard</h1>-->
+    @if(session("statusr"))
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <p class="text-left mb-0">{{session("statusr")}}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>       
+            </div>           
+        </div>  
+    @endif 
+
+    
+        
+    @if(session("status"))
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <p class="text-left mb-0">{{session("status")}}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>       
+            </div>           
+        </div>  
+    @endif
+    
+    @if(session("status2"))
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p class="text-left mb-0">{{session("status2")}}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>       
+            </div>           
+        </div>  
+    @endif
 @stop
 
 @section('content')
@@ -11,49 +51,28 @@
 
 
 
-<div class="container-fluid mt-2">    
+<div class="container-fluid mt-2">   
+
 
     <div class="row mt-2">
         <div class="col">
             <h1 class="text-center">Todos los Estantes</h1>
         </div>
-
-        @if(session("statusr"))
-            <div class="row">
-                <div class="col mt-1 text-center text-success mt-4">                        
-                    {{session("statusr")}}                    
-                </div>
-            </div>
-        @endif
-        
-        @if(session("status"))
-            <div class="row">
-                <div class="col mt-1 text-center text-danger mt-4">                        
-                    {{session("status")}}                    
-                </div>
-            </div>
-        @endif
-        @if(session("status2"))
-            <div class="row">
-                <div class="col mt-1 text-center text-primary mt-4">                        
-                    {{session("status2")}}                    
-                </div>
-            </div>
-        @endif
     </div>
     
     <div class="row mt-5">
-
-       <div class="col">
+        <div class="col-1"></div>
+        <div class="col">
            
             @foreach($estantes as $estante)
-                <a href="{{route('estantes.show',$estante->id)}}">{{$estante->estante}}</a><br>                
+                <a href="{{route('estantes.show',$estante->id)}}" class="mb-3 d-inline-block">{{$estante->estante}}</a><br>                
             @endforeach
 
             <div class="col mt-5 mb-5">
                 {{$estantes->links()}}
             </div>
-       </div>
+        </div>
+        <div class="col-1"></div>
     </div>
     
     

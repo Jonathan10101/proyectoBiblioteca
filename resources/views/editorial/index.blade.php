@@ -4,6 +4,46 @@
 
 @section('content_header')
     <!--<h1 class="bg-dark">Dashboard</h1>-->
+    @if(session("statusr"))
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <p class="text-left mb-0">{{session("statusr")}}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>       
+            </div>           
+        </div>  
+    @endif 
+
+    
+        
+    @if(session("status"))
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <p class="text-left mb-0">{{session("status")}}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>       
+            </div>           
+        </div>  
+    @endif
+    
+    @if(session("status2"))
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p class="text-left mb-0">{{session("status2")}}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>       
+            </div>           
+        </div>  
+    @endif
 @stop
 
 @section('content')
@@ -12,6 +52,8 @@
 
 
 <div class="container-fluid mt-2">    
+<div class="container-fluid mt-2">    
+
 
     <div class="row mt-2">
         <div class="col">
@@ -20,9 +62,10 @@
     </div>
     
     <div class="row mt-5">
+        <div class="col-1"></div>
        <div class="col">
             @foreach($editoriales as $editorial)
-                <a href="{{route('editoriales.show',$editorial->id)}}">{{$editorial->nombre}}</a><br>
+                <a href="{{route('editoriales.show',$editorial->id)}}" class="mb-3 d-inline-block">{{$editorial->nombre}}</a><br>
                 
             @endforeach
 
@@ -30,6 +73,7 @@
                 {{$editoriales->links()}}
             </div>
        </div>
+       <div class="col-1"></div>
     </div>
     
     

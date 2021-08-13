@@ -4,6 +4,46 @@
 
 @section('content_header')
     <!--<h1 class="bg-dark">Dashboard</h1>-->
+    @if(session("statusr"))
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                    <p class="text-left mb-0">{{session("statusr")}}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>       
+            </div>           
+        </div>  
+    @endif 
+
+    
+        
+    @if(session("status"))
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                    <p class="text-left mb-0">{{session("status")}}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>       
+            </div>           
+        </div>  
+    @endif
+    
+    @if(session("status2"))
+        <div class="row">
+            <div class="col">
+                <div class="alert alert-primary alert-dismissible fade show" role="alert">
+                    <p class="text-left mb-0">{{session("status2")}}</p>
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>       
+            </div>           
+        </div>  
+    @endif
 @stop
 
 @section('content')
@@ -19,40 +59,19 @@
         </div>
     </div>
 
-        @if(session("statusr"))
-            <div class="row">
-                <div class="col mt-1 text-center text-success mt-4">                        
-                    {{session("statusr")}}                    
-                </div>
-            </div>
-        @endif
-        
-        @if(session("status"))
-            <div class="row">
-                <div class="col mt-1 text-center text-danger mt-4">                        
-                    {{session("status")}}                    
-                </div>
-            </div>
-        @endif
-        @if(session("status2"))
-            <div class="row">
-                <div class="col mt-1 text-center text-primary mt-4">                        
-                    {{session("status2")}}                    
-                </div>
-            </div>
-        @endif
-    
     <div class="row mt-5">
-       <div class="col">
-            @foreach($lugares as $lugar)
-                <a href="{{route('lugares.show',$lugar->id)}}">{{$lugar->ciudad}} {{$lugar->estado}} {{$lugar->pais}}</a><br>
-                
-            @endforeach
+        <div class="col-1"></div>
+        <div class="col">
 
+            @foreach($lugares as $lugar)
+                <a href="{{route('lugares.show',$lugar->id)}}" class="mb-3 d-inline-block">{{$lugar->ciudad}} {{$lugar->estado}} {{$lugar->pais}}</a><br>                
+            @endforeach
+        
             <div class="col mt-5 mb-5">
                 {{$lugares->links()}}
             </div>
        </div>
+       <div class="col-1"></div>
     </div>
     
     

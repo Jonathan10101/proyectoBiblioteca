@@ -47,14 +47,14 @@ class EstanteController extends Controller
         ]);
         $estante->update($request->all());
         
-        return redirect()->route("estantes.index")->with("status2","Estante actualizado");;;
+        return redirect()->route("estantes.index")->with("status2","Estante actualizado");
     }
 
     public function destroy($id)
     {
         $estante = Ubicacion::find($id);        
         $estante->delete();
-        return redirect()->route("estantes.index")->with("status","Estante eliminado");;
+        return redirect()->route("estantes.index")->with("status","Estante eliminado");
     }
 
     public function create(){

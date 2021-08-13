@@ -1,3 +1,5 @@
+    const RUTA_BD = 'C:/wamp64/www/base/proyecto/public/bd';
+    
     var btnRegistrarLibroButton = document.getElementById("btnRegistrarLibroButton");
     var btnAgregarMasAutores = document.getElementById("btnAgregarAutores");
     var btnRegistrarAutor = document.getElementById("btnRegistrarAutor");
@@ -314,7 +316,8 @@
         select.id = "selectAutor"+i;
 
         var peticion2 = new XMLHttpRequest();
-        peticion2.open("GET","http://www.superoficinista.com/proyecto/public/bd/selectAutores.php");
+        //var RUTA = RUTA_BD+"/selectAutores.php";
+        peticion2.open("GET","www.mysite.com/js/selectAutores.php");
         
 
         peticion2.onload = function(){
@@ -323,7 +326,7 @@
           for(var i=0;i<datos.length;i++){
             var elemento = document.createElement("option");
             elemento.value = datos[i].id;
-            elemento.innerHTML += datos[i].nombre1+" ";                
+            elemento.innerHTML += datos[i].nombre1+" DDDDD";                
             elemento.innerHTML += datos[i].nombre2+" ";                
             elemento.innerHTML += datos[i].apellido1+" "; 
             elemento.innerHTML += datos[i].apellido2; 
@@ -360,7 +363,7 @@
         select.id = "selectCoordinadores"+z;
 
         var peticion2 = new XMLHttpRequest();
-        peticion2.open("GET","http://www.superoficinista.com/proyecto/public/bd/selectCoordinadores.php");
+        peticion2.open("GET","C:/wamp64/www/base/proyecto/public/bd/selectCoordinadores.php");
         
 
         peticion2.onload = function(){
@@ -406,7 +409,7 @@
         console.log("selectUbicacionEstante"+q);
 
         var peticion2 = new XMLHttpRequest();
-        peticion2.open("GET","http://www.superoficinista.com/proyecto/public/bd/selectUbicacion.php");
+        peticion2.open("GET","C:/wamp64/www/base/proyecto/public/bd/selectUbicacion.php");
         
 
         peticion2.onload = function(){
@@ -463,7 +466,7 @@
 
 
         var peticion = new XMLHttpRequest();
-        peticion.open("POST","http://www.superoficinista.com/proyecto/public/bd/autoresInsert.php");
+        peticion.open("POST","www.superoficinista.com/public/bd/autoresInsert.php");
 
         
         var parametros = "nombre1="+nombre1+"&nombre2="+nombre2+"&apellido1="+apellido1+"&apellido2="+apellido2;
@@ -503,7 +506,7 @@
         
         
         var peticion = new XMLHttpRequest();
-        peticion.open("POST","http://www.superoficinista.com/proyecto/public/bd/lugarInsert.php");
+        peticion.open("POST","C:/wamp64/www/base/proyecto/public/bd/lugarInsert.php");
         
         var parametros = "ciudad="+ciudad+"&estado="+estado+"&pais="+pais;
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -530,7 +533,7 @@
         var nombreEditorial = document.getElementById("nombreEditorial").value.toString();
 
         var peticion = new XMLHttpRequest();
-        peticion.open("POST","http://www.superoficinista.com/proyecto/public/bd/editorialInsert.php");
+        peticion.open("POST","C:/wamp64/www/base/proyecto/public/bd/editorialInsert.php");
         
         var parametros = "nombreEditorial="+nombreEditorial;
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -555,7 +558,7 @@
         var ubicacionEstante = document.getElementById("ubicacionEstante").value.toString();
 
         var peticion = new XMLHttpRequest();
-        peticion.open("POST","http://www.superoficinista.com/proyecto/public/bd/ubicacionInsert.php");
+        peticion.open("POST","C:/wamp64/www/base/proyecto/public/bd/ubicacionInsert.php");
         
         var parametros = "ubicacionEstante="+ubicacionEstante;
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -578,7 +581,7 @@
         var coleccion = document.getElementById("coleccion").value.toString();
 
         var peticion = new XMLHttpRequest();
-        peticion.open("POST","http://www.superoficinista.com/proyecto/public/bd/coleccionInsert.php");
+        peticion.open("POST","C:/wamp64/www/base/proyecto/public/bd/coleccionInsert.php");
         var parametros = "coleccion="+coleccion;
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
 
@@ -606,7 +609,7 @@
         var apellido2 = document.getElementById("apellido2Coordinador").value.toString();
         
         var peticion = new XMLHttpRequest();
-        peticion.open("POST","http://www.superoficinista.com/proyecto/public/bd/coordinadoresInsert.php");
+        peticion.open("POST","C:/wamp64/www/base/proyecto/public/bd/coordinadoresInsert.php");
         
         var parametros = "nombre1="+nombre1+"&nombre2="+nombre2+"&apellido1="+apellido1+"&apellido2="+apellido2;
         peticion.setRequestHeader("Content-Type","application/x-www-form-urlencoded");
@@ -633,7 +636,7 @@
 
     function actualizarSelectPrueba(){
         var peticion2 = new XMLHttpRequest();        
-        peticion2.open("GET","http://www.superoficinista.com/proyecto/public/autores.php");    
+        peticion2.open("GET","www.mysite.com/js/selectAutores.php");    
         var padre = document.getElementById("padre");
 
         peticion2.onload = function(){
@@ -666,7 +669,7 @@
 
     function actualizarSelectPrueba2(){
         var peticion2 = new XMLHttpRequest();        
-        peticion2.open("GET","http://www.superoficinista.com/proyecto/public/bd/lugaresSelect.php");
+        peticion2.open("GET","C:/wamp64/www/base/proyecto/public/bd/lugaresSelect.php");
         var select = document.getElementById("selectLugar");
         select.innerHTML = "";
         //select.innerHTML = "<option></option>";
@@ -700,7 +703,7 @@
 
     function actualizarSelectPrueba3(){
         var peticion2 = new XMLHttpRequest();        
-        peticion2.open("GET","http://www.superoficinista.com/proyecto/public/bd/selectEditoriales.php");
+        peticion2.open("GET","C:/wamp64/www/base/proyecto/public/bd/selectEditoriales.php");
         //select.innerHTML = "<option></option>";
         var select = document.getElementById("selectEditorial");
 
@@ -732,7 +735,7 @@
 
     function actualizarSelectPrueba5(){
         var peticion2 = new XMLHttpRequest();        
-        peticion2.open("GET","http://www.superoficinista.com/proyecto/public/bd/selectUbicacion.php");
+        peticion2.open("GET","C:/wamp64/www/base/proyecto/public/bd/selectUbicacion.php");
        
         peticion2.onload = function(){
             var datos = JSON.parse(peticion2.responseText);
@@ -773,7 +776,7 @@
 
     function actualizarSelectPrueba6(){
         var peticion2 = new XMLHttpRequest();        
-        peticion2.open("GET","http://www.superoficinista.com/proyecto/public/bd/selectColeccion.php");
+        peticion2.open("GET","C:/wamp64/www/base/proyecto/public/bd/selectColeccion.php");
         //select.innerHTML = "<option></option>";
         var select = document.getElementById("selectColeccion");
 
@@ -806,7 +809,7 @@
     
     function actualizarSelectPrueba4(){
         var peticion2 = new XMLHttpRequest();        
-        peticion2.open("GET","http://www.superoficinista.com/proyecto/public/bd/selectEditoriales.php");    
+        peticion2.open("GET","C:/wamp64/www/base/proyecto/public/bd/selectEditoriales.php");    
         
 
         peticion2.onload = function(){
@@ -842,7 +845,7 @@
 
     function actualizarSelect(){
         var peticion2 = new XMLHttpRequest();        
-        peticion2.open("GET","http://www.superoficinista.com/proyecto/public/bd/selectAutoSres.php");
+        peticion2.open("GET","C:/wamp64/www/base/proyecto/public/bd/selectAutoSres.php");
         //select.innerHTML = "<option></option>";
         var select = document.getElementById("selectAutor");
         
@@ -872,7 +875,7 @@
 
     function actualizarSelect2(){
         var peticion2 = new XMLHttpRequest();        
-        peticion2.open("GET","http://www.superoficinista.com/proyecto/public/bd/selectAutores.php");
+        peticion2.open("GET","C:/wamp64/www/base/proyecto/public/bd/selectAutores.php");
         //select.innerHTML = "<option></option>";
         select.innerHTML = "";
 
@@ -1000,7 +1003,7 @@
 
         //ENVIAR DATOS PARA REGISTRAR LIBRO
         peticion = new XMLHttpRequest();
-        peticion.open("POST","http://www.superoficinista.com/proyecto/public/bd/libroInsert.php");
+        peticion.open("POST","C:/wamp64/www/base/proyecto/public/bd/libroInsert.php");
         
         
         
@@ -1029,7 +1032,7 @@
                 document.getElementById("costo").value = "-";
                 document.getElementById("padreUbicaciones").innerHTML = "";
                 document.getElementById("observacionesTextArea").innerHTML = "SIN OBSERVACIONES";
-                window.location = "http://www.superoficinista.com/proyecto/public/books";
+                window.location = "http://www.mysite.com/books";
             }
         }
         

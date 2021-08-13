@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Models\Autor;
 use App\Models\Libro;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class AutorController extends Controller
 {
@@ -20,21 +21,31 @@ class AutorController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            "nombre1"=>"required|min:4|max:20"
+            "nombre1"=>"required|min:1|max:20"
         ]);
 
+        $nombre1 = $request->nombre1;
+        $nombre2 = $request->nombre2;
+        $apellido1 = $request->apellido1;
+        $apellido2 = $request->apellido2;
+
+        $duplicado = DB::table('autores')
+                                ->where([
+                                    ['nombre1' ,'=', $nombre1],
+                                    ['nombre2', '=' , $nombre2],
+                                    ['apellido1', '=' , $apellido1],
+                                    ['apellido2', '=' , $apellido2],
+                                ])->first();
+
         
-
-        $registrado = Autor::create($request->all());
-
-        //return $registrado;
-        if($registrado){
-            //echo '<script type="text/javascript">alert("'."Autor registrado".'");</script>';            
-            $mensajeR = "Autor(es) Registrados";
-            return view("author/create",compact("mensajeR"));
+        if($duplicado == null){            
+            Autor::create($request->all()); 
+            return redirect()->route("autores.index")->with("statusr","Autor registrado con exito"); 
+        }else{
+            return redirect()->route("autores.create")->with("status1","El Autor que quieres registrar ya existe");
         }
 
-        //return redirect()->route("autores.create");
+      
         
     }
 
@@ -50,11 +61,11 @@ class AutorController extends Controller
     {
         $autor = Autor::find($id);
         $request->validate([
-            "nombre1"=>"required|min:4|max:20"
+            "nombre1"=>"required|min:1|max:20"
         ]);
         $autor->update($request->all());
         
-        return redirect()->route("autores.index");
+        return redirect()->route("autores.index")->with("status2","Autor actualizado");
         
     }
 
@@ -62,7 +73,7 @@ class AutorController extends Controller
     {
         $autor = Autor::find($id);        
         $autor->delete();
-        return redirect()->route("autores.index");
+        return redirect()->route("autores.index")->with("status","Autor eliminado");
     }
 
 
