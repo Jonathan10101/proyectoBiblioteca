@@ -10,6 +10,8 @@
 
 <div class="container-fluid">
 
+  <div id="bm"></div>
+
   <div class="row">
     
       <div class="col-12 mt-5">
@@ -17,7 +19,7 @@
       </div>
 
       <div class="col-12 d-flex justify-content-center">
-    
+  
         <form action="" class="col-5 mt-5">
                       
           <div class="form-floating mb-3">
@@ -303,7 +305,13 @@
             <div id="padreUbicaciones" >
             <select name="" id="selectUbicacionEstante1" class="form-select mt-4 clasePadreUbicaciones">
                 @foreach ($ubicaciones as $ubicacion)
-                  <option value="{{$ubicacion->id}}">{{$ubicacion->estante}}</option>
+                  
+                  @if($ubicacion->estante == 0)
+                    <option value="{{$ubicacion->id}}">SIN ESTANTE</option>
+                  @else
+                    <option value="{{$ubicacion->id}}">{{$ubicacion->estante}}</option>
+                  @endIf
+                  
                 @endforeach
             </select>
             </div>
@@ -382,11 +390,7 @@
                 </div>
 
           </div>       
-
-
-
-
-
+                
 
 
                                                                                         <!--OBSERVACIONES-->
@@ -415,9 +419,12 @@
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">    
 @stop
 
-@section('js')
-    <!--<script> console.log('Hi!'); </script>-->
+@section('js')    
     <script type='text/javascript' src="{{asset('script1.js')}}"></script>
+    <!-- ESTE ES EL CDN DE LOTTIE -->
+    <script src="https://cdnjs.com/libraries/bodymovin" type="text/javascript"></script>
+
+
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.1/dist/umd/popper.min.js" integrity="sha384-SR1sx49pcuLnqZUnnPwx6FCym0wLsk5JZuNx2bPPENzswTNFaQU1RDvt3wT4gWFG" crossorigin="anonymous"></script>

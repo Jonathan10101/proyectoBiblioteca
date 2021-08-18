@@ -12,7 +12,7 @@ class EstanteController extends Controller
     public function index()
     {
         //$estantes = Ubicacion::paginate(9);        
-        $estantes =  DB::table('ubicaciones')->orderBy('estante', 'asc')->paginate(9);
+        $estantes =  DB::table('ubicaciones')->orderBy('id', 'asc')->paginate(9);
         return view("estante/index",compact("estantes"));
     }
     

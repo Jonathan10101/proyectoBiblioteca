@@ -26,7 +26,14 @@
                 
               <tbody>
                 <tr>
-                    <td class="text-center">{{$estante->estante}}</td>                    
+                    @if($estante->estante == 0)
+                    <td class="text-center">SIN ESTANTE</td>                    
+                    @else
+                        <td class="text-center">{{$estante->estante}}</td>                    
+                    @endIf
+                    
+                    
+                    
                 </tr>
               <tbody>
             </table>

@@ -10,7 +10,8 @@ class Conexion2{
     }
 
     function conectarse(){
-        $conexion = new PDO('mysql:host=localhost;dbname=superofi_basedatoshistoricoconmigraciones','superofi_wp335','JBHjhon13');
+        //$conexion = new PDO('mysql:host=localhost;dbname=superofi_basedatoshistoricoconmigraciones','superofi_wp335','JBHjhon13');
+        $conexion = new mysqli("localhost","root","","basedatoshistoricoconmigraciones");
         return $conexion;
     }
 

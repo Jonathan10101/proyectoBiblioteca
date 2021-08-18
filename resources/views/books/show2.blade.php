@@ -343,14 +343,24 @@
             <div class="col-6">
               <label for="editorial" class="mt-5 mb-2">Año de publicación</label>
               <div id="padre4" class="clasePadre4">
-                <input type="number" class="form-control" id="yearPublicacion" placeholder="Dejar en blanco si no sabes el dato"  min="0" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;" autocomplete=off value="{{$book['year']}}">
+                  @if($book['year']=="-1")
+                    <input type="number" class="form-control" id="yearPublicacion" placeholder="Dejar en blanco si no sabes el dato"  min="0" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;" autocomplete=off>                
+                  @else
+                    <input type="number" class="form-control" id="yearPublicacion" placeholder="Dejar en blanco si no sabes el dato"  min="0" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;" autocomplete=off value="{{$book['year']}}">                
+                  @endIf                                    
               </div>             
             </div>  
             
 
             <div class="col-6">
               <label for="editorial" class="mt-5 mb-2">Stock</label>
-              <input type="number" class="form-control" id="stock" placeholder="Dejar en blanco si no sabes el dato" min="0" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;" autocomplete=off value="{{$book['stock']}}">
+                  @if($book['stock']=="-1")
+                    <input type="number" class="form-control" id="stock" placeholder="Dejar en blanco si no sabes el dato" min="0" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;" autocomplete=off>
+                  @else
+                    <input type="number" class="form-control" id="stock" placeholder="Dejar en blanco si no sabes el dato" min="0" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;" autocomplete=off value="{{$book['stock']}}">
+                  @endIf                                    
+              <!--<input type="number" class="form-control" id="stock" placeholder="Dejar en blanco si no sabes el dato" min="0" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;" autocomplete=off value="{{$book['stock']}}">-->
+              <!--<input type="number" class="form-control" id="stock" placeholder="Dejar en blanco si no sabes el dato" min="0" pattern="^[0-9]+" onpaste="return false;" onDrop="return false;" autocomplete=off>-->
             </div>
 
           </div>
@@ -467,10 +477,13 @@
             
             
             @for ($i = 0; $i < $sizeUbicaciones; $i++)         
-                <select name="" id="selectUbicacionEstante{{$i+1}}" class="form-select mt-4 clasePadreUbicaciones">                                                              
-                    <option value="{{$book->ubicacion[0]['pivot']['ubicacion_id']}}" select="select">{{$book->ubicacion[$i]['estante']}}</option>                        
-                    @foreach ($ubicaciones as $ubicacion)                                                                      
-                      <option value="{{$ubicacion->id}}">{{$ubicacion->estante}}</option>                                                                                                  
+                <select name="" id="selectUbicacionEstante{{$i+1}}" class="form-select mt-4 clasePadreUbicaciones">                                                                                  
+                      <option value="{{$book->ubicacion[0]['pivot']['ubicacion_id']}}" select="select">{{$book->ubicacion[$i]['estante']}}</option>                                                                                    
+                    
+                    @foreach ($ubicaciones as $ubicacion)         
+                                          
+                        <option value="{{$ubicacion->id}}">{{$ubicacion->estante}}</option>
+                                                                                    
                     @endforeach                                        
                 </select>                                        
               @endfor             
@@ -510,7 +523,13 @@
                                                                                       <!--COSTO-->
           <div class="col-12">
             <label for="costo" class="mt-5">Costo</label>            
-            <input type="number" class="form-control" id="costo" placeholder="Dejar en blanco si no sabes el dato" step="0.10" min="0" value="{{$book->costo}}">
+                  @if($book['costo']=="-1")
+                    <input type="number" class="form-control" id="costo" placeholder="Dejar en blanco si no sabes el dato" step="0.10" min="0">
+                  @else
+                    <input type="number" class="form-control" id="costo" placeholder="Dejar en blanco si no sabes el dato" step="0.10" min="0" value="{{$book->costo}}">
+                  @endIf                                    
+            <!--<input type="number" class="form-control" id="costo" placeholder="Dejar en blanco si no sabes el dato" step="0.10" min="0" value="{{$book->costo}}">-->
+            <!--<input type="number" class="form-control" id="costo" placeholder="Dejar en blanco si no sabes el dato" step="0.10" min="0">-->
           </div>                                                                                      
 
 

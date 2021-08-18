@@ -20,7 +20,8 @@
     </div>
     
     <div class="row mt-5">
-       <div class="col">
+        <div class="col-1"></div>
+        <div class="col">
             @foreach($books as $book)
                 <a href="{{route('books.show',$book)}}">{{$book->titulo}}</a><br>
                 <p>{{$book->observacion}}</p>
@@ -29,7 +30,8 @@
             <div class="col mt-5 mb-5">
                 {{$books->links()}}
             </div>
-       </div>
+        </div>
+        <div class="col-1"></div>
     </div>
     
     

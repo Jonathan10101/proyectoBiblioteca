@@ -17,7 +17,7 @@ class CreateUbicacionesTable extends Migration
         DB::statement("
             CREATE TABLE ubicaciones(
             id int NOT NULL AUTO_INCREMENT,
-            estante varchar(255) NOT NULL UNIQUE,
+            estante varchar(99) NOT NULL UNIQUE,
             CONSTRAINT pk_ubicacion PRIMARY KEY(id)
             )ENGINE=INNODB;
         ");

@@ -39,34 +39,64 @@
                 @endphp
               <tbody>
                 <tr>
-                    <td>{{$book->titulo}}</td>                
-                    <td>{{$book->year}}</td>                
-                    <td>{{$book->costo}}</td>
+                    <td>{{$book->titulo}}</td>   
+                    @if($book->year == -1)
+                        <td></td>
+                    @else
+                        <td>{{$book->year}}</td>   
+                    @endIf             
+                    
+                    
+                    @if($book->costo == -1)
+                        <td></td>
+                    @else
+                        <td>${{$book->costo}}</td>
+                    @endIf
+                    
+
+                    @if($book->stock == -1)
+                        <td></td>
+                    @else
                     <td>{{$book->stock}}</td>
+                    @endIf
+                    
                     <td>{{$book->observacion}}</td>
                     <td>{{$book->editorial["nombre"]}}</td>
                     <td>{{$book->lugar["ciudad"]}}</td>                    
                     <td>{{$book->coleccion["nombre"]}}</td>                    
                     <td>                    
                         @for ($i = 0; $i < $sizeAutores; $i++)                        
-                            -{{$book->autor[$i]["nombre1"]}}                            
+                            •{{$book->autor[$i]["nombre1"]}}                            
                             {{$book->autor[$i]["nombre2"]}}                            
                             {{$book->autor[$i]["apellido1"]}}
-                            {{$book->autor[$i]["apellido2"]}}                               
+                            {{$book->autor[$i]["apellido2"]}}
+                            <br>                                                           
                         @endfor                    
-                    </td>
+                    </td><br>
                     
                     <td>                    
-                        @for ($i = 0; $i < $sizeCoordinadores; $i++)                        
-                            -{{$book->coordinador[$i]["nombre1"]}}                            
+                        @for ($i = 0; $i < $sizeCoordinadores; $i++)                                                                            
+                            •{{$book->coordinador[$i]["nombre1"]}}                            
                             {{$book->coordinador[$i]["nombre2"]}}                            
                             {{$book->coordinador[$i]["apellido1"]}}
-                            {{$book->coordinador[$i]["apellido2"]}} 
+                            {{$book->coordinador[$i]["apellido2"]}}                             
                         @endfor                    
                     </td>                    
-                    <td class="text-center">                    
-                       @for ($i = 0; $i < $sizeUbi; $i++)                        
-                            {{$book->ubicacion[$i]["estante"]}}                        
+                    <td class="text-center">                   
+                       <?php $contador = 1; ?>  
+                       @for ($i = 0; $i < $sizeUbi; $i++)      
+                            
+                            @if($book->ubicacion[$i]["estante"]==0)
+                                SIN ESTANTE                                
+                            @else                            
+                                @if($contador==$sizeUbi)
+                                    {{$book->ubicacion[$i]["estante"]}}     
+                                @else
+                                    {{$book->ubicacion[$i]["estante"]}},     
+                                @endIf
+                            @endif                                
+                            
+                            <?php $contador++; ?>                                                            
                         @endfor
                     </td>                                     
                 </tr>

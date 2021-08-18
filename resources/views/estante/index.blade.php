@@ -65,7 +65,11 @@
         <div class="col">
            
             @foreach($estantes as $estante)
-                <a href="{{route('estantes.show',$estante->id)}}" class="mb-3 d-inline-block">{{$estante->estante}}</a><br>                
+                @if($estante->estante == 0)
+                    <a href="{{route('estantes.show',$estante->id)}}" class="mb-3 d-inline-block">SIN ESTANTE</a><br>                
+                @else
+                    <a href="{{route('estantes.show',$estante->id)}}" class="mb-3 d-inline-block">{{$estante->estante}}</a><br>                
+                @endIf                
             @endforeach
 
             <div class="col mt-5 mb-5">
