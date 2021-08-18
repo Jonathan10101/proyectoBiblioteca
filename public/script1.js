@@ -517,10 +517,8 @@
                 document.getElementById("nombre1").value = "";
                 document.getElementById("nombre2").value = "";
                 document.getElementById("apellido1").value = "";
-                document.getElementById("apellido2").value = "";
-                
+                document.getElementById("apellido2").value = "";                                
             }
-            
         }
         
         
@@ -966,6 +964,7 @@
         var nCoordinadores = coordinadores.length;
         var ubicacionesEstante = document.getElementsByClassName("clasePadreUbicaciones");
         var nUbicacionesEstante = ubicacionesEstante.length;
+        var fondoAntiguo = document.getElementById("fondoAntiguo");
 
         
         if(floatingInputTitulo == "" || nAutores<1 || nCoordinadores<1 || nUbicacionesEstante<1){
@@ -1045,10 +1044,16 @@
 
         //console.log("ubicaciones"+arregloUbicaciones);
 
+        //FONDO ANTIGUO
+        var fondo = fondoAntiguo.value;
 
+        if (fondoAntiguo.checked==true){
+            fondo = 1;
+        }else{
+            fondo = 0;
+        }
 
-
-
+  
         //ENVIAR DATOS PARA REGISTRAR LIBRO
         peticion = new XMLHttpRequest();
         peticion.open("POST",PATH+"libroInsert.php");
@@ -1058,7 +1063,7 @@
         var parametros = "titulo="+floatingInputTitulo+"&costo="+costo+"&nEjemplares="+stock
                          +"&year="+yearPublicacion+"&lugar_id="+selectLugar+"&editorial_id="+selectEditorial
                          +"&coleccion_id="+selectColeccion+"&observaciones="+observaciones+"&arregloAutores="+arregloAutores
-                         +"&arregloCoordinadores="+arregloCoordinadores+"&arregloUbicaciones="+arregloUbicaciones;
+                         +"&arregloCoordinadores="+arregloCoordinadores+"&arregloUbicaciones="+arregloUbicaciones+"&fondo="+fondo;
         
         
     

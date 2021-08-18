@@ -17,6 +17,7 @@ $observaciones = $_POST['observaciones'];
 $arregloAutores = $_POST['arregloAutores'];
 $arregloCoordinadores = $_POST['arregloCoordinadores'];
 $arregloUbicaciones = $_POST['arregloUbicaciones'];
+$fondo = $_POST['fondo'];
 
 
 
@@ -37,9 +38,9 @@ if($conexion->connect_errno){
 
 
 
-    $sentencia = $conexion->prepare("INSERT INTO libros(titulo,year,costo,stock,observacion,editorial_id,lugar_id,coleccion_id) VALUES(?,?,?,?,?,?,?,?)");
+    $sentencia = $conexion->prepare("INSERT INTO libros(titulo,year,costo,stock,observacion,editorial_id,lugar_id,coleccion_id,fondo) VALUES(?,?,?,?,?,?,?,?,?)");
 
-    $sentencia->bind_param("sidisiii",$titulo,$year,$costo,$nEjemplares,$observaciones,$editorial_id,$lugar_id,$select_coleccion);
+    $sentencia->bind_param("sidisiiii",$titulo,$year,$costo,$nEjemplares,$observaciones,$editorial_id,$lugar_id,$select_coleccion,$fondo);
     $sentencia->execute();
     $sentencia->close();
     //echo json_encode("Libro registrado");

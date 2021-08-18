@@ -29,6 +29,7 @@
                     <th class="text-center">Autor(es)</th>                
                     <th class="text-center">Coordinador(es)</th>
                     <th class="text-center">Ubicacion(es) estante</th>
+                    <th class="text-center">Fondo Antiguo</th>
                     
                 </tr>
               </thead>     
@@ -98,7 +99,14 @@
                             
                             <?php $contador++; ?>                                                            
                         @endfor
-                    </td>                                     
+                    </td>   
+                    <td>
+                        @if($book->fondo == 0)
+                            <p class="text-center">NO</p>
+                        @else
+                        <p class="text-center">SI</p>
+                        @endIf                        
+                    </td>                                  
                 </tr>
               <tbody>
             </table>

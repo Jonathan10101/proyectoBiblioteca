@@ -26,6 +26,7 @@ class CreateLibrosTable extends Migration
             editorial_id int,
             lugar_id int,
             coleccion_id int,
+            fondo int,
             CONSTRAINT pk_libros PRIMARY KEY(id),
             CONSTRAINT pk_libros_lugares FOREIGN KEY(lugar_id) REFERENCES lugares(id) ON DELETE CASCADE,
             CONSTRAINT pk_libros_editoriales FOREIGN KEY(editorial_id) REFERENCES editoriales(id) ON DELETE CASCADE,

@@ -23,7 +23,7 @@
         <form action="" class="col-5 mt-5">
                       
           <div class="form-floating mb-3">
-            <input type="text" class="form-control" id="floatingInputTitulo"  name="titulo" placeholder="">
+            <input type="text" class="form-control" id="floatingInputTitulo"  name="titulo" required placeholder="">
             <label for="floatingInputTitulo">Titulo</label>
           </div>
         
@@ -396,8 +396,20 @@
                                                                                         <!--OBSERVACIONES-->
           <div class="col-12 mt-5">
             <label for="observaciones" class="mb-3">Observaciones</label>
-            <textarea name="" id="observacionesTextArea" cols="30" rows="10" class="form-control">SIN OBSERVACIONES</textarea>
+            <textarea name="" id="observacionesTextArea" cols="30" rows="10" class="form-control">SIN OBSERVACIONES</textarea><br><br>  
           </div>
+
+<!--
+          <div class="col-12 mt-5">            
+            <label for="fondoAntiguo">Fondo Antiguo</label>
+            <select name="fondoAntiguo" id="fondoAntiguo" class="form-select mt-4 clasePadre6">
+              <option value="1">SI</option>
+              <option value="0">NO</option>
+            </select><br>
+          </div>
+-->
+        
+          <label><input type="checkbox" id="fondoAntiguo" value="1"> Pertenece al Fondo Antiguo</label><br><br>
 
 
 

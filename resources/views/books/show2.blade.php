@@ -591,10 +591,16 @@
                                                                                         <!--OBSERVACIONES-->
           <div class="col-12 mt-5">
             <label for="observaciones" class="mb-3">Observaciones</label>
-            <textarea name="" id="observacionesTextArea" cols="30" rows="10" class="form-control">SIN OBSERVACIONES</textarea>
+            <textarea name="" id="observacionesTextArea" cols="30" rows="10" class="form-control">SIN OBSERVACIONES</textarea><br><br>
           </div>
 
 
+          @if($book->fondo == 1)
+            <label><input type="checkbox" id="fondoAntiguo" value="1" checked> Pertenece al Fondo Antiguo</label><br><br>
+          @else
+            <label><input type="checkbox" id="fondoAntiguo" value="0"> Pertenece al Fondo Antiguo</label><br><br>
+          @endIf
+          
 
            <div class="col-12">
               <button class="btn col-12 mt-4 mb-5" style="resize:none;" id="btnRegistrarLibroButton">ACEPTAR</button>
