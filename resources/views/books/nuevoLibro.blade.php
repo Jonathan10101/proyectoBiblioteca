@@ -10,7 +10,15 @@
 
 <div class="container-fluid">
 
-  <div id="bm"></div>
+  
+<div class="row">
+  <div class="col-12 d-flex justify-content-center" >
+  <!--
+    <lottie-player id="dragon" src="https://assets10.lottiefiles.com/packages/lf20_gQSfwH.json"  background="transparent"  speed="1"  style="width: 800px; height: 800px;"  loop autoplay></lottie-player>
+  -->    
+    <lottie-player id="paloma" src="https://assets3.lottiefiles.com/private_files/lf30_lp0zwbpd.json"  background="transparent"  speed=".9"  style="width: 800px; height: 800px;"  loop autoplay></lottie-player>
+  </div>
+</div>
 
   <div class="row">
     
@@ -327,7 +335,7 @@
           
           <div style="display:none" id="memberForm5" class="mt-4">
                     
-                <input type="text" placeholder="Ubicacion estante" class="form-control mt-3" id="ubicacionEstante">
+                <input type="text" placeholder="Ubicacion estante (Solo números)" class="form-control mt-3" id="ubicacionEstante">
                 <div class="col-12 d-flex justify-content-center">
                     <button  type="button" value="true" name="formselector" onClick="" class="btn btn-warning col-6 mt-4" id="btnRegistrarUbicacion">Registrar Ubicacion</button>
                 </div>
@@ -343,10 +351,6 @@
             <label for="costo" class="mt-5">Costo</label>
             <input type="number" class="form-control" id="costo" placeholder="Dejar en blanco si no sabes el dato" step="0.10" min="0">
           </div>                                                                                      
-
-
-
-
 
 
 
@@ -429,13 +433,19 @@
     <link rel="stylesheet" href="{{ asset('estilos1.css') }}">
     <link rel="stylesheet" href="/css/admin_custom.css">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-eOJMYsd53ii+scO/bJGFsiCZc+5NDVN2yr8+0RDqr0Ql0h+rP48ckxlpbzKgwra6" crossorigin="anonymous">    
+    <style>
+      #paloma{
+        display: none;          
+      }
+    </style>
 @stop
 
-@section('js')    
-    <script type='text/javascript' src="{{asset('script1.js')}}"></script>
-    <!-- ESTE ES EL CDN DE LOTTIE -->
-    <script src="https://cdnjs.com/libraries/bodymovin" type="text/javascript"></script>
+@section('js')       
+    <!-- ESTE ES EL CDN DE LOTTIE -->    
+    <script src="https://cdnjs.com/libraries/bodymovin" type="text/javascript"></script>  
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
 
+    <script type='text/javascript' src="{{asset('script1.js')}}"></script>
 
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.0/jquery.min.js"></script> 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta3/dist/js/bootstrap.bundle.min.js" integrity="sha384-JEW9xMcG8R+pH31jmWH6WWP0WintQrMb4s7ZOdauHnUtxwoG2vI5DkLtS3qm9Ekf" crossorigin="anonymous"></script>

@@ -459,6 +459,7 @@
             <div class="col-6">
               <label for="ubicaione" class="mb-3">Ubicacion en Estante</label>
             </div>  
+            
           
             <div class="col-6">
               <div class="col-12 d-flex justify-content-end">    

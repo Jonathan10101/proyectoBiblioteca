@@ -10,11 +10,17 @@
     <!--<p>Bienvenido al Sistema del Instituto de Investigaciones Historicas</p>-->  
     <!--<h1 class="display-2 text-center font-weight-bold">IIE Soft</h1>-->
     <div class="container-fluid mt-5">
-    
-
+      
+    <div class="row">
+        <div class="col-12 d-flex justify-content-center" >  
+            <lottie-player id="dragon" src="https://assets10.lottiefiles.com/packages/lf20_gQSfwH.json"  background="transparent"  speed="1"  style="width: 400px; height: 400px;"  loop autoplay></lottie-player>              
+        </div>
+    </div>
+<!--
     <div class="row">
         <h1 class="col text-center display-4">IIE SOFT</h1>        
     </div>
+-->
 
 <!--
     <div class="row">
@@ -22,7 +28,7 @@
     </div>
 -->    
     
-    <div class="row mt-4">        
+    <div class="row">        
         
             <form action="{{route('admin.store')}}" class="col-12" method="POST">
                 @csrf    
@@ -67,7 +73,13 @@
 
 
             </form>
-    </div>        
+    </div> 
+    
+    <div class="row mt-5">
+        <div class="col-12 d-flex justify-content-center">
+            <p class="text-primary">Desarrollado por Jonathan Bedolla</p>
+        </div>
+    </div>
 
     <div class="row mt-4">    
         @if(isset($books) && count($books)>0)
@@ -88,8 +100,15 @@
 @section('css')
     <link href="https://unpkg.com/tailwindcss@^2/dist/tailwind.min.css" rel="stylesheet">
     <link rel="stylesheet" href="/css/admin_custom.css">
+    <style>
+      #dragon{
+        display: flex;          
+      }
+    </style>
 @stop
 
-@section('js')
+@section('js')    
     <script> console.log('Hi!'); </script>
+    <script src="https://unpkg.com/@lottiefiles/lottie-player@latest/dist/lottie-player.js"></script>
+
 @stop

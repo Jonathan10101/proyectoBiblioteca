@@ -1073,9 +1073,14 @@
         
         peticion.onload = function(){
             var respuesta = JSON.parse(peticion.responseText);
-            alert(respuesta);
+            //alert(respuesta);
             //confirm(respuesta);
             if(respuesta=="Libro Registrado"){                                      
+                document.getElementById("paloma").style.display = "flex";
+                window.scrollTo(0,0);
+
+                setTimeout(myFunction,2000);                                                
+
                 document.getElementById("floatingInputTitulo").value = "";            
                 document.getElementById("padre").innerHTML = "";
                 document.getElementById("yearPublicacion").value = "";
@@ -1083,9 +1088,10 @@
                 document.getElementById("padre5").innerHTML = "";
                 document.getElementById("costo").value = "-";
                 document.getElementById("padreUbicaciones").innerHTML = "";
-                document.getElementById("observacionesTextArea").innerHTML = "SIN OBSERVACIONES";
-                window.location = "http://www.mysite.com/books";
+                document.getElementById("observacionesTextArea").innerHTML = "SIN OBSERVACIONES";                                                                                
             }
+
+            
         }
         
         
@@ -1101,11 +1107,12 @@
         
     }
 
-
-
-
-
-
+    function myFunction() {
+        //alert('Hello');
+        console.log("HELLO");
+        window.location = "http://www.mysite.com/books";
+    }
+ 
 
 
 
