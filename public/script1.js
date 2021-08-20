@@ -1110,6 +1110,7 @@
     function myFunction() {
         //alert('Hello');
         console.log("HELLO");
+        alert("LIBRO REGISTRADO");
         window.location = "http://www.mysite.com/books";
     }
  

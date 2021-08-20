@@ -413,7 +413,7 @@
           </div>
 -->
         
-          <label><input type="checkbox" id="fondoAntiguo" value="1"> Pertenece al Fondo Antiguo</label><br><br>
+          <label><input type="checkbox" id="fondoAntiguo"> Pertenece al Fondo Antiguo</label><br><br>
 
 
 

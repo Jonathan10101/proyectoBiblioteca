@@ -18,10 +18,11 @@ $arregloAutores = $_POST['arregloAutores'];
 $arregloCoordinadores = $_POST['arregloCoordinadores'];
 $arregloUbicaciones = $_POST['arregloUbicaciones'];
 $libro_id = $_POST['libro_id'];
-
+$fondo = $_POST['fondo'];
 
 $conect = new Conexion();
 $conexion = $conect->conectarse();
+
 
 
 
@@ -38,9 +39,9 @@ if($conexion->connect_errno){
 
 
     //$sentencia = $conexion->prepare("INSERT INTO libros(titulo,year,costo,stock,observacion,editorial_id,lugar_id,coleccion_id) VALUES(?,?,?,?,?,?,?,?)");
-    $sentencia = $conexion->prepare("UPDATE libros SET titulo = ?, year = ? , costo = ? , stock = ? , observacion = ?, editorial_id = ?, lugar_id = ? ,coleccion_id = ? WHERE id = ?");
+    $sentencia = $conexion->prepare("UPDATE libros SET titulo = ?, year = ?, costo = ?, stock = ?, observacion = ?, editorial_id = ?, lugar_id = ?,coleccion_id = ?, fondo = ?  WHERE id = ?");
 
-    $sentencia->bind_param("sidisiiii",$titulo,$year,$costo,$nEjemplares,$observaciones,$editorial_id,$lugar_id,$select_coleccion,$libro_id);
+    $sentencia->bind_param("sidisiiiii",$titulo,$year,$costo,$nEjemplares,$observaciones,$editorial_id,$lugar_id,$select_coleccion,$fondo,$libro_id);
     $sentencia->execute();
     $sentencia->close();
     //echo json_encode("Libro registrado");
@@ -117,6 +118,7 @@ if($conexion->connect_errno){
 
 
     echo json_encode("Libro Actualizado");
+    
 
 
 }

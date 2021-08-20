@@ -18,7 +18,7 @@ var btnRegistrarColeccion = document.getElementById("btnRegistrarColeccion");
 
 var btnEliminarUbicacionesSelectMenos = document.getElementById("btnEliminarUbicaciones");
 var btnAgregarUbicacionesSelectMas = document.getElementById("btnAgregarUbicaciones");
-
+var fondoAntiguo = document.getElementById("fondoAntiguo");
 
 
 var switch1 = document.getElementById("switch1");
@@ -928,6 +928,7 @@ function registrarLibro(){
     var nCoordinadores = coordinadores.length;
     var ubicacionesEstante = document.getElementsByClassName("clasePadreUbicaciones");
     var nUbicacionesEstante = ubicacionesEstante.length;
+    var fondoAntiguo = document.getElementById("fondoAntiguo");
 
     
     if(floatingInputTitulo == "" || nAutores<1 || nCoordinadores<1 || nUbicacionesEstante<1){
@@ -1007,11 +1008,17 @@ function registrarLibro(){
 
     console.log("ubicaciones"+arregloUbicaciones);
 
+    var fondo = fondoAntiguo.value;
+
+    if (fondoAntiguo.checked==true){
+        fondo = 1;
+    }else{
+        fondo = 0;
+    }
 
 
 
-
-    //ENVIAR DATOS PARA REGISTRAR LIBRO
+    
     peticion = new XMLHttpRequest();
     peticion.open("POST",PATH+"libroInsertUpdate.php");
     
@@ -1020,7 +1027,7 @@ function registrarLibro(){
     var parametros = "titulo="+floatingInputTitulo+"&costo="+costo+"&nEjemplares="+stock
                      +"&year="+yearPublicacion+"&lugar_id="+selectLugar+"&editorial_id="+selectEditorial
                      +"&coleccion_id="+selectColeccion+"&observaciones="+observaciones+"&arregloAutores="+arregloAutores
-                     +"&arregloCoordinadores="+arregloCoordinadores+"&arregloUbicaciones="+arregloUbicaciones+"&libro_id="+libro_id;
+                     +"&arregloCoordinadores="+arregloCoordinadores+"&arregloUbicaciones="+arregloUbicaciones+"&libro_id="+libro_id+"&fondo="+fondo;
     
     
     console.log(parametros);
@@ -1031,21 +1038,16 @@ function registrarLibro(){
     
     peticion.onload = function(){
         var respuesta = JSON.parse(peticion.responseText);
-        alert(respuesta);
-        //confirm(respuesta);
-        if(respuesta=="Libro Actualizado"){      
-            /*          
-            document.getElementById("floatingInputTitulo").value = "";            
-            document.getElementById("padre").innerHTML = "";
-            document.getElementById("yearPublicacion").value = "";
-            document.getElementById("stock").value = "";
-            document.getElementById("padre5").innerHTML = "";
-            document.getElementById("costo").value = "-";
-            document.getElementById("padreUbicaciones").innerHTML = "";
-            document.getElementById("observacionesTextArea").innerHTML = "SIN OBSERVACIONES";
-            */
-            window.location = "http://www.mysite.com/books";
+        //alert(respuesta);
+        
+        if(respuesta=="Libro Actualizado"){         
+            document.getElementById("update").style.display = "flex";
+            window.scrollTo(0,0);
+
+            setTimeout(myFunction,2000);                                                
         }
+        
+
     }
     
     
@@ -1054,12 +1056,18 @@ function registrarLibro(){
     peticion.send(parametros);
 
     
-    
-
-    
-    
-    
 }
+
+
+function myFunction() {
+    //alert('Hello');
+    console.log("HELLO");
+    alert("LIBRO ACTUALIZADO");
+    window.location = "http://www.mysite.com/books";
+}
+
+
+
 
 
 

@@ -76,7 +76,9 @@ class LibroController extends Controller
     {
         $libro = Libro::find($id);        
         $libro->delete();
-        return redirect()->route("books.index");
+        //return redirect()->route("books.index");
+        return redirect()->route("books.index")->with("status","Libro Eliminado");;
+
     }
 
 
