@@ -63,10 +63,37 @@ class AutorController extends Controller
         $request->validate([
             "nombre1"=>"required|min:1|max:20"
         ]);
-        $autor->update($request->all());
+       
+        $nombre1 = $request->nombre1;
+        $nombre2 = $request->nombre2;
+        $apellido1 = $request->apellido1;
+        $apellido2 = $request->apellido2;
+        $nombre1 = strtoupper($nombre1);
+        $nombre2 = strtoupper($nombre2);
+        $apellido1 = strtoupper($apellido1);
+        $apellido2 = strtoupper($apellido2);
+
+        $duplicado = DB::table('autores')
+                                ->where([
+                                    ['nombre1' ,'=', $nombre1],
+                                    ['nombre2', '=' , $nombre2],
+                                    ['apellido1', '=' , $apellido1],
+                                    ['apellido2', '=' , $apellido2],
+                                ])->first();
         
-        return redirect()->route("autores.index")->with("status2","Autor actualizado");
-        
+
+        if($duplicado == null){            
+            $autor->update($request->all());        
+            return redirect()->route("autores.index")->with("status2","Autor actualizado");
+        }else{
+            return redirect()->route("autores.edit",$id)->with("status1","El Autor que quieres registrar ({$request->nombre1}) ya existe");
+        }
+                                                                    
+
+
+
+
+
     }
 
     public function destroy($id)

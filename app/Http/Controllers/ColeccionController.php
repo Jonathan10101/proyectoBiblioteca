@@ -47,11 +47,21 @@ class ColeccionController extends Controller
         $request->validate([
             "nombre"=>"required|min:1|max:80"
         ]);
-        $coleccion->update($request->all());
-        
-        
+
+        $duplicado = Coleccion::where('nombre',$request->nombre)->first();
+
+
+
+        if($duplicado){            
+            return redirect()->route("colecciones.edit",$id)->with("status1","La coleccion que quieres registrar ({$request->nombre}) ya existe");
+        }else{            
+            $coleccion->update($request->all());
+            return redirect()->route("colecciones.index")->with("status2","Coleccion actualizada");            
+        }
+/*        
+        $coleccion->update($request->all());                
         return redirect()->route("colecciones.index")->with("status2","Coleccion actualizada");
-        //return redirect()->route("colecciones.index");
+*/      
     }
 
     public function destroy($id)

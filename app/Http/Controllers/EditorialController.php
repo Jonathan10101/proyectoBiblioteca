@@ -43,9 +43,23 @@ class EditorialController extends Controller
         $request->validate([
             "nombre"=>"required|min:1|max:80"
         ]);
+        
+        
+        $duplicado = Editorial::where('nombre',$request->nombre)->first();
+
+        if($duplicado){            
+            return redirect()->route("editoriales.edit",$id)->with("status1","La editorial que quieres registrar ({$request->nombre}) ya existe");
+        }else{            
+            $editorial->update($request->all());
+            return redirect()->route("editoriales.index")->with("status2","Editorial actualizada");            
+        }      
+        
+        
+/*        
         $editorial->update($request->all());
         
         return redirect()->route("editoriales.index")->with("status2","Lugar actualizado");;;        
+*/        
     }
     
     public function destroy($id)

@@ -19,13 +19,15 @@ class LugarController extends Controller
         $request->validate([
             "ciudad"=>"required|min:2|max:80"
         ]);
+       
+
 
         $duplicado = Lugar::where('ciudad',$request->ciudad)->first();
-        if($duplicado){
-            
+        if($duplicado){  
             return redirect()->route("lugares.create")->with("status1","El lugar que quieres registrar ya existe");
         }else{
-            Lugar::create($request->all()); 
+            
+            Lugar::create(($request->all())); 
             return redirect()->route("lugares.index")->with("statusr","Lugar registrado con exito"); 
         }
                                     
@@ -46,10 +48,24 @@ class LugarController extends Controller
         $request->validate([
             "ciudad"=>"required|min:2|max:80"
         ]);
-        $lugar->update($request->all());
+
+        $duplicado = Lugar::where('ciudad',$request->ciudad)->first();
+
+
+        if($duplicado){            
+            return redirect()->route("lugares.edit",$id)->with("status1","El lugar que quieres registrar ({$request->ciudad}) ya existe");
+        }else{            
+            $lugar->update($request->all());
+            return redirect()->route("lugares.index")->with("status2","Lugar actualizado");            
+        }
+
+
+
+
+        
         
         //return redirect()->route("lugares.index");
-        return redirect()->route("lugares.index")->with("status2","Lugar actualizado");;;
+        
     }
     
     public function destroy($id)

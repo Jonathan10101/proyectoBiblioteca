@@ -58,10 +58,40 @@ class CoordinadorController extends Controller
         $request->validate([
             "nombre1"=>"required|min:1|max:20"
         ]);
-        $coordinador->update($request->all());
+
+
+        $nombre1 = $request->nombre1;
+        $nombre2 = $request->nombre2;
+        $apellido1 = $request->apellido1;
+        $apellido2 = $request->apellido2;
+        $nombre1 = strtoupper($nombre1);
+        $nombre2 = strtoupper($nombre2);
+        $apellido1 = strtoupper($apellido1);
+        $apellido2 = strtoupper($apellido2);
+
+        $duplicado = DB::table('coordinadores')
+                                ->where([
+                                    ['nombre1' ,'=', $nombre1],
+                                    ['nombre2', '=' , $nombre2],
+                                    ['apellido1', '=' , $apellido1],
+                                    ['apellido2', '=' , $apellido2],
+                                ])->first();
         
-        return redirect()->route("coordinadores.index")->with("status2","Coordinador actualizado");
-        //return redirect()->route("coordinadores.index");
+
+        if($duplicado == null){            
+            $coordinador->update($request->all());        
+            return redirect()->route("coordinadores.index")->with("status2","Coordinador actualizado");
+        }else{
+            return redirect()->route("coordinadores.edit",$id)->with("status1","El Coordinador que quieres registrar ({$request->nombre1}) ya existe");
+        }
+                                                                    
+
+
+
+
+
+        
+        
     }
     
     public function destroy($id)

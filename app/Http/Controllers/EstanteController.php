@@ -45,9 +45,19 @@ class EstanteController extends Controller
         $request->validate([
             "estante"=>"required|min:1|max:80"
         ]);
-        $estante->update($request->all());
-        
-        return redirect()->route("estantes.index")->with("status2","Estante actualizado");
+
+        $duplicado = Ubicacion::where('estante',$request->estante)->first();
+
+
+
+        if($duplicado){            
+            return redirect()->route("estantes.edit",$id)->with("status1","El estante que quieres registrar ({$request->estante}) ya existe");
+        }else{            
+            $estante->update($request->all());
+            return redirect()->route("estantes.index")->with("status2","Estante actualizado");            
+        }
+
+
     }
 
     public function destroy($id)

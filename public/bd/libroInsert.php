@@ -38,6 +38,8 @@ if($conexion->connect_errno){
 
 
 
+
+
     $sentencia = $conexion->prepare("INSERT INTO libros(titulo,year,costo,stock,observacion,editorial_id,lugar_id,coleccion_id,fondo) VALUES(?,?,?,?,?,?,?,?,?)");
 
     $sentencia->bind_param("sidisiiii",$titulo,$year,$costo,$nEjemplares,$observaciones,$editorial_id,$lugar_id,$select_coleccion,$fondo);
