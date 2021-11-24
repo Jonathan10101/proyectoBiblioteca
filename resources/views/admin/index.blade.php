@@ -13,9 +13,10 @@
       
     <div class="row">
         <div class="col-12 d-flex justify-content-center" >  
-            <lottie-player id="dragon" src="https://assets10.lottiefiles.com/packages/lf20_gQSfwH.json"  background="transparent"  speed="1"  style="width: 400px; height: 400px;"  loop autoplay></lottie-player>              
+            <!--<lottie-player id="dragon" src="https://assets10.lottiefiles.com/packages/lf20_gQSfwH.json"  background="transparent"  speed="1"  style="width: 400px; height: 400px;"  loop autoplay></lottie-player>-->
+            <img src="{{asset('iih_logo.png')}}">
         </div>
-    </div>
+    </div><br><br>
 <!--
     <div class="row">
         <h1 class="col text-center display-4">IIE SOFT</h1>        

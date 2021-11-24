@@ -17,6 +17,7 @@
     <lottie-player id="dragon" src="https://assets10.lottiefiles.com/packages/lf20_gQSfwH.json"  background="transparent"  speed="1"  style="width: 800px; height: 800px;"  loop autoplay></lottie-player>
   -->    
     <lottie-player id="paloma" src="https://assets3.lottiefiles.com/private_files/lf30_lp0zwbpd.json"  background="transparent"  speed=".3"  style="width: 800px; height: 800px;"  loop autoplay></lottie-player>
+    
   </div>
 </div>
 
